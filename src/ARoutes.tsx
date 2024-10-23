@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion"; 
 // import ActivityTracker from "./resources/ActivityTracker.tsx";

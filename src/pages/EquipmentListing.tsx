@@ -12,7 +12,7 @@ const EquipmentListing: React.FC = ()=>{
     const [searchAdvanced, setSearchAdvanced] = useState(false)
     
     const handleClose = () => setSearchAdvanced(false);
-    const handleShow = () => setSearchAdvanced(true);
+    // const handleShow = () => setSearchAdvanced(true);
 
     const toggleAdvancedSearch = ()=>{
         setSearchAdvanced(!searchAdvanced)
