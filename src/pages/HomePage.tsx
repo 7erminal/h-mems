@@ -152,8 +152,8 @@ const HomePage: React.FC = ()=>{
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-bulb-61 text-dark opacity-10"></i>
                     </div>
-                    <h5 className="text-white mb-1">Faster way to create web pages</h5>
-                    <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
+                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
+                    <p>Explore equipment data with detailed information to keep track of performance</p>
                   </div>
                 </div>
                 <div className="carousel-item h-100" style={{backgroundImage: "url('/assets/img/carousel-3.jpg')",
@@ -162,8 +162,8 @@ const HomePage: React.FC = ()=>{
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-trophy text-dark opacity-10"></i>
                     </div>
-                    <h5 className="text-white mb-1">Share with us your design tips!</h5>
-                    <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
+                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
+                    <p>Explore equipment data with detailed information to keep track of performance</p>
                   </div>
                 </div>
               </div>
