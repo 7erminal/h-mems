@@ -1,0 +1,20 @@
+@media (min-width: 1200px) {
+    .modal-content{
+        padding-left: 17.125rem;
+    }
+}
+
+.primary-button{
+    background-color: transparent;
+    border: 2px rgb(16, 1, 60) solid;
+    border-radius: 1px;
+    transition: 0.3s ease-out;
+    color: rgb(16, 1, 60);
+}
+
+.primary-button:hover{
+    background-color: rgb(16, 1, 60);
+    border: 2px rgb(16, 1, 60) solid;
+    color: white;
+    transition: 0.1s ease-in;
+}
