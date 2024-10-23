@@ -3,6 +3,8 @@ import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import EquipmentListTable from "./components/EquipmentListTable";
+import { ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const HomePage: React.FC = ()=>{
     return <>
@@ -116,16 +118,17 @@ const HomePage: React.FC = ()=>{
         <div className="col-lg-7 mb-lg-0 mb-4">
           <div className="card z-index-2 h-100">
             <div className="card-header pb-0 pt-3 bg-transparent">
-              <h6 className="text-capitalize">Sales overview</h6>
+              <h6 className="text-capitalize">Quick links</h6>
               <p className="text-sm mb-0">
-                <i className="fa fa-arrow-up text-success"></i>
-                <span className="font-weight-bold">4% more</span> in 2021
+                {/* <i className="fa fa-arrow-up text-success"></i> */}
+                {/* <span className="font-weight-bold">4% more</span> in 2021 */}
               </p>
             </div>
             <div className="card-body p-3">
-              <div className="chart">
-                <canvas id="chart-line" className="chart-canvas" height="300"></canvas>
-              </div>
+                <ListGroup variant="flush">
+                    <ListGroup.Item action><Link to="/equipment-listing">Equipment Listing</Link></ListGroup.Item>
+                    <ListGroup.Item><Link to="/clinical-engineering-report">Clinical Engineering Report</Link></ListGroup.Item>
+                </ListGroup>
             </div>
           </div>
         </div>
@@ -139,8 +142,8 @@ const HomePage: React.FC = ()=>{
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-camera-compact text-dark opacity-10"></i>
                     </div>
-                    <h5 className="text-white mb-1">Get started with Argon</h5>
-                    <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
+                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
+                    <p>Explore equipment data with detailed information to keep track of performance</p>
                   </div>
                 </div>
                 <div className="carousel-item h-100" style={{ backgroundImage: "url('/assets/img/carousel-2.jpg')",
