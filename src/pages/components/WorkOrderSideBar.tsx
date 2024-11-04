@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ApplicationContext from "../../resources/contexts/ApplicationContext";
 import { Icon } from '@iconify/react';
 
-const SideBar: React.FC = ()=>{
+const WorkOrderSideBar: React.FC = ()=>{
     const appContext = useContext(ApplicationContext);
     
     return <aside className="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
@@ -26,35 +26,35 @@ const SideBar: React.FC = ()=>{
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="cemr" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('cemr','')} to="/clinical-engineering-report">
+          <Link className={ appContext?.currentSubPage=="preventative maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo','preventative maintenance')} to="/work-orders-listings">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
-            <span className="nav-link-text ms-1">CEMR</span>
+            <span className="nav-link-text ms-1">Preventative Maintenance (PM)</span>
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="woch" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('woch','')} to="/work-orders">
+          <Link className={ appContext?.currentSubPage=="pending work orders" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo', 'pending work orders')} to="/work-orders-listings">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
-            <span className="nav-link-text ms-1">Work Order Cost/Hour</span>
+            <span className="nav-link-text ms-1">Pending Work Orders</span>
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="equipment-listing" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing','')} to="/equipment-listing">
+          <Link className={ appContext?.currentSubPage=="closed work orders" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo', 'closed work orders')} to="/work-orders-listings">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <Icon icon="devicon:trpc" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Equipment Listing</span>
+            <span className="nav-link-text ms-1">Closed Work Orders</span>
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="wo" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo','')} to="/work-orders">
+          <Link className={ appContext?.currentSubPage=="work orders cost/hour" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo', 'work orders cost/hour')} to="/work-orders-listings">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <Icon icon="skill-icons:workers-light" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Work Orders</span>
+            <span className="nav-link-text ms-1">Work Orders Cost/Hour</span>
           </Link>
         </li>
         <li className="nav-item mt-3">
@@ -68,38 +68,21 @@ const SideBar: React.FC = ()=>{
             <span className="nav-link-text ms-1">Profile</span>
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className={ appContext?.currentPage=="sign-in" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('sign-in','')} to="/sign-in">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
-            </div>
-            <span className="nav-link-text ms-1">Sign In</span>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className={ appContext?.currentPage=="sign-up" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('sign-up','')} to="/sign-up">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="ni ni-collection text-info text-sm opacity-10"></i>
-            </div>
-            <span className="nav-link-text ms-1">Sign Up</span>
-          </Link>
-        </li>
       </ul>
     </div>
     <div className="sidenav-footer mx-3 ">
       <div className="card card-plain shadow-none" id="sidenavCard">
-        <img className="w-50 mx-auto" src="/assets/img/illustrations/icon-documentation.svg" alt="sidebar_illustration" />
-        <div className="card-body text-center p-3 w-100 pt-0">
+        {/* <div className="card-body text-center p-3 w-100 pt-0">
           <div className="docs-info">
-            <h6 className="mb-0">Need help?</h6>
+            <h6 className="mb-0">Go Back</h6>
             <p className="text-xs font-weight-bold mb-0">Please check our docs</p>
           </div>
-        </div>
+        </div> */}
       </div>
-      <a href="#" target="_blank" className="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
+      <Link to="/" className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
       {/* <a className="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a> */}
     </div>
   </aside>
 }
 
-export default SideBar
+export default WorkOrderSideBar

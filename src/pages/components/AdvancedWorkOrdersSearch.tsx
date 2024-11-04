@@ -6,7 +6,7 @@ type Props = {
     handleClose: ()=>void
 }
 
-const AdvancedEquipmentSearch: React.FC<Props> = ({show, handleClose})=>{
+const AdvancedWorkOrdersSearch: React.FC<Props> = ({show, handleClose})=>{
     return <Modal show={show} onHide={handleClose} fullscreen={true}>
     <Modal.Header closeButton>
         {/* <Row><Col style={{justifyContent: 'left', display: 'flex', alignItems: 'left'}}><span className="align-right">Close</span></Col></Row> */}
@@ -236,4 +236,4 @@ const AdvancedEquipmentSearch: React.FC<Props> = ({show, handleClose})=>{
   </Modal>
 }
 
-export default AdvancedEquipmentSearch
+export default AdvancedWorkOrdersSearch
