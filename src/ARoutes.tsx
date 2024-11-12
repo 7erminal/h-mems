@@ -13,6 +13,7 @@ import WorkOrdersListing from "./pages/WorkOrdersListPage.tsx";
 import ViewEquipmentDetails from "./pages/ViewEquipmentDetails.tsx";
 import ApplicationContext from "./resources/contexts/ApplicationContext";
 import ViewWorkOrderDetails from "./pages/ViewWorkOrderDetails.tsx";
+import SignIn from "./pages/SignIn.tsx";
 
 
 const ARoutes: React.FC = () => {
@@ -30,6 +31,7 @@ const ARoutes: React.FC = () => {
                     <Route path='/work-orders-listings' element={<WorkOrdersListing />} />
                     <Route path='/equipment-details' element={<ViewEquipmentDetails eqDetails={appContext?.selectedEquipment} />} />
                     <Route path='/work-order-details' element={<ViewWorkOrderDetails woDetails={appContext?.selectedWorkOrder} />} />
+                    <Route path='/sign-in' element={<SignIn />} />
                     <Route path="*" element={<Navigate replace to="/" />} />
                 </Routes>
                 {/* <Invoice showModal={showInvoice} handleClose={handleShowInvoiceModalClose} invoice={selectedInvoice} />

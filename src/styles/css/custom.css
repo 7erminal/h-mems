@@ -69,3 +69,21 @@
 .right-sideBar-heading{
     color: #4c4864;
 }
+
+.sign-in-page{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sign-in-card{
+    padding: 20px;
+    width: 100%;
+}
+
+.sign-in-pic{
+    width: 100%;
+    height: 80%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 20px;
+}

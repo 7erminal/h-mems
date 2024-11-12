@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import ApplicationContext from "../../resources/contexts/ApplicationContext";
+import { Link } from "react-router-dom";
 
 const NavBar: React.FC = ()=>{
     const appContext = useContext(ApplicationContext);
@@ -22,10 +23,10 @@ const NavBar: React.FC = ()=>{
           </div>
           <ul className="navbar-nav  justify-content-end">
             <li className="nav-item d-flex align-items-center">
-              <a href="javascript:;" className="nav-link text-white font-weight-bold px-0">
+              <Link to="/sign-in" className="nav-link text-white font-weight-bold px-0">
                 <i className="fa fa-user me-sm-1"></i>
                 <span className="d-sm-inline d-none">Sign In</span>
-              </a>
+              </Link>
             </li>
             <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" className="nav-link text-white p-0" id="iconNavbarSidenav">
