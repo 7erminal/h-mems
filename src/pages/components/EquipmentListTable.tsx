@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ApplicationContext from "../../resources/contexts/ApplicationContext";
 
 type Props = {
-    equipment: Array<Device> | undefined
+    equipment: Array<Device | undefined> | undefined
 }
 
 const EquipmentListTable: React.FC<Props> = ({equipment})=>{
@@ -30,37 +30,37 @@ const EquipmentListTable: React.FC<Props> = ({equipment})=>{
       <tbody>
         {
             equipment != null && equipment != undefined ?
-            equipment?.map((eq: Device, i: number)=>{
+            equipment?.map((eq: Device | undefined, i: number)=>{
                     return <tr key={i}>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.SerialNo }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.SerialNo }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.EQType }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.EQType }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.ModelNumber }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.ModelNumber }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.ManufacturedBy }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.ManufacturedBy }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.ManufacturedBy }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.ManufacturedBy }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.ManufacturedBy }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.ManufacturedBy }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.ManufacturedBy }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.ManufacturedBy }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.ManufacturedBy }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.ManufacturedBy }</span>
                         </td>
                         <td className="align-middle text-center text-sm">
-                            <span className="badge badge-sm bg-gradient-success">{ eq.Status.Status }</span>
+                            <span className="badge badge-sm bg-gradient-success">{ eq?.Status.Status }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ eq.ManufacturedBy }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ eq?.ManufacturedBy }</span>
                         </td>
                         <td className="align-middle">
                             <Link to="/equipment-details" onClick={ ()=>appContext?.setSelectedEquipment(eq) } className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">

@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, Col, FloatingLabel, Form, Modal, Row } from "react-bootstrap";
+import { engineers, equipment, workOrderTypes, statuses } from "../../utils/data/Data";
+import { Device, Engineer, Status, WorkOrderType } from "../../utils/types/Types";
 
 type Props = {
     show: boolean
@@ -8,9 +10,10 @@ type Props = {
 
 const AdvancedWorkOrdersSearch: React.FC<Props> = ({show, handleClose})=>{
     return <Modal show={show} onHide={handleClose} fullscreen={true}>
-    <Modal.Header closeButton>
+    <Modal.Header className="d-flex justify-content-around">
         {/* <Row><Col style={{justifyContent: 'left', display: 'flex', alignItems: 'left'}}><span className="align-right">Close</span></Col></Row> */}
       <Modal.Title>Advanced Search</Modal.Title>
+      <button className="danger-button" type="button" onClick={handleClose}>Close</button>
     </Modal.Header>
     <Modal.Body>
         <Form>
@@ -18,208 +21,86 @@ const AdvancedWorkOrdersSearch: React.FC<Props> = ({show, handleClose})=>{
                 <Col>
                     <FloatingLabel
                         controlId="floatingInput"
-                        label="Control #"
+                        label="Title"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Control #" />
+                        <Form.Control placeholder="Work Order Title" />
                     </FloatingLabel>
                 </Col>
                 <Col>
                     <FloatingLabel
                         controlId="floatingInput"
-                        label="Serial #"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Serial #" />
-                    </FloatingLabel>
-                </Col>
-            </Row>
-
-            <Row className="mt-2">
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Equipment Type"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Equipment Type" />
-                    </FloatingLabel>
-                </Col>
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Device Inclusion"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Device Inclusion" />
-                    </FloatingLabel>
-                </Col>
-            </Row>
-
-            <Row className="mt-2">
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Model #"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Model #" />
-                    </FloatingLabel>
-                </Col>
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Model Name"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Model Name" />
-                    </FloatingLabel>
-                </Col>
-            </Row>
-
-            <Row className="mt-2">
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Manufacturer"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Manufacturer" />
-                    </FloatingLabel>
-                </Col>
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Supplier"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Supplier" />
-                    </FloatingLabel>
-                </Col>
-            </Row>
-
-            <Row className="mt-2">
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Department"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Department" />
-                    </FloatingLabel>
-                </Col>
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Cost Center #"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Cost Center #" />
-                    </FloatingLabel>
-                </Col>
-            </Row>
-
-            <Row className="mt-2">
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="ECRI #"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="ECRI #" />
-                    </FloatingLabel>
-                </Col>
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="ECRI Name"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="ECRI Name" />
-                    </FloatingLabel>
-                </Col>
-            </Row>
-
-            <Row className="mt-2">
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Class"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Class" />
-                    </FloatingLabel>
-                </Col>
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="System"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="System" />
-                    </FloatingLabel>
-                </Col>
-            </Row>
-
-            <Row className="mt-2">
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Location"
-                        className="mb-3"
-                    >
-                        <Form.Control placeholder="Location" />
-                    </FloatingLabel>
-                </Col>
-                <Col>
-                    <FloatingLabel
-                        controlId="floatingInput"
-                        label="Show only Active"
+                        label="Status"
                         className="mb-3"
                     >
                         <Form.Select aria-label="Default select example">
-                            <option value="1">Yes</option>
-                            <option value="2">No</option>
+                            {
+                                statuses != undefined && statuses != null ? statuses.map((stat: Status, i: number)=>{
+                                    return <option key={i} value={stat.Status}>{stat.Status}</option>
+                                }) : ''
+                            }
                         </Form.Select>
                     </FloatingLabel>
                 </Col>
             </Row>
-
             <Row className="mt-2">
                 <Col>
                     <FloatingLabel
                         controlId="floatingInput"
-                        label="Show"
+                        label="Priority"
                         className="mb-3"
                     >
                         <Form.Select aria-label="Default select example">
-                            <option value="1">All</option>
-                            <option value="2">Some</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
                         </Form.Select>
                     </FloatingLabel>
                 </Col>
                 <Col>
                     <FloatingLabel
                         controlId="floatingInput"
-                        label="Group by"
+                        label="Assigned Engineer"
                         className="mb-3"
                     >
                         <Form.Select aria-label="Default select example">
-                            <option value="1">No Grouping</option>
+                            {
+                                engineers != undefined && engineers != null ? engineers.map((eng: Engineer, i: number)=>{
+                                    return <option key={i} value={eng.FullName}>{eng.FullName}</option>
+                                }) : ''
+                            }
                         </Form.Select>
                     </FloatingLabel>
                 </Col>
             </Row>
-
             <Row className="mt-2">
-                <Col xs={12} md={6}>
+                <Col>
                     <FloatingLabel
                         controlId="floatingInput"
-                        label="Exact Match"
+                        label="Equipment"
                         className="mb-3"
                     >
                         <Form.Select aria-label="Default select example">
-                            <option value="1">No</option>
+                            {
+                                equipment != undefined && equipment != null ? equipment.map((eqp: Device, i: number)=>{
+                                    return <option key={i} value={eqp.ModelName}>{eqp.ModelName}</option>
+                                }) : ''
+                            }
+                        </Form.Select>
+                    </FloatingLabel>
+                </Col>
+                <Col>
+                    <FloatingLabel
+                        controlId="floatingInput"
+                        label="Work Order Type"
+                        className="mb-3"
+                    >
+                        <Form.Select aria-label="Default select example">
+                            {
+                                workOrderTypes != undefined && workOrderTypes != null ? workOrderTypes.map((wkot: WorkOrderType, i: number)=>{
+                                    return <option key={i} value={wkot.WorkOrderTypeId}>{wkot.Type}</option>
+                                }) : ''
+                            }
                         </Form.Select>
                     </FloatingLabel>
                 </Col>

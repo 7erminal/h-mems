@@ -19,10 +19,25 @@
     transition: 0.1s ease-in;
 }
 
+.secondary-button{
+    background-color: transparent;
+    border: 2px rgb(16, 1, 60) solid;
+    border-radius: 1px;
+    transition: 0.3s ease-out;
+    color: rgb(16, 1, 60);
+}
+
+.secondary-button:hover{
+    background-color: rgb(16, 1, 60);
+    border: 2px rgb(16, 1, 60) solid;
+    color: white;
+    transition: 0.1s ease-in;
+}
+
 .quicklink-button{
     background: transparent;
     color: black;
-    border: 2px solid #2b00ff; /* Green */
+    border: 2px solid #2b00ff;
     padding-top: 80px;
     padding-bottom: 80px;
     width: 100%;
@@ -30,7 +45,7 @@
 
 .quicklink-button:hover{
     background: transparent;
-    border: 2px solid #47ff66; /* Green */
+    border: 2px solid #e30000; /* Green */
     color: black;
 }
 
@@ -41,10 +56,16 @@
 }
 
 .right-sideBar{
-    position: absolute;
+    position: fixed;
     top: 0;
-    width: 100%;
-    height: 100%;
+    width: 410px;
+    height: 100vh;
     right: 0;
     background-color: #1c124d;
+    /* color: #ffffff; */
+    overflow-y: auto;
+}
+
+.right-sideBar-heading{
+    color: #4c4864;
 }

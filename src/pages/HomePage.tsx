@@ -101,7 +101,7 @@ const HomePage: React.FC = ()=>{
             <QuickLinkCard title="CEMR" icon="skill-icons:sequelize-dark" onClick={()=>onLinkClick('/clinical-engineering-report')} />
         </div>
         <div className="col-3">
-            <QuickLinkCard title="Work Orders" icon="skill-icons:workers-light" onClick={()=>onLinkClick('/work-order')} />
+            <QuickLinkCard title="Work Orders" icon="skill-icons:workers-light" onClick={()=>onLinkClick('/work-orders')} />
         </div>
         <div className="col-3">
             <QuickLinkCard title="Equipment Listing" icon="devicon:trpc" onClick={()=>onLinkClick('/equipment-listing')} />

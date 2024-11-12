@@ -10,7 +10,7 @@ const SideBar: React.FC = ()=>{
     <div className="sidenav-header">
       <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a className="navbar-brand m-0" href="/" target="_blank">
-        <img src="/assets/img/logo-ct-dark.png" className="navbar-brand-img h-100" alt="main_logo" />
+        <img src="/assets/img/logos/h-mems.png" className="navbar-brand-img h-100" alt="main_logo" />
         <span className="ms-1 font-weight-bold">B-MEMS</span>
       </a>
     </div>
@@ -88,7 +88,8 @@ const SideBar: React.FC = ()=>{
     </div>
     <div className="sidenav-footer mx-3 ">
       <div className="card card-plain shadow-none" id="sidenavCard">
-        <img className="w-50 mx-auto" src="/assets/img/illustrations/icon-documentation.svg" alt="sidebar_illustration" />
+        {/* <img className="w-50 mx-auto" src="/assets/img/illustrations/icon-documentation.svg" alt="sidebar_illustration" /> */}
+        <Icon icon="fa-solid:book" className="w-50 mx-auto" height={40} />
         <div className="card-body text-center p-3 w-100 pt-0">
           <div className="docs-info">
             <h6 className="mb-0">Need help?</h6>

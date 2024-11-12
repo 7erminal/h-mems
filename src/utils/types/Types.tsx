@@ -26,18 +26,27 @@ export type Engineer = {
     DateModified: string
 }
 
+export type WorkOrderType = {
+    WorkOrderTypeId: number
+    Type: string
+}
+
 export type WorkOrder = {
-    WorkOrderId: string
+    WorkOrderId: number
     AssignedEngineer: Engineer
     Priority: number
     Procedure: string
     Device: Device
     Status: Status
-    WorkOrderType: string
+    WorkOrderType: WorkOrderType
     DateCreated: string
     DateModified: string
+    OpenedDate: string
+    ClosedDate: string
     Title: string,
     Description: string
+    Cost: number
+    EstimatedCost: number
 }
 
 export type WorkOrderFilters = {

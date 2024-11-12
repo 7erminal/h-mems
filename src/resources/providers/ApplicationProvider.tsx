@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import ApplicationContext from '../contexts/ApplicationContext';
-import { Device, WorkOrderFilters } from "../../utils/types/Types";
+import { Device, WorkOrder, WorkOrderFilters } from "../../utils/types/Types";
 import { statuses } from "../../utils/data/Data";
 
 export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ children })=>{
@@ -8,6 +8,7 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
     const [currentSubPage, setCurrentSubPage] = useState('')
     const [workOrderFilters, setWorkOrderFilters] = useState<WorkOrderFilters>()
     const [selectedEquipment, setSelectedEquipment] = useState<Device>()
+    const [selectedWorkOrder, setSelectedWorkOrder] = useState<WorkOrder>()
 
     // Show Side Nav
     const showSideNav = async (page: string, subPage: string) =>{
@@ -27,7 +28,7 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
                     const wo: WorkOrderFilters = {limit: 0, statusFilter: statuses[1].Status, typeFilter: 'ALL', title: 'Pending Work Orders Report'}
                     setWorkOrderFilters({...workOrderFilters, ...wo})
                 } else if(subPage=='closed work orders'){
-                    const wo: WorkOrderFilters = {limit: 0, statusFilter: statuses[5].Status, typeFilter: 'ALL', title: 'Closed Work Orders Report'}
+                    const wo: WorkOrderFilters = {limit: 0, statusFilter: statuses[4].Status, typeFilter: 'ALL', title: 'Closed Work Orders Report'}
                     setWorkOrderFilters({...workOrderFilters, ...wo})
                 }
             }
@@ -62,7 +63,9 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
             workOrderFilters,
             setWorkOrderFilters,
             selectedEquipment,
-            setSelectedEquipment
+            setSelectedEquipment,
+            selectedWorkOrder,
+            setSelectedWorkOrder
         }
     }>
         {children}

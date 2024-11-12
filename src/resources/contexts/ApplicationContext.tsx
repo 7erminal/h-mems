@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
-import { Device, WorkOrderFilters } from '../../utils/types/Types';
+import { Device, WorkOrder, WorkOrderFilters } from '../../utils/types/Types';
 
 type ApplicationContextProps = {
     // showError: boolean
@@ -21,6 +21,8 @@ type ApplicationContextProps = {
     setWorkOrderFilters: Dispatch<SetStateAction<WorkOrderFilters | undefined>>
     selectedEquipment: Device | undefined
     setSelectedEquipment: Dispatch<SetStateAction<Device | undefined>>
+    selectedWorkOrder: WorkOrder | undefined
+    setSelectedWorkOrder: Dispatch<SetStateAction<WorkOrder | undefined>>
   }
 
 const ApplicationContext = createContext<ApplicationContextProps | undefined>(undefined);

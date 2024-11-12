@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext }  from "react";
 import { WorkOrder, WorkOrderFilters } from "../../utils/types/Types";
+import { Link } from "react-router-dom";
+import ApplicationContext from "../../resources/contexts/ApplicationContext";
 
 type Props = {
     filters: WorkOrderFilters | undefined
@@ -7,6 +9,7 @@ type Props = {
 }
 
 const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
+    const appContext = useContext(ApplicationContext);
 
     return <div className="table-responsive p-0">
     <table className="table align-items-center mb-0">
@@ -30,7 +33,7 @@ const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
             workOrders != null && workOrders != undefined ?
                 filters?.limit == 0 ? 
                 workOrders
-                        .filter((wo: WorkOrder)=>filters.typeFilter=="ALL" || filters.typeFilter.trim().toUpperCase()==wo.WorkOrderType)
+                        .filter((wo: WorkOrder)=>filters.typeFilter=="ALL" || filters.typeFilter.trim().toUpperCase()==wo.WorkOrderType.Type)
                         .filter((wo: WorkOrder)=>(filters.statusFilter=="ALL" || wo.Status.Status.trim().toUpperCase() == filters.statusFilter.trim().toUpperCase()))
                             .map((wo: WorkOrder, i: number)=>{
                     return <tr key={i}>
@@ -47,7 +50,7 @@ const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
                             <span className="text-secondary text-xs font-weight-bold">{ wo.Priority }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ wo.WorkOrderType }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ wo.WorkOrderType.Type }</span>
                         </td>
                         <td className="align-middle text-center">
                             <span className="text-secondary text-xs font-weight-bold"></span>
@@ -65,14 +68,20 @@ const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
                             <span className="text-secondary text-xs font-weight-bold">{ wo.Procedure }</span>
                         </td>
                         <td className="align-middle">
-                            <a href="javascript:;" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Edit
-                            </a>
+                            {
+                                wo.Status.Status != "CLOSED" ?
+                                <Link to="/work-order-details" onClick={ ()=>appContext?.setSelectedWorkOrder(wo) } className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                    Update
+                                </Link> :
+                                <Link to="/work-order-details" onClick={ ()=>appContext?.setSelectedWorkOrder(wo) } className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                    View
+                                </Link>
+                            }
                         </td>
                     </tr>
                 }) : 
                 workOrders.slice(0, 5)
-                    .filter((wo: WorkOrder)=>filters?.typeFilter=="ALL" || filters?.typeFilter.trim().toUpperCase()==wo.WorkOrderType)
+                    .filter((wo: WorkOrder)=>filters?.typeFilter=="ALL" || filters?.typeFilter.trim().toUpperCase()==wo.WorkOrderType.Type)
                     .filter((wo: WorkOrder)=>(filters?.statusFilter=="ALL" || wo.Status.Status.trim().toUpperCase() == filters?.statusFilter.trim().toUpperCase()))
                         .map((wo: WorkOrder, i: number)=>{
                     return <tr key={i}>
@@ -89,7 +98,7 @@ const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
                             <span className="text-secondary text-xs font-weight-bold">{ wo.Priority }</span>
                         </td>
                         <td className="align-middle text-center">
-                            <span className="text-secondary text-xs font-weight-bold">{ wo.WorkOrderType }</span>
+                            <span className="text-secondary text-xs font-weight-bold">{ wo.WorkOrderType.Type }</span>
                         </td>
                         <td className="align-middle text-center">
                             <span className="text-secondary text-xs font-weight-bold"></span>
@@ -107,9 +116,15 @@ const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
                             <span className="text-secondary text-xs font-weight-bold">{ wo.Procedure }</span>
                         </td>
                         <td className="align-middle">
-                            <a href="javascript:;" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Edit
-                            </a>
+                            {
+                                wo.Status.Status != "CLOSED" ?
+                                <Link to="/work-order-details" onClick={ ()=>appContext?.setSelectedWorkOrder(wo) } className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                    Update
+                                </Link> :
+                                <Link to="/work-order-details" onClick={ ()=>appContext?.setSelectedWorkOrder(wo) } className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                    View
+                                </Link>
+                            }
                         </td>
                     </tr>
                 }) : <tr>No equipment available</tr>

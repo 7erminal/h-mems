@@ -33,8 +33,9 @@ const CreateWorkOrder: React.FC<Props> = ({show, handleClose})=>{
     },[])
 
     return <Modal show={show} onHide={handleClose} fullscreen={true}>
-    <Modal.Header closeButton>
+    <Modal.Header className="d-flex justify-content-around">
       <Modal.Title>Create Work Order</Modal.Title>
+      <button className="danger-button" type="button" onClick={handleClose}>Close</button>
     </Modal.Header>
     <Modal.Body>
         <Form>

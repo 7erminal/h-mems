@@ -2,19 +2,63 @@ import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import EquipmentSideBar from "./components/EquipmentSideBar";
 import NavBar from "./components/NavBar";
-import { ListGroup } from "react-bootstrap";
+import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { Device, WorkOrder } from "../utils/types/Types";
 import { workOrders } from "../utils/data/Data";
 import WorkOrdersTable from "./components/WorkOrdersTable";
+import 'chart.js/auto';
+import { Doughnut } from 'react-chartjs-2';
 
 type Props = {
     eqDetails: Device | undefined
 }
 
+const tempdata = {
+    labels: [
+      'Red',
+      'Blue',
+      'Yellow'
+    ],
+    datasets: [{
+      label: 'My First Dataset',
+      data: [300, 50, 100],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)'
+      ],
+      hoverOffset: 4
+    }]
+  };
+
 const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
     const [availableWorkOrders, setAvailableWorkOrders] = useState<Array<WorkOrder>>()
+    const [data, setData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
     useEffect(()=>{
         setAvailableWorkOrders(workOrders)
+
+        const pm = workOrders?.filter((wo: WorkOrder)=>wo.Device.ControlNo==eqDetails?.ControlNo).filter((wo: WorkOrder)=>wo.WorkOrderType.Type=="MAINTENANCE").length
+        const co = workOrders?.filter((wo: WorkOrder)=>wo.Device.ControlNo==eqDetails?.ControlNo).filter((wo: WorkOrder)=>wo.WorkOrderType.Type=="REPAIRS").length
+
+        const tempdata = {
+            labels: [
+              'Preventative Maintenance',
+              'Corrective Maintenance',
+            ],
+            datasets: [{
+              label: 'Preventative Maintenance vs Corrective Maintenance',
+              data: [pm, co],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                // 'rgb(255, 205, 86)'
+              ],
+              hoverOffset: 4
+            }]
+          };
+
+        setData(tempdata)
+
     },[])
     
     return <>
@@ -30,9 +74,9 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                     <div className="card z-index-2 h-100">
                         <div className="card-body p-3">
                             <ListGroup horizontal>
-                                <ListGroup.Item>{ eqDetails?.ControlNo }</ListGroup.Item>
-                                <ListGroup.Item>{ eqDetails?.SerialNo }</ListGroup.Item>
-                                <ListGroup.Item>{ eqDetails?.Class }</ListGroup.Item>
+                                <ListGroup.Item><span className="text-secondary text-xs font-weight-bold">Control Number</span><br/>{ eqDetails?.ControlNo }</ListGroup.Item>
+                                <ListGroup.Item><span className="text-secondary text-xs font-weight-bold">Serial Number</span><br/>{ eqDetails?.SerialNo }</ListGroup.Item>
+                                <ListGroup.Item><span className="text-secondary text-xs font-weight-bold">Equipment Class</span><br/>{ eqDetails?.Class }</ListGroup.Item>
                             </ListGroup>
                         </div>
                     </div>
@@ -172,7 +216,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                         <h6>Equipment History</h6>
                         </div>
                         <div className="card-body px-0 pt-0 pb-2">
-                        <WorkOrdersTable workOrders={availableWorkOrders?.filter((wo: WorkOrder)=>wo.Device.ModelNumber==eqDetails?.ModelNumber)} filters={{limit: 0, statusFilter: "ALL", typeFilter: "ALL", title: ""}} />
+                        <WorkOrdersTable workOrders={availableWorkOrders?.filter((wo: WorkOrder)=>wo.Device.ControlNo==eqDetails?.ControlNo)} filters={{limit: 0, statusFilter: "ALL", typeFilter: "ALL", title: ""}} />
                         </div>
                     </div>
                     </div>
@@ -181,11 +225,28 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
             {/* Graphs and stats part */}
             <div className="col-lg-4 col-md-4">
                 <div className="right-sideBar-container">
-                    <div className="right-sideBar"></div>
+                    
                 </div>
             </div>
         </div>
       <Footer />
+    </div>
+    <div className="right-sideBar">
+        <Container>
+            <Row className="mt-4">
+                <h3 className="right-sideBar-heading">Equipment History</h3>
+            </Row>
+            <Row className="mt-3">
+                <Col>
+                    <b>Preventative vs Corrective</b>
+                </Col>
+            </Row>
+            <Row className="mt-2">
+                <Col>
+                    <Doughnut data={data} />
+                </Col>
+            </Row>
+        </Container>
     </div>
   </main>
     </>

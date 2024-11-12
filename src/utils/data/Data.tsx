@@ -1,4 +1,4 @@
-import { Device, Engineer, Status, WorkOrder } from "../types/Types";
+import { Device, Engineer, Status, WorkOrder, WorkOrderType } from "../types/Types";
 
 export var statuses: Array<Status> = [
     {
@@ -19,15 +19,18 @@ export var statuses: Array<Status> = [
     },
     {
         StatusId: 5,
-        Status: "MAINTENANCE"
-    },
-    {
-        StatusId: 6,
-        Status: "REPAIRS"
-    },
-    {
-        StatusId: 6,
         Status: "CLOSED"
+    }
+]
+
+export var workOrderTypes: Array<WorkOrderType> = [
+    {
+        WorkOrderTypeId: 1,
+        Type: "MAINTENANCE"
+    },
+    {
+        WorkOrderTypeId: 2,
+        Type: "REPAIRS"
     }
 ]
 
@@ -93,7 +96,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Honors",
         ECRINo: "100232", 
         EQType: "Implant Machine",
-        ControlNo: "1000122220",
+        ControlNo: "1000122020",
         Class: "A1",
         System: "Unix",
         Status: statuses[0]
@@ -121,7 +124,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Honors",
         ECRINo: "100232", 
         EQType: "Implant Machine",
-        ControlNo: "1000122220",
+        ControlNo: "1000562220",
         Class: "A1",
         System: "Unix",
         Status: statuses[0]
@@ -135,7 +138,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Honors",
         ECRINo: "100232", 
         EQType: "Implant Machine",
-        ControlNo: "1000122220",
+        ControlNo: "1000126720",
         Class: "A1",
         System: "Unix",
         Status: statuses[0]
@@ -149,7 +152,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Honors",
         ECRINo: "100232", 
         EQType: "Implant Machine",
-        ControlNo: "1000122222",
+        ControlNo: "1002242222",
         Class: "A1",
         System: "Unix",
         Status: statuses[0]
@@ -163,7 +166,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Honors",
         ECRINo: "100232", 
         EQType: "Implant Machine",
-        ControlNo: "1000122225",
+        ControlNo: "1000123225",
         Class: "A1",
         System: "Unix",
         Status: statuses[0]
@@ -177,7 +180,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Canbry",
         ECRINo: "12002", 
         EQType: "Optimeter",
-        ControlNo: "1000122230",
+        ControlNo: "1000123330",
         Class: "A1",
         System: "Unix",
         Status: statuses[0]
@@ -191,7 +194,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Canbry",
         ECRINo: "12002", 
         EQType: "Optimeter",
-        ControlNo: "1000122230",
+        ControlNo: "1000125430",
         Class: "A1",
         System: "Unix",
         Status: statuses[1]
@@ -205,7 +208,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Canbry",
         ECRINo: "12002", 
         EQType: "Optimeter",
-        ControlNo: "1000122230",
+        ControlNo: "1000122250",
         Class: "A1",
         System: "Unix",
         Status: statuses[1]
@@ -219,7 +222,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Canbry",
         ECRINo: "12002", 
         EQType: "Optimeter",
-        ControlNo: "1000122230",
+        ControlNo: "1000122240",
         Class: "A1",
         System: "Unix",
         Status: statuses[1]
@@ -233,7 +236,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Canbry",
         ECRINo: "12002", 
         EQType: "Optimeter",
-        ControlNo: "1000122230",
+        ControlNo: "1000142230",
         Class: "A1",
         System: "Unix",
         Status: statuses[1]
@@ -359,7 +362,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Grida",
         ECRINo: "1003145", 
         EQType: "Radiocleptra",
-        ControlNo: "1000122984",
+        ControlNo: "1000122964",
         Class: "A2",
         System: "Unix",
         Status: statuses[0]
@@ -373,7 +376,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Grida",
         ECRINo: "1003165", 
         EQType: "Radiocleptra",
-        ControlNo: "1000122987",
+        ControlNo: "1003122987",
         Class: "A2",
         System: "Unix",
         Status: statuses[0]
@@ -387,7 +390,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Grida",
         ECRINo: "1003165", 
         EQType: "Radiocleptra",
-        ControlNo: "1000122988",
+        ControlNo: "1005422988",
         Class: "A2",
         System: "Unix",
         Status: statuses[0]
@@ -401,7 +404,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Grida",
         ECRINo: "1003168", 
         EQType: "Radiocleptra",
-        ControlNo: "1000122989",
+        ControlNo: "1000122939",
         Class: "A1",
         System: "Unix",
         Status: statuses[0]
@@ -415,7 +418,7 @@ export var equipment: Array<Device> = [
         ECRIName: "Grida",
         ECRINo: "1003168", 
         EQType: "Radiocleptra",
-        ControlNo: "1000122989",
+        ControlNo: "1000142989",
         Class: "A1",
         System: "Unix",
         Status: statuses[0]
@@ -438,16 +441,71 @@ export var equipment: Array<Device> = [
 
 export var workOrders: Array<WorkOrder> = [
     {
-        WorkOrderId: "1", 
+        WorkOrderId: 1, 
         AssignedEngineer: engineers[0],
         Priority: 3,
         Procedure: "Took details and escalated",
         Device: equipment[9],
         Status: statuses[1],
-        WorkOrderType: "REPAIRS",
-        DateCreated: "2024-10-29",
-        DateModified: "2024-10-29",
+        WorkOrderType: workOrderTypes[1],
+        DateCreated: "2022-09-12",
+        DateModified: "2024-01-30",
+        OpenedDate: "2022-09-12",
+        ClosedDate: "",
         Title: 'Faulty Equipment',
-        Description: 'Yellow light keeps blinking after starting'
+        Description: 'Yellow light keeps blinking after starting',
+        Cost: 0.0,
+        EstimatedCost: 2400
+    },
+    {
+        WorkOrderId: 2, 
+        AssignedEngineer: engineers[0],
+        Priority: 3,
+        Procedure: "All screws intact",
+        Device: equipment[2],
+        Status: statuses[4],
+        WorkOrderType: workOrderTypes[0],
+        DateCreated: "2024-10-22",
+        DateModified: "2024-10-30",
+        OpenedDate: "2024-10-22",
+        ClosedDate: "2024-10-30",
+        Title: 'Screw Checks',
+        Description: 'Check all screws are intact and secured',
+        Cost: 120,
+        EstimatedCost: 0.0
+    },
+    {
+        WorkOrderId: 3, 
+        AssignedEngineer: engineers[1],
+        Priority: 1,
+        Procedure: "Device to be replaced",
+        Device: equipment[3],
+        Status: statuses[1],
+        WorkOrderType: workOrderTypes[1],
+        DateCreated: "2023-10-19",
+        DateModified: "2024-10-24",
+        OpenedDate: "2023-10-19",
+        ClosedDate: "",
+        Title: 'Over heating equipment',
+        Description: 'The device over heats shortly after startup',
+        Cost: 24000,
+        EstimatedCost: 25000
+    },
+    {
+        WorkOrderId: 4, 
+        AssignedEngineer: engineers[3],
+        Priority: 3,
+        Procedure: "",
+        Device: equipment[12],
+        Status: statuses[1],
+        WorkOrderType: workOrderTypes[0],
+        DateCreated: "2024-11-01",
+        DateModified: "2024-11-01",
+        OpenedDate: "2024-11-01",
+        ClosedDate: "2024-11-30",
+        Title: 'Monthly device servicing',
+        Description: 'Check oil, lightning and rotation speed',
+        Cost: 0.0,
+        EstimatedCost: 1345.0
     }
 ];

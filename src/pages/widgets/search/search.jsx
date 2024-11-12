@@ -6,7 +6,7 @@ import {
   IconMagnifyingGlass
 } from "./styles.jsx";
 
-function Search() {
+function Search(props) {
   const targetRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -24,7 +24,7 @@ function Search() {
       onBlur={() => setIsFocused(false)}
       hover={showSearchInput}
     >
-      <SearchInput ref={targetRef} showSearchInput={showSearchInput} />
+      <SearchInput ref={targetRef} onChange={()=>props.getValue(targetRef.current.value)} showSearchInput={showSearchInput} />
       {showSearchInput ? <IconRightArrow /> : <IconMagnifyingGlass />}
     </Container>
   );

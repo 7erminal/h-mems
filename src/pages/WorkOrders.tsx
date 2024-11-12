@@ -146,7 +146,7 @@ const WorkOrders: React.FC = ()=>{
               <h6>Closed Work Orders</h6>
             </div>
             <div className="card-body px-0 pt-0 pb-2">
-              <WorkOrdersTable workOrders={availableWorkOrders} filters={{title: "", limit: 3, statusFilter: statuses[0].Status, typeFilter: "ALL"}} />
+              <WorkOrdersTable workOrders={availableWorkOrders} filters={{title: "", limit: 3, statusFilter: statuses[4].Status, typeFilter: "ALL"}} />
             </div>
             <div className="card-footer pb-0" style={{display: 'flex', justifyContent: 'right'}}>
               <small>View More</small>

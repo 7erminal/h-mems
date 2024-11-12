@@ -18,11 +18,11 @@ const WorkOrderSideBar: React.FC = ()=>{
     <div className="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="home" ? "nav-link  active" : "nav-link"} to="/" onClick={()=>appContext?.showSideNav('home','')}>
+          <Link className={ appContext?.currentPage=="home" ? "nav-link  active" : "nav-link"} to="/work-orders" onClick={()=>appContext?.showSideNav('home','')}>
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
-            <span className="nav-link-text ms-1">Home</span>
+            <span className="nav-link-text ms-1">Work Orders</span>
           </Link>
         </li>
         <li className="nav-item">

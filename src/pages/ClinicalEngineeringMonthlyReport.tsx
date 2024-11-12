@@ -1,11 +1,88 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Stats from "./components/Stats";
+import { workOrders } from "../utils/data/Data";
+import { Bar, Line } from 'react-chartjs-2';
+import { WorkOrder } from "../utils/types/Types";
+
+
+const tempdata = {
+  labels: [
+    'January',
+    'February',
+    'March'
+  ],
+  datasets: [{
+    label: 'Work Orders Overview',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+
+// const tempdata2 = {
+//   labels: [
+//     'January',
+//     'February',
+//     'March'
+//   ],
+//   datasets: [{
+//     label: 'Work Orders Overview',
+//     data: [300, 50, 100],
+//     tension: 4,
+//     fill: false,
+//     borderColor: 'rgb(75, 192, 192)',
+//   }]
+// };
 
 const ClinicalEngineeringMonthlyReport: React.FC = ()=>{
-    return <>
+  const [barData, setBarData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
+  // const [lineData, setLineData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, tension: number, fill: boolean, borderColor: string}>}>(tempdata2)
+  
+  useEffect(()=>{
+    const pm = workOrders?.filter((wo: WorkOrder)=>wo.WorkOrderType.Type=="MAINTENANCE").length
+    const co = workOrders?.filter((wo: WorkOrder)=>wo.WorkOrderType.Type=="REPAIRS").length
+
+    const tempdata = {
+        labels: [
+          'Preventative Maintenance',
+          'Corrective Maintenance',
+        ],
+        datasets: [{
+          label: 'Preventative Maintenance vs Corrective Maintenance',
+          data: [pm, co],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            // 'rgb(255, 205, 86)'
+          ],
+          hoverOffset: 4
+        }]
+      };
+
+      setBarData(tempdata)
+
+      // const tempLinedata = {
+      //   labels: workOrders.map((wo: WorkOrder)=>wo.OpenedDate),
+      //   datasets: [{
+      //     label: 'Work orders per day',
+      //     data: workOrders.map((wo: WorkOrder)=>wo.OpenedDate),
+      //     tension: 4,
+      //     fill: false,
+      //     borderColor: 'rgb(75, 192, 192)'
+      //   }]
+      // };
+
+      // setLineData(tempLinedata)
+  },[])
+  
+  return <>
     <div className="min-height-300 bg-primary position-absolute w-100"></div>
   <SideBar />
   <main className="main-content position-relative border-radius-lg ">
@@ -24,266 +101,23 @@ const ClinicalEngineeringMonthlyReport: React.FC = ()=>{
             </div>
             <div className="card-body p-3">
               <div className="chart">
-                <canvas id="chart-line" className="chart-canvas" height="300"></canvas>
+                {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                <Bar data={barData} />
               </div>
             </div>
           </div>
         </div>
         <div className="col-lg-5">
           <div className="card card-carousel overflow-hidden h-100 p-0">
-            <div id="carouselExampleCaptions" className="carousel slide h-100" data-bs-ride="carousel">
-              <div className="carousel-inner border-radius-lg h-100">
-                <div className="carousel-item h-100 active" style={{ backgroundImage: "url('../assets/img/carousel-1.jpg')",
-      backgroundSize: "cover" }}>
-                  <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i className="ni ni-camera-compact text-dark opacity-10"></i>
-                    </div>
-                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
-                    <p>Explore equipment data with detailed information to keep track of performance</p>
-                  </div>
-                </div>
-                <div className="carousel-item h-100" style={{ backgroundImage: "url('/assets/img/carousel-2.jpg')",
-      backgroundSize: "cover"}}>
-                  <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i className="ni ni-bulb-61 text-dark opacity-10"></i>
-                    </div>
-                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
-                    <p>Explore equipment data with detailed information to keep track of performance</p>
-                  </div>
-                </div>
-                <div className="carousel-item h-100" style={{backgroundImage: "url('/assets/img/carousel-3.jpg')",
-      backgroundSize: "cover"}}>
-                  <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i className="ni ni-trophy text-dark opacity-10"></i>
-                    </div>
-                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
-                    <p>Explore equipment data with detailed information to keep track of performance</p>
-                  </div>
-                </div>
+            <div className="card-body p-3">
+              <div className="chart">
+                {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                <Line data={barData} />
               </div>
-              <button className="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button className="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Next</span>
-              </button>
             </div>
           </div>
         </div>
       </div>
-      {/* <div className="row mt-4">
-        <div className="col-lg-7 mb-lg-0 mb-4">
-          <div className="card ">
-            <div className="card-header pb-0 p-3">
-              <div className="d-flex justify-content-between">
-                <h6 className="mb-2">Sales by Country</h6>
-              </div>
-            </div>
-            <div className="table-responsive">
-              <table className="table align-items-center ">
-                <tbody>
-                  <tr>
-                    <td className="w-30">
-                      <div className="d-flex px-2 py-1 align-items-center">
-                        <div>
-                          <img src="/assets/img/icons/flags/US.png" alt="Country flag" />
-                        </div>
-                        <div className="ms-4">
-                          <p className="text-xs font-weight-bold mb-0">Country:</p>
-                          <h6 className="text-sm mb-0">United States</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="text-center">
-                        <p className="text-xs font-weight-bold mb-0">Sales:</p>
-                        <h6 className="text-sm mb-0">2500</h6>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="text-center">
-                        <p className="text-xs font-weight-bold mb-0">Value:</p>
-                        <h6 className="text-sm mb-0">$230,900</h6>
-                      </div>
-                    </td>
-                    <td className="align-middle text-sm">
-                      <div className="col text-center">
-                        <p className="text-xs font-weight-bold mb-0">Bounce:</p>
-                        <h6 className="text-sm mb-0">29.9%</h6>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-30">
-                      <div className="d-flex px-2 py-1 align-items-center">
-                        <div>
-                          <img src="/assets/img/icons/flags/DE.png" alt="Country flag" />
-                        </div>
-                        <div className="ms-4">
-                          <p className="text-xs font-weight-bold mb-0">Country:</p>
-                          <h6 className="text-sm mb-0">Germany</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="text-center">
-                        <p className="text-xs font-weight-bold mb-0">Sales:</p>
-                        <h6 className="text-sm mb-0">3.900</h6>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="text-center">
-                        <p className="text-xs font-weight-bold mb-0">Value:</p>
-                        <h6 className="text-sm mb-0">$440,000</h6>
-                      </div>
-                    </td>
-                    <td className="align-middle text-sm">
-                      <div className="col text-center">
-                        <p className="text-xs font-weight-bold mb-0">Bounce:</p>
-                        <h6 className="text-sm mb-0">40.22%</h6>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-30">
-                      <div className="d-flex px-2 py-1 align-items-center">
-                        <div>
-                          <img src="/assets/img/icons/flags/GB.png" alt="Country flag" />
-                        </div>
-                        <div className="ms-4">
-                          <p className="text-xs font-weight-bold mb-0">Country:</p>
-                          <h6 className="text-sm mb-0">Great Britain</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="text-center">
-                        <p className="text-xs font-weight-bold mb-0">Sales:</p>
-                        <h6 className="text-sm mb-0">1.400</h6>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="text-center">
-                        <p className="text-xs font-weight-bold mb-0">Value:</p>
-                        <h6 className="text-sm mb-0">$190,700</h6>
-                      </div>
-                    </td>
-                    <td className="align-middle text-sm">
-                      <div className="col text-center">
-                        <p className="text-xs font-weight-bold mb-0">Bounce:</p>
-                        <h6 className="text-sm mb-0">23.44%</h6>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="w-30">
-                      <div className="d-flex px-2 py-1 align-items-center">
-                        <div>
-                          <img src="/assets/img/icons/flags/BR.png" alt="Country flag" />
-                        </div>
-                        <div className="ms-4">
-                          <p className="text-xs font-weight-bold mb-0">Country:</p>
-                          <h6 className="text-sm mb-0">Brasil</h6>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="text-center">
-                        <p className="text-xs font-weight-bold mb-0">Sales:</p>
-                        <h6 className="text-sm mb-0">562</h6>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="text-center">
-                        <p className="text-xs font-weight-bold mb-0">Value:</p>
-                        <h6 className="text-sm mb-0">$143,960</h6>
-                      </div>
-                    </td>
-                    <td className="align-middle text-sm">
-                      <div className="col text-center">
-                        <p className="text-xs font-weight-bold mb-0">Bounce:</p>
-                        <h6 className="text-sm mb-0">32.14%</h6>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-5">
-          <div className="card">
-            <div className="card-header pb-0 p-3">
-              <h6 className="mb-0">Categories</h6>
-            </div>
-            <div className="card-body p-3">
-              <ul className="list-group">
-                <li className="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div className="d-flex align-items-center">
-                    <div className="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i className="ni ni-mobile-button text-white opacity-10"></i>
-                    </div>
-                    <div className="d-flex flex-column">
-                      <h6 className="mb-1 text-dark text-sm">Devices</h6>
-                      <span className="text-xs">250 in stock, <span className="font-weight-bold">346+ sold</span></span>
-                    </div>
-                  </div>
-                  <div className="d-flex">
-                    <button className="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i className="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li className="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div className="d-flex align-items-center">
-                    <div className="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i className="ni ni-tag text-white opacity-10"></i>
-                    </div>
-                    <div className="d-flex flex-column">
-                      <h6 className="mb-1 text-dark text-sm">Tickets</h6>
-                      <span className="text-xs">123 closed, <span className="font-weight-bold">15 open</span></span>
-                    </div>
-                  </div>
-                  <div className="d-flex">
-                    <button className="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i className="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li className="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div className="d-flex align-items-center">
-                    <div className="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i className="ni ni-box-2 text-white opacity-10"></i>
-                    </div>
-                    <div className="d-flex flex-column">
-                      <h6 className="mb-1 text-dark text-sm">Error logs</h6>
-                      <span className="text-xs">1 is active, <span className="font-weight-bold">40 closed</span></span>
-                    </div>
-                  </div>
-                  <div className="d-flex">
-                    <button className="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i className="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li className="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                  <div className="d-flex align-items-center">
-                    <div className="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i className="ni ni-satisfied text-white opacity-10"></i>
-                    </div>
-                    <div className="d-flex flex-column">
-                      <h6 className="mb-1 text-dark text-sm">Happy users</h6>
-                      <span className="text-xs font-weight-bold">+ 430</span>
-                    </div>
-                  </div>
-                  <div className="d-flex">
-                    <button className="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i className="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <Footer />
     </div>
   </main>

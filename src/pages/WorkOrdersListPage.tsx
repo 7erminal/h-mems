@@ -32,6 +32,10 @@ const WorkOrdersListing: React.FC = ()=>{
         console.log(appContext?.workOrderFilters)
     },[])
 
+    const getValue = (value: string)=>{
+      console.log("Value is "+value)
+    }
+
     return <>
     <div className="min-height-300 bg-primary position-absolute w-100" style={{width: '100vw', top: '0'}}></div>
   <WorkOrderSideBar />
@@ -45,7 +49,7 @@ const WorkOrdersListing: React.FC = ()=>{
               <div className="row">
                 <div className="col-12">
                     {/* <p>Search</p> */}
-                    <Search />
+                    <Search getValue={getValue} />
 
                     <Form.Check // prettier-ignore
                         type="switch"
