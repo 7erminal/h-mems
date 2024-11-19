@@ -31,6 +31,7 @@ const ARoutes: React.FC = () => {
                     <Route path='/work-orders-listings' element={<WorkOrdersListing />} />
                     <Route path='/equipment-details' element={<ViewEquipmentDetails eqDetails={appContext?.selectedEquipment} />} />
                     <Route path='/work-order-details' element={<ViewWorkOrderDetails woDetails={appContext?.selectedWorkOrder} />} />
+                    <Route path='/equipment-work-orders' element={<WorkOrdersListing />} />
                     <Route path='/sign-in' element={<SignIn />} />
                     <Route path="*" element={<Navigate replace to="/" />} />
                 </Routes>

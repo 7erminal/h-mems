@@ -1,4 +1,6 @@
 import React from "react";
+import { workOrders, equipment } from "../../utils/data/Data";
+import { Device, WorkOrder } from "../../utils/types/Types";
 
 const Stats: React.FC = ()=>{
     return <div className="row">
@@ -10,11 +12,11 @@ const Stats: React.FC = ()=>{
               <div className="numbers">
                 <p className="text-sm mb-0 text-uppercase font-weight-bold">Total Equipment</p>
                 <h5 className="font-weight-bolder">
-                  1,205
+                  { equipment.length }
                 </h5>
                 <p className="mb-0">
-                  <span className="text-success text-sm font-weight-bolder">+0% </span>
-                  since yesterday
+                  <span className="text-success text-sm font-weight-bolder">{ equipment.filter((eq: Device)=>eq.Status.StatusId==1).length } </span>
+                  Healthy, <br/><span className="text-danger text-sm font-weight-bolder">{ equipment.filter((eq: Device)=>eq.Status.StatusId==6).length } </span> Unstable
                 </p>
               </div>
             </div>
@@ -33,13 +35,13 @@ const Stats: React.FC = ()=>{
           <div className="row">
             <div className="col-8">
               <div className="numbers">
-                <p className="text-sm mb-0 text-uppercase font-weight-bold">Total Active Equipment</p>
+                <p className="text-sm mb-0 text-uppercase font-weight-bold">Total Work Orders</p>
                 <h5 className="font-weight-bolder">
-                  1,141
+                  { workOrders.length }
                 </h5>
                 <p className="mb-0">
-                  <span className="text-success text-sm font-weight-bolder">+0% </span>
-                  since last week
+                  <span className="text-success text-sm font-weight-bolder">{ workOrders.filter((wo: WorkOrder)=>wo.Status.StatusId==5).length } </span>
+                  Closed, <br/><span className="text-danger text-sm font-weight-bolder">{ workOrders.filter((wo: WorkOrder)=>wo.Status.StatusId==2).length } </span> Open
                 </p>
               </div>
             </div>
@@ -58,13 +60,13 @@ const Stats: React.FC = ()=>{
           <div className="row">
             <div className="col-8">
               <div className="numbers">
-                <p className="text-sm mb-0 text-uppercase font-weight-bold">New Equipment</p>
+                <p className="text-sm mb-0 text-uppercase font-weight-bold">Damaged Equipment</p>
                 <h5 className="font-weight-bolder">
-                  84
+                  { equipment.filter((eq: Device)=>eq.Status.StatusId==7).length }
                 </h5>
                 <p className="mb-0">
-                  <span className="text-danger text-sm font-weight-bolder">+12% </span>
-                  since last quarter
+                  {/* <span className="text-danger text-sm font-weight-bolder">+12% </span> */}
+                  These equipment need replacement
                 </p>
               </div>
             </div>
@@ -85,7 +87,7 @@ const Stats: React.FC = ()=>{
               <div className="numbers">
                 <p className="text-sm mb-0 text-uppercase font-weight-bold">Near half life</p>
                 <h5 className="font-weight-bolder">
-                  23
+                  0
                 </h5>
                 <p className="mb-0">
                   <span className="text-success text-sm font-weight-bolder">Equipment</span> near half life

@@ -91,7 +91,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                             <div className="card-body p-3">
                                 <div className="table-responsive p-0">
                                     <table className="table align-items-center mb-0">
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Equipment Type</span>
                                             </td>
@@ -99,7 +99,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                                                 <span className="text-secondary text-xs">{ eqDetails?.EQType }</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">ECRI</span>
                                             </td>
@@ -112,7 +112,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                                                 <p className="text-xs text-secondary mb-0">{ eqDetails?.ECRIName }</p>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Model</span>
                                             </td>
@@ -125,7 +125,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                                                 <p className="text-xs text-secondary mb-0">{ eqDetails?.ModelName }</p>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Manufacturer</span>
                                             </td>
@@ -133,7 +133,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                                                 <span className="text-secondary text-xs">{ eqDetails?.ManufacturedBy }</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Supplier</span>
                                             </td>
@@ -141,7 +141,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                                                 <span className="text-secondary text-xs">{ eqDetails?.SuppliedBy }</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">System</span>
                                             </td>
@@ -149,7 +149,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                                                 <span className="text-secondary text-xs">{ eqDetails?.System }</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Purchase Date</span>
                                             </td>
@@ -165,28 +165,28 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                                                 <span className="text-secondary text-xs">{ eqDetails?.ModelNumber }</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Assigned To</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Department</span>
                                             </td>
                                             <td className="align-middle text-center">
-                                                <span className="text-secondary text-xs">Optometry</span>
+                                                <span className="text-secondary text-xs">{ eqDetails?.AssignedTo?.Department.Department }</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Location</span>
                                             </td>
                                             <td className="align-middle text-center">
-                                                <span className="text-secondary text-xs">Optical</span>
+                                                <span className="text-secondary text-xs">{ eqDetails?.AssignedTo?.Department.Department }</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Status</span>
                                             </td>
@@ -194,7 +194,7 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
                                                 <span className="text-secondary text-xs">{ eqDetails?.Status.Status }</span>
                                             </td>
                                         </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
+                                        <tr>
                                             <td className="align-middle text-center">
                                                 <span className="text-secondary text-xs font-weight-bold">Procedure</span>
                                             </td>

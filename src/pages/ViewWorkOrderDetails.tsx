@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import { WorkOrder } from "../utils/types/Types";
 import 'chart.js/auto';
 import WorkOrderSideBar from "./components/WorkOrderSideBar";
 import EquipmentListTable from "./components/EquipmentListTable";
+import UpdateWorkOrder from "./components/UpdateWorkOrder";
 
 type Props = {
     woDetails: WorkOrder | undefined
@@ -17,6 +18,10 @@ const ViewWorkOrderDetails: React.FC<Props> = ({woDetails})=>{
     // useEffect(()=>{
     //     setAvailableWorkOrders(workOrders)
     // },[])
+    const [showProvideUpdate, setShowProvideUpdate] = useState(false);
+
+    const handleCloseUpdateModal = () => setShowProvideUpdate(false);
+    const handleShowUpdateModal = () => setShowProvideUpdate(true);
     
     return <>
     <div className="min-height-300 bg-primary position-absolute w-100"></div>
@@ -64,6 +69,10 @@ const ViewWorkOrderDetails: React.FC<Props> = ({woDetails})=>{
                                                 <span className="text-xs text-secondary mb-0">{ woDetails?.Device.ControlNo }</span>
                                             </td>
                                         </tr>
+                                    </table>
+                                </div>
+                                <div className="table-responsive p-0">
+                                    <table className="table align-items-center mb-0">
                                         <tr style={{borderBottom: '1px solid #eaeded'}}>
                                             <td className="align-middle text-center">
                                                 <p className="text-xs font-weight-bold mb-0">Issue Date/Time</p>
@@ -92,44 +101,28 @@ const ViewWorkOrderDetails: React.FC<Props> = ({woDetails})=>{
                                         </tr>
                                         <tr style={{borderBottom: '1px solid #eaeded'}}>
                                             <td className="align-middle text-center">
-                                                <p className="text-xs font-weight-bold mb-0">Issue Date/Time</p>
-                                                <p className="text-xs text-secondary mb-0">{ woDetails?.OpenedDate }</p>
+                                                <p className="text-xs font-weight-bold mb-0">Department</p>
+                                                <p className="text-xs text-secondary mb-0">{ woDetails?.Device.AssignedTo?.Department.Department }</p>
                                             </td>
                                             <td className="align-middle text-center">
-                                                <p className="text-xs font-weight-bold mb-0">Priority</p>
-                                                <p className="text-xs text-secondary mb-0">{ woDetails?.Priority }</p>
+                                                <p className="text-xs font-weight-bold mb-0">Assigned to</p>
+                                                <p className="text-xs text-secondary mb-0">{ woDetails?.Device.AssignedTo?.FullName }</p>
                                             </td>
                                             <td className="align-middle text-center">
-                                                <p className="text-xs font-weight-bold mb-0">Estimated Hours</p>
-                                                <p className="text-xs text-secondary mb-0">0.00</p>
+                                                <p className="text-xs font-weight-bold mb-0">Requester</p>
+                                                <p className="text-xs text-secondary mb-0">{ woDetails?.OpenedBy.FullName }</p>
                                             </td>
                                             <td className="align-middle text-center">
-                                                <p className="text-xs font-weight-bold mb-0">Assigned Engineer</p>
-                                                <p className="text-xs text-secondary mb-0">{ woDetails?.AssignedEngineer.FullName }</p>
+                                                <p className="text-xs font-weight-bold mb-0">Requester phone</p>
+                                                <p className="text-xs text-secondary mb-0">{ woDetails?.OpenedBy.Phone }</p>
                                             </td>
                                             <td className="align-middle text-center">
-                                                <p className="text-xs font-weight-bold mb-0">Speciality</p>
-                                                <p className="text-xs text-secondary mb-0">{ woDetails?.AssignedEngineer.Role }</p>
+                                                <p className="text-xs font-weight-bold mb-0">Department Phone</p>
+                                                <p className="text-xs text-secondary mb-0">{ woDetails?.Device.AssignedTo?.Department.DepartmentPhone }</p>
                                             </td>
                                             <td className="align-middle text-center">
                                                 <p className="text-xs font-weight-bold mb-0">Status</p>
                                                 <p className="text-xs text-secondary mb-0">{ woDetails?.Status.Status }</p>
-                                            </td>
-                                        </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
-                                            <td className="align-middle text-center">
-                                                <span className="text-secondary text-xs font-weight-bold">Department</span>
-                                            </td>
-                                            <td className="align-middle text-center">
-                                                <span className="text-secondary text-xs">Optometry</span>
-                                            </td>
-                                        </tr>
-                                        <tr style={{borderBottom: '1px solid #eaeded'}}>
-                                            <td className="align-middle text-center">
-                                                <span className="text-secondary text-xs font-weight-bold">Location</span>
-                                            </td>
-                                            <td className="align-middle text-center">
-                                                <span className="text-secondary text-xs">Optical</span>
                                             </td>
                                         </tr>
                                     </table>
@@ -151,11 +144,20 @@ const ViewWorkOrderDetails: React.FC<Props> = ({woDetails})=>{
                     </div>
                     </div>
                 </div>
+                {
+                    woDetails?.Status.StatusId!=5 ?
+                    <div className="row mt-4">
+                        <div className="col-12">
+                            <button className="btn btn-primary" onClick={handleShowUpdateModal}>Update</button>
+                        </div>
+                    </div> : ''
+                }
             </div>
         </div>
       <Footer />
     </div>
   </main>
+  <UpdateWorkOrder show={showProvideUpdate} handleClose={handleCloseUpdateModal} />
     </>
 }
 

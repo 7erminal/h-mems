@@ -57,7 +57,12 @@ const EquipmentListTable: React.FC<Props> = ({equipment})=>{
                             <span className="text-secondary text-xs font-weight-bold">{ eq?.ManufacturedBy }</span>
                         </td>
                         <td className="align-middle text-center text-sm">
-                            <span className="badge badge-sm bg-gradient-success">{ eq?.Status.Status }</span>
+                            {
+                                eq?.Status.StatusId == 1 ? 
+                                <span className="badge badge-sm bg-gradient-success">{ eq?.Status.Status }</span>
+                                :
+                                <span className="badge badge-sm bg-gradient-danger">{ eq?.Status.Status }</span>
+                            }
                         </td>
                         <td className="align-middle text-center">
                             <span className="text-secondary text-xs font-weight-bold">{ eq?.ManufacturedBy }</span>

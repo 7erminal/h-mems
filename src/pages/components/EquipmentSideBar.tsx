@@ -26,27 +26,11 @@ const EquipmentSideBar: React.FC = ()=>{
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentSubPage=="view equipment" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing','view equipment')} to="/equipment-listing">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span className="nav-link-text ms-1">View Equipment</span>
-          </Link>
-        </li>
-        <li className="nav-item">
           <Link className={ appContext?.currentSubPage=="add equipment" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing', 'add equipment')} to="/equipment-listing">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
             <span className="nav-link-text ms-1">Add Equipment</span>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className={ appContext?.currentSubPage=="update equipment" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing', 'update equipment')} to="/equipment-listing">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <Icon icon="devicon:trpc" height={400} />
-            </div>
-            <span className="nav-link-text ms-1">Update Equipment</span>
           </Link>
         </li>
         <li className="nav-item">
@@ -79,7 +63,7 @@ const EquipmentSideBar: React.FC = ()=>{
           </div>
         </div> */}
       </div>
-      <Link to="/" className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
+      <Link to="/" onClick={()=>appContext?.showSideNav('home','')} className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
       {/* <a className="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a> */}
     </div>
   </aside>

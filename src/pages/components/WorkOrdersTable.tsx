@@ -62,7 +62,13 @@ const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
                             <span className="text-secondary text-xs font-weight-bold">{ wo.DateCreated }</span>
                         </td>
                         <td className="align-middle text-center text-sm">
-                            <span className="badge badge-sm bg-gradient-success">{ wo.Status.Status }</span>
+                            {
+                                wo.Status.StatusId == 1 || wo.Status.StatusId == 5 ?
+                                <span className="badge badge-sm bg-gradient-success">{ wo.Status.Status }</span>
+                                : wo.Status.StatusId == 2 ?
+                                <span className="badge badge-sm bg-gradient-pending">{ wo.Status.Status }</span>
+                                : <span className="badge badge-sm bg-gradient-danger">{ wo.Status.Status }</span>
+                            }
                         </td>
                         <td className="align-middle text-center">
                             <span className="text-secondary text-xs font-weight-bold">{ wo.Procedure }</span>
@@ -80,9 +86,10 @@ const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
                         </td>
                     </tr>
                 }) : 
-                workOrders.slice(0, 5)
+                workOrders
                     .filter((wo: WorkOrder)=>filters?.typeFilter=="ALL" || filters?.typeFilter.trim().toUpperCase()==wo.WorkOrderType.Type)
                     .filter((wo: WorkOrder)=>(filters?.statusFilter=="ALL" || wo.Status.Status.trim().toUpperCase() == filters?.statusFilter.trim().toUpperCase()))
+                    .slice(0, filters?.limit)
                         .map((wo: WorkOrder, i: number)=>{
                     return <tr key={i}>
                         <td className="align-middle text-center">
@@ -110,7 +117,13 @@ const WorkOrdersTable: React.FC<Props> = ({filters, workOrders})=>{
                             <span className="text-secondary text-xs font-weight-bold">{ wo.DateCreated }</span>
                         </td>
                         <td className="align-middle text-center text-sm">
-                            <span className="badge badge-sm bg-gradient-success">{ wo.Status.Status }</span>
+                            {
+                                wo.Status.StatusId == 1 || wo.Status.StatusId == 5 ?
+                                <span className="badge badge-sm bg-gradient-success">{ wo.Status.Status }</span>
+                                : wo.Status.StatusId == 2 ?
+                                <span className="badge badge-sm bg-gradient-warning">{ wo.Status.Status }</span>
+                                : <span className="badge badge-sm bg-gradient-danger">{ wo.Status.Status }</span>
+                            }
                         </td>
                         <td className="align-middle text-center">
                             <span className="text-secondary text-xs font-weight-bold">{ wo.Procedure }</span>

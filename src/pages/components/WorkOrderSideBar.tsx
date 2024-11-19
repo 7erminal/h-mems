@@ -79,7 +79,7 @@ const WorkOrderSideBar: React.FC = ()=>{
           </div>
         </div> */}
       </div>
-      <Link to="/" className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
+      <Link to="/" onClick={()=>appContext?.showSideNav('home','')} className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
       {/* <a className="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a> */}
     </div>
   </aside>

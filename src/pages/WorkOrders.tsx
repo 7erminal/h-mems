@@ -10,17 +10,116 @@ import { statuses } from "../utils/data/Data";
 import CreateWorkOrder from "./components/CreateWorkOrder";
 import WorkOrderSideBar from "./components/WorkOrderSideBar";
 import { WorkOrder } from "../utils/types/Types";
+import { Doughnut } from "react-chartjs-2";
+
+const tempdata = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
 
 const WorkOrders: React.FC = ()=>{
     const [createWorkOrder, setCreateWorkOrder] = useState(false)
     const [availableWorkOrders, setAvailableWorkOrders] = useState<Array<WorkOrder>>()
+    const [data, setData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
+    const [dataPriority, setDataPriority] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
+    const [dataCost, setDataCost] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
 
     useEffect(()=>{
         setAvailableWorkOrders(workOrders)
+
+        const pending = workOrders?.filter((wo: WorkOrder)=>wo.Status.Status=="PENDING").length
+        const closed = workOrders?.filter((wo: WorkOrder)=>wo.Status.Status=="CLOSED").length
+
+        const tempdata = {
+            labels: [
+              'Open Work Orders',
+              'Closed Work Orders',
+            ],
+            datasets: [{
+              label: 'Work orders',
+              data: [pending, closed],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                // 'rgb(255, 205, 86)'
+              ],
+              hoverOffset: 2
+            }]
+          };
+
+        setData(tempdata)
+
+        const priority1 = workOrders?.filter((wo: WorkOrder)=>wo.Priority==1).length
+        const priority2 = workOrders?.filter((wo: WorkOrder)=>wo.Priority==2).length
+        const priority3 = workOrders?.filter((wo: WorkOrder)=>wo.Priority==3).length
+        const priority4 = workOrders?.filter((wo: WorkOrder)=>wo.Priority==4).length
+
+        const tempdatap = {
+          labels: [
+            'Priority 1',
+            'Priority 2',
+            'Priority 3',
+            'Priority 4',
+          ],
+          datasets: [{
+            label: 'Work orders',
+            data: [priority1, priority2, priority3, priority4],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)',
+              'rgb(26, 216, 0)',
+              'rgb(14, 68, 236)'
+            ],
+            hoverOffset: 4
+          }]
+        };
+
+        setDataPriority(tempdatap)
+
+        const maintenancewo = workOrders?.filter((wo: WorkOrder)=>wo.WorkOrderType.Type=="MAINTENANCE").reduce((sum, nwo)=>sum + nwo.EstimatedCost, 0)
+        const repairswo = workOrders?.filter((wo: WorkOrder)=>wo.WorkOrderType.Type=="REPAIRS").reduce((sum, nwo)=>sum + nwo.EstimatedCost, 0)
+
+        console.log("Maintenance cost is ")
+        console.log(maintenancewo)
+        console.log("Repairs cost is ")
+        console.log(repairswo)
+
+        const tempdatamr = {
+          labels: [
+            'Maintenance cost',
+            'Repair cost',
+          ],
+          datasets: [{
+            label: 'Work orders',
+            data: [maintenancewo, repairswo],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(26, 216, 0)',
+            ],
+            hoverOffset: 4
+          }]
+        };
+
+        setDataCost(tempdatamr)
     },[])
     
     const handleCreateWOClose = () => setCreateWorkOrder(false);
     const handleCreateWOShow = () => setCreateWorkOrder(true);
+
+    const colors = ['#e74c3c', '#34495e', '#8e44ad']
 
     return <>
     <div className="min-height-300 bg-primary position-absolute w-100"></div>
@@ -51,36 +150,26 @@ const WorkOrders: React.FC = ()=>{
           <div className="card card-carousel overflow-hidden h-100 p-0">
             <div id="carouselExampleCaptions" className="carousel slide h-100" data-bs-ride="carousel">
               <div className="carousel-inner border-radius-lg h-100">
-                <div className="carousel-item h-100 active" style={{ backgroundColor: "#e74c3c",
-      backgroundSize: "cover" }}>
-                  <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i className="ni ni-camera-compact text-dark opacity-10"></i>
-                    </div>
-                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
-                    <p>Explore equipment data with detailed information to keep track of performance</p>
-                  </div>
-                </div>
-                <div className="carousel-item h-100" style={{ backgroundColor: "#34495e",
-      backgroundSize: "cover"}}>
-                  <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i className="ni ni-bulb-61 text-dark opacity-10"></i>
-                    </div>
-                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
-                    <p>Explore equipment data with detailed information to keep track of performance</p>
-                  </div>
-                </div>
-                <div className="carousel-item h-100" style={{backgroundColor: "#8e44ad",
-      backgroundSize: "cover"}}>
-                  <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i className="ni ni-trophy text-dark opacity-10"></i>
-                    </div>
-                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
-                    <p>Explore equipment data with detailed information to keep track of performance</p>
-                  </div>
-                </div>
+                {
+                  workOrders.filter((wo: WorkOrder)=>wo.Status.StatusId != 5).slice(0, 3).map((wo: WorkOrder, i: number)=>{
+                    let classname = "carousel-item h-100"
+                    i==0 ? classname = "carousel-item h-100 active" : classname = "carousel-item h-100"
+
+                    const random = Math.floor(Math.random() * colors.length)
+
+                    return <div className={classname} style={{ backgroundColor: colors[random],
+                      backgroundSize: "cover" }}>
+                                  <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                                    <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                                      <i className="ni ni-camera-compact text-dark opacity-10"></i>
+                                    </div>
+                                    <h5 className="text-white mb-1">{ wo.Title }</h5>
+                                    <p>{ wo.Description }</p>
+                                    <p>{ wo.OpenedDate }</p>
+                                  </div>
+                                </div>
+                  })
+                }
               </div>
               <button className="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -90,6 +179,47 @@ const WorkOrders: React.FC = ()=>{
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row mt-4">
+        <div className="col-lg-12 mb-lg-0 mb-4">
+          <div className="card z-index-2 h-100">
+            <div className="card-header pb-0 pt-3 bg-transparent">
+              <h6 className="text-capitalize">Work Orders overview</h6>
+              <p className="text-sm mb-0">
+                <i className="fa fa-arrow-up text-success"></i>
+                {/* <span className="font-weight-bold">4% more</span> in 2021 */}
+              </p>
+            </div>
+            <div className="card-body p-3">
+              <div className="row">
+                  <div className="col">
+                    <div className="chart">
+                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                      <div className="chart-height-1">
+                        <Doughnut data={data} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="chart">
+                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                      <div className="chart-height-1">
+                        <Doughnut data={dataPriority} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="chart">
+                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                      <div className="chart-height-1">
+                        <Doughnut data={dataCost} />
+                      </div>
+                    </div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>

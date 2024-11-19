@@ -26,24 +26,24 @@ const tempdata = {
   }]
 };
 
-// const tempdata2 = {
-//   labels: [
-//     'January',
-//     'February',
-//     'March'
-//   ],
-//   datasets: [{
-//     label: 'Work Orders Overview',
-//     data: [300, 50, 100],
-//     tension: 4,
-//     fill: false,
-//     borderColor: 'rgb(75, 192, 192)',
-//   }]
-// };
+const tempdata2 = {
+  labels: [
+    'January',
+    'February',
+    'March'
+  ],
+  datasets: [{
+    label: 'Work Orders Overview',
+    data: [300, 50, 100],
+    tension: 4,
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+  }]
+};
 
 const ClinicalEngineeringMonthlyReport: React.FC = ()=>{
   const [barData, setBarData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
-  // const [lineData, setLineData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, tension: number, fill: boolean, borderColor: string}>}>(tempdata2)
+  const [lineData, setLineData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, tension: number, fill: boolean, borderColor: string}>}>(tempdata2)
   
   useEffect(()=>{
     const pm = workOrders?.filter((wo: WorkOrder)=>wo.WorkOrderType.Type=="MAINTENANCE").length
@@ -68,18 +68,18 @@ const ClinicalEngineeringMonthlyReport: React.FC = ()=>{
 
       setBarData(tempdata)
 
-      // const tempLinedata = {
-      //   labels: workOrders.map((wo: WorkOrder)=>wo.OpenedDate),
-      //   datasets: [{
-      //     label: 'Work orders per day',
-      //     data: workOrders.map((wo: WorkOrder)=>wo.OpenedDate),
-      //     tension: 4,
-      //     fill: false,
-      //     borderColor: 'rgb(75, 192, 192)'
-      //   }]
-      // };
+      const tempLinedata = {
+        labels: workOrders.map((wo: WorkOrder)=>wo.OpenedDate),
+        datasets: [{
+          label: 'Work orders per day',
+          data: workOrders.map((wo: WorkOrder)=>wo.Cost),
+          tension: 4,
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)'
+        }]
+      };
 
-      // setLineData(tempLinedata)
+      setLineData(tempLinedata)
   },[])
   
   return <>
@@ -112,7 +112,7 @@ const ClinicalEngineeringMonthlyReport: React.FC = ()=>{
             <div className="card-body p-3">
               <div className="chart">
                 {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
-                <Line data={barData} />
+                <Line data={lineData} />
               </div>
             </div>
           </div>

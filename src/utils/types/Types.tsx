@@ -3,6 +3,21 @@ export type Status = {
     Status: string
 }
 
+export type Department = {
+    DepartmentId: number
+    Department: string
+    DepartmentPhone: string
+}
+
+export type User = {
+    UserId: number
+    Username: string
+    Password: string
+    FullName: string
+    Department: Department
+    Phone: string
+}
+
 export type Device = {
     SerialNo: string
     ModelName: string
@@ -16,6 +31,7 @@ export type Device = {
     Class: string
     System: string
     Status: Status
+    AssignedTo: User | undefined
 }
 
 export type Engineer = {
@@ -47,6 +63,7 @@ export type WorkOrder = {
     Description: string
     Cost: number
     EstimatedCost: number
+    OpenedBy: User
 }
 
 export type WorkOrderFilters = {

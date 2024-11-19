@@ -1,4 +1,4 @@
-import { Device, Engineer, Status, WorkOrder, WorkOrderType } from "../types/Types";
+import { Device, Engineer, Status, WorkOrder, WorkOrderType, User, Department } from "../types/Types";
 
 export var statuses: Array<Status> = [
     {
@@ -20,7 +20,126 @@ export var statuses: Array<Status> = [
     {
         StatusId: 5,
         Status: "CLOSED"
+    },
+    {
+        StatusId: 6,
+        Status: "UNSTABLE"
+    },
+    {
+        StatusId: 7,
+        Status: "DAMAGED"
     }
+]
+
+export const departments: Array<Department> = [
+    {
+        DepartmentId: 1,
+        Department: 'Ophthalmology',
+        DepartmentPhone: '0269008514'
+    },
+    {
+        DepartmentId: 2,
+        Department: 'Otolaryngology',
+        DepartmentPhone: '0269008514'
+    },
+    {
+        DepartmentId: 3,
+        Department: 'Orthopaedics',
+        DepartmentPhone: '0269008514'
+    },
+    {
+        DepartmentId: 4,
+        Department: 'Midwifery',
+        DepartmentPhone: '0269008514'
+    },
+    {
+        DepartmentId: 5,
+        Department: 'Emergency',
+        DepartmentPhone: '0269008514'
+    }
+]
+
+export const users: Array<User> = [
+    {
+        UserId: 1,
+        Username: 'terminal',
+        Password: 'terminal',
+        FullName: 'terminal',
+        Department: departments[2],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 2,
+        Username: 'jacob',
+        Password: 'jacob',
+        FullName: 'jacob',
+        Department: departments[1],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 3,
+        Username: 'lisa',
+        Password: 'lisa',
+        FullName: 'lisa',
+        Department: departments[0],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 4,
+        Username: 'carbo',
+        Password: 'carbo',
+        FullName: 'carbo',
+        Department: departments[2],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 5,
+        Username: 'jen',
+        Password: 'jen',
+        FullName: 'jen',
+        Department: departments[3],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 6,
+        Username: 'glen',
+        Password: 'glen',
+        FullName: 'glen',
+        Department: departments[0],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 7,
+        Username: 'phil',
+        Password: 'phil',
+        FullName: 'phil',
+        Department: departments[4],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 8,
+        Username: 'kessie',
+        Password: 'kessie',
+        FullName: 'kessie',
+        Department: departments[4],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 9,
+        Username: 'boney',
+        Password: 'boney',
+        FullName: 'boney',
+        Department: departments[2],
+        Phone: '0557881327'
+    },
+    {
+        UserId: 10,
+        Username: 'captain',
+        Password: 'captain',
+        FullName: 'captain',
+        Department: departments[1],
+        Phone: '0557881327'
+    },
 ]
 
 export var workOrderTypes: Array<WorkOrderType> = [
@@ -85,7 +204,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122930",
         Class: "A1",
         System: "Microsoft",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[0]
     },
     {
         SerialNo: "4400383940",
@@ -99,7 +219,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122020",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[1]
     },
     {
         SerialNo: "4400383941",
@@ -113,7 +234,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122222",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[2]
     },
     {
         SerialNo: "4400383942",
@@ -127,7 +249,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000562220",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[3]
     },
     {
         SerialNo: "4400383943",
@@ -141,7 +264,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000126720",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[4]
     },
     {
         SerialNo: "4400383944",
@@ -155,7 +279,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1002242222",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[5]
     },
     {
         SerialNo: "4400383945",
@@ -169,7 +294,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000123225",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: undefined
     },
     {
         SerialNo: "1200383956",
@@ -183,7 +309,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000123330",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: undefined
     },
     {
         SerialNo: "1200383957",
@@ -197,7 +324,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000125430",
         Class: "A1",
         System: "Unix",
-        Status: statuses[1]
+        Status: statuses[1],
+        AssignedTo: users[6]
     },
     {
         SerialNo: "1200383959",
@@ -211,7 +339,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122250",
         Class: "A1",
         System: "Unix",
-        Status: statuses[1]
+        Status: statuses[1],
+        AssignedTo: users[7]
     },
     {
         SerialNo: "1200383257",
@@ -225,7 +354,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122240",
         Class: "A1",
         System: "Unix",
-        Status: statuses[1]
+        Status: statuses[1],
+        AssignedTo: users[8]
     },
     {
         SerialNo: "1200383357",
@@ -239,7 +369,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000142230",
         Class: "A1",
         System: "Unix",
-        Status: statuses[1]
+        Status: statuses[1],
+        AssignedTo: users[9]
     },
     {
         SerialNo: "1200383358",
@@ -253,7 +384,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122230",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[10]
     },
     {
         SerialNo: "4400383841",
@@ -267,7 +399,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000125580",
         Class: "A1",
         System: "Microsoft",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[0]
     },
     {
         SerialNo: "4400383842",
@@ -281,7 +414,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122950",
         Class: "A1",
         System: "Microsoft",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: undefined
     },
     {
         SerialNo: "4400367844",
@@ -295,7 +429,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122938",
         Class: "A1",
         System: "Microsoft",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: undefined
     },
     {
         SerialNo: "4400367844",
@@ -309,7 +444,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122939",
         Class: "A1",
         System: "Microsoft",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[0]
     },
     {
         SerialNo: "4400367845",
@@ -323,7 +459,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122941",
         Class: "A1",
         System: "Microsoft",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[4]
     },
     {
         SerialNo: "4400367857",
@@ -337,7 +474,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122942",
         Class: "A1",
         System: "Microsoft",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[8]
     },
     {
         SerialNo: "4400367858",
@@ -351,7 +489,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122980",
         Class: "A1",
         System: "Microsoft",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[9]
     },
     {
         SerialNo: "4400367859",
@@ -365,7 +504,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122964",
         Class: "A2",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: undefined
     },
     {
         SerialNo: "4400367860",
@@ -379,7 +519,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1003122987",
         Class: "A2",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: undefined
     },
     {
         SerialNo: "4400367860",
@@ -393,7 +534,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1005422988",
         Class: "A2",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: undefined
     },
     {
         SerialNo: "4400367865",
@@ -407,7 +549,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122939",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: undefined
     },
     {
         SerialNo: "4400367867",
@@ -421,7 +564,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000142989",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[7]
     },
     {
         SerialNo: "4400367868",
@@ -435,7 +579,8 @@ export var equipment: Array<Device> = [
         ControlNo: "1000122982",
         Class: "A1",
         System: "Unix",
-        Status: statuses[0]
+        Status: statuses[0],
+        AssignedTo: users[6]
     }
 ]
 
@@ -455,7 +600,8 @@ export var workOrders: Array<WorkOrder> = [
         Title: 'Faulty Equipment',
         Description: 'Yellow light keeps blinking after starting',
         Cost: 0.0,
-        EstimatedCost: 2400
+        EstimatedCost: 2400,
+        OpenedBy: users[0]
     },
     {
         WorkOrderId: 2, 
@@ -472,7 +618,8 @@ export var workOrders: Array<WorkOrder> = [
         Title: 'Screw Checks',
         Description: 'Check all screws are intact and secured',
         Cost: 120,
-        EstimatedCost: 0.0
+        EstimatedCost: 0.0,
+        OpenedBy: users[1]
     },
     {
         WorkOrderId: 3, 
@@ -489,7 +636,8 @@ export var workOrders: Array<WorkOrder> = [
         Title: 'Over heating equipment',
         Description: 'The device over heats shortly after startup',
         Cost: 24000,
-        EstimatedCost: 25000
+        EstimatedCost: 25000,
+        OpenedBy: users[2]
     },
     {
         WorkOrderId: 4, 
@@ -506,6 +654,79 @@ export var workOrders: Array<WorkOrder> = [
         Title: 'Monthly device servicing',
         Description: 'Check oil, lightning and rotation speed',
         Cost: 0.0,
-        EstimatedCost: 1345.0
+        EstimatedCost: 1345.0,
+        OpenedBy: users[3]
+    },
+    {
+        WorkOrderId: 5, 
+        AssignedEngineer: engineers[4],
+        Priority: 4,
+        Procedure: "",
+        Device: equipment[16],
+        Status: statuses[1],
+        WorkOrderType: workOrderTypes[0],
+        DateCreated: "2024-11-12",
+        DateModified: "2024-11-12",
+        OpenedDate: "2024-11-12",
+        ClosedDate: "2024-11-30",
+        Title: 'Monthly checkup',
+        Description: 'Inventory count',
+        Cost: 0.0,
+        EstimatedCost: 500.0,
+        OpenedBy: users[4]
+    },
+    {
+        WorkOrderId: 6, 
+        AssignedEngineer: engineers[4],
+        Priority: 3,
+        Procedure: "Screw replaced",
+        Device: equipment[16],
+        Status: statuses[4],
+        WorkOrderType: workOrderTypes[1],
+        DateCreated: "2024-11-16",
+        DateModified: "2024-11-17",
+        OpenedDate: "2024-11-16",
+        ClosedDate: "2024-11-17",
+        Title: 'Damaged screw',
+        Description: 'Screw not intact. Replacement needed.',
+        Cost: 0.0,
+        EstimatedCost: 420.0,
+        OpenedBy: users[2]
+    },
+    {
+        WorkOrderId: 7, 
+        AssignedEngineer: engineers[1],
+        Priority: 2,
+        Procedure: "Faulty nuts were replaced",
+        Device: equipment[16],
+        Status: statuses[4],
+        WorkOrderType: workOrderTypes[1],
+        DateCreated: "2024-11-16",
+        DateModified: "2024-11-17",
+        OpenedDate: "2024-11-16",
+        ClosedDate: "2024-11-17",
+        Title: 'Faulty nuts',
+        Description: 'Faulty nuts.',
+        Cost: 0.0,
+        EstimatedCost: 32.0,
+        OpenedBy: users[2]
+    },
+    {
+        WorkOrderId: 8, 
+        AssignedEngineer: engineers[1],
+        Priority: 3,
+        Procedure: "Led light was replaced",
+        Device: equipment[16],
+        Status: statuses[4],
+        WorkOrderType: workOrderTypes[1],
+        DateCreated: "2024-11-18",
+        DateModified: "2024-11-18",
+        OpenedDate: "2024-11-18",
+        ClosedDate: "2024-11-18",
+        Title: 'Led reading not showing',
+        Description: 'Led reading not showing making it difficult to tell what the issue is when checking patients',
+        Cost: 0.0,
+        EstimatedCost: 78.0,
+        OpenedBy: users[2]
     }
 ];

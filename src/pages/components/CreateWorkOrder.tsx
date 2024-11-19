@@ -82,7 +82,7 @@ const CreateWorkOrder: React.FC<Props> = ({show, handleClose})=>{
                 <FormLabel>Assign to</FormLabel>
                 <Select options={availableEngineers!} value={{label: '', value: ''}} placeholder="Equipment" onBlur={()=>{}} onFocus={()=>{}} />
             </Row>
-
+    
             <Row className="mt-4">
                 <Col>
                     <Button className="primary-button" onClick={handleClose}>Create Work Order</Button>
