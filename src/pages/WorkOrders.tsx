@@ -3,14 +3,14 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { workOrders } from "../utils/data/Data";
 import { ListGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Stats from "./components/Stats";
+import { Link, useNavigate } from "react-router-dom";
 import WorkOrdersTable from "./components/WorkOrdersTable";
 import { statuses } from "../utils/data/Data";
 import CreateWorkOrder from "./components/CreateWorkOrder";
 import WorkOrderSideBar from "./components/WorkOrderSideBar";
 import { WorkOrder } from "../utils/types/Types";
 import { Doughnut } from "react-chartjs-2";
+import QuickLinkCard from "./widgets/QuickLinkCard";
 
 const tempdata = {
   labels: [
@@ -31,11 +31,18 @@ const tempdata = {
 };
 
 const WorkOrders: React.FC = ()=>{
+  const navigate = useNavigate()
     const [createWorkOrder, setCreateWorkOrder] = useState(false)
     const [availableWorkOrders, setAvailableWorkOrders] = useState<Array<WorkOrder>>()
     const [data, setData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
     const [dataPriority, setDataPriority] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
     const [dataCost, setDataCost] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
+
+    const onLinkClick = (page: string)=>{
+      console.log("Clicked")
+
+      navigate(page);
+    }
 
     useEffect(()=>{
         setAvailableWorkOrders(workOrders)
@@ -124,7 +131,48 @@ const WorkOrders: React.FC = ()=>{
   <main className="main-content position-relative border-radius-lg ">
     <NavBar />
     <div className="container-fluid py-4">
-      <Stats />
+      {/* <Stats /> */}
+      <div className="row mt-4">
+        <div className="col-lg-12 mb-lg-0 mb-4">
+          <div className="card z-index-2 h-100">
+            <div className="card-header pb-0 pt-3 bg-transparent">
+              <h6 className="text-capitalize">Work Orders overview</h6>
+              <p className="text-sm mb-0">
+                <i className="fa fa-arrow-up text-success"></i>
+                {/* <span className="font-weight-bold">4% more</span> in 2021 */}
+              </p>
+            </div>
+            <div className="card-body p-3">
+              <div className="row">
+                  <div className="col">
+                    <div className="chart">
+                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                      <div className="chart-height-1">
+                        <Doughnut data={data} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="chart">
+                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                      <div className="chart-height-1">
+                        <Doughnut data={dataPriority} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="chart">
+                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                      <div className="chart-height-1">
+                        <Doughnut data={dataCost} />
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="row mt-4">
         <div className="col-lg-7 mb-lg-0 mb-4">
           <div className="card z-index-2 h-100">
@@ -181,47 +229,25 @@ const WorkOrders: React.FC = ()=>{
           </div>
         </div>
       </div>
+
       <div className="row mt-4">
-        <div className="col-lg-12 mb-lg-0 mb-4">
-          <div className="card z-index-2 h-100">
-            <div className="card-header pb-0 pt-3 bg-transparent">
-              <h6 className="text-capitalize">Work Orders overview</h6>
-              <p className="text-sm mb-0">
-                <i className="fa fa-arrow-up text-success"></i>
-                {/* <span className="font-weight-bold">4% more</span> in 2021 */}
-              </p>
-            </div>
-            <div className="card-body p-3">
-              <div className="row">
-                  <div className="col">
-                    <div className="chart">
-                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
-                      <div className="chart-height-1">
-                        <Doughnut data={data} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="chart">
-                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
-                      <div className="chart-height-1">
-                        <Doughnut data={dataPriority} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="chart">
-                      {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
-                      <div className="chart-height-1">
-                        <Doughnut data={dataCost} />
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
+        <div className="col-3">
+            <QuickLinkCard title="PPM" icon="flat-color-icons:steam" onClick={()=>onLinkClick('/equipment-library')} />
         </div>
+        <div className="col-3">
+            <QuickLinkCard title="CM" icon="flat-color-icons:reading-ebook" onClick={()=>onLinkClick('/equipment-library')} />
+        </div>
+        <div className="col-3">
+            <QuickLinkCard title="Unscheduled PPM" icon="skill-icons:workers-light" onClick={()=>onLinkClick('/equipment-library')} />
+        </div>
+        <div className="col-3">
+            <QuickLinkCard title="Work Order Reports" icon="flat-color-icons:statistics" onClick={()=>onLinkClick('/equipment-library')} />
+        </div>
+        {/* <div className="col-3">
+            <QuickLinkCard title="Preventative Maintenance (PM)" icon="vscode-icons:file-type-config" onClick={()=>onLinkClick('/preventative-maintenance')} />
+        </div> */}
       </div>
+      
       <div className="row mt-4" style={{width: '100%'}}>
         <div className="col-12">
           <div className="card mb-4">

@@ -23,6 +23,9 @@ type ApplicationContextProps = {
     setSelectedEquipment: Dispatch<SetStateAction<Device | undefined>>
     selectedWorkOrder: WorkOrder | undefined
     setSelectedWorkOrder: Dispatch<SetStateAction<WorkOrder | undefined>>
+    showLoading: boolean | undefined
+    handleLoadingClose: ()=>void | undefined
+    handleLoadingShow: ()=>void | undefined
   }
 
 const ApplicationContext = createContext<ApplicationContextProps | undefined>(undefined);

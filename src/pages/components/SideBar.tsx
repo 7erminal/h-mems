@@ -9,7 +9,7 @@ const SideBar: React.FC = ()=>{
     return <aside className="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div className="sidenav-header">
       <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a className="navbar-brand m-0" href="/" target="_blank">
+      <a className="navbar-brand m-0" href="/homd" target="_blank">
         <img src="/assets/img/logos/h-mems.png" className="navbar-brand-img h-100" alt="main_logo" />
         <span className="ms-1 font-weight-bold">B-MEMS</span>
       </a>
@@ -26,27 +26,19 @@ const SideBar: React.FC = ()=>{
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="cemr" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('cemr','')} to="/clinical-engineering-report">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span className="nav-link-text ms-1">CEMR</span>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className={ appContext?.currentPage=="woch" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('woch','')} to="/work-orders">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="ni ni-credit-card text-success text-sm opacity-10"></i>
-            </div>
-            <span className="nav-link-text ms-1">Work Order Cost/Hour</span>
-          </Link>
-        </li>
-        <li className="nav-item">
           <Link className={ appContext?.currentPage=="equipment-listing" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing','')} to="/equipment-listing">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <Icon icon="devicon:trpc" height={400} />
+                <Icon icon="flat-color-icons:steam" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Device Management</span>
+            <span className="nav-link-text ms-1">Equipment Library</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentPage=="cemr" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('cemr','')} to="/clinical-engineering-report">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <Icon icon="flat-color-icons:statistics" height={400} />
+            </div>
+            <span className="nav-link-text ms-1">Reports</span>
           </Link>
         </li>
         <li className="nav-item">
@@ -58,7 +50,7 @@ const SideBar: React.FC = ()=>{
           </Link>
         </li>
         <li className="nav-item mt-3">
-          <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Users</h6>
+          <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">System</h6>
         </li>
         <li className="nav-item">
           <Link className={ appContext?.currentPage=="departments" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('departments','')} to="/departments">
@@ -66,6 +58,22 @@ const SideBar: React.FC = ()=>{
               <Icon icon="fluent-emoji-flat:department-store" height={400} />
             </div>
             <span className="nav-link-text ms-1">Departments</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentPage=="departments" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('departments','')} to="/departments">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <Icon icon="fa:users" height={400} />
+            </div>
+            <span className="nav-link-text ms-1">Staff Management</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentPage=="departments" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('departments','')} to="/departments">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <Icon icon="fluent-emoji-flat:japanese-application-button" height={400} />
+            </div>
+            <span className="nav-link-text ms-1">System Configurations</span>
           </Link>
         </li>
         {/* <li className="nav-item">

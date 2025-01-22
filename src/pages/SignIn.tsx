@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import ApplicationContext from "../resources/contexts/ApplicationContext";
 
 const SignIn: React.FC = ()=>{
     const navigate = useNavigate();
+    const appContext = useContext(ApplicationContext);
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        appContext?.handleLoadingShow()
+        setTimeout(()=>{
+            appContext?.handleLoadingClose()
+            navigate("/home")
+        }, 2000)
+    }
 
     return <div className="sign-in-page">
         <div className="sign-in-background" style={{backgroundImage: "url('/assets/img/microscope-772297_1280.jpg')", backgroundPosition: 'center', backgroundSize: 'cover', filter: "brightness(30%)"}}></div>
@@ -26,7 +37,7 @@ const SignIn: React.FC = ()=>{
                                             </div>
                                         </Col>
                                     </Row>
-                                    <Form onSubmit={()=>{ navigate("/dashboard") }}>
+                                    <Form onSubmit={(e)=>handleSubmit(e)}>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <Form.Label>Email address</Form.Label>
                                             <Form.Control type="email" placeholder="Enter email" required />

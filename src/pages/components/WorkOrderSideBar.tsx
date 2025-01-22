@@ -26,19 +26,27 @@ const WorkOrderSideBar: React.FC = ()=>{
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentSubPage=="preventative maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo','preventative maintenance')} to="/work-orders-listings">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-            </div>
-            <span className="nav-link-text ms-1">Preventative Maintenance (PM)</span>
-          </Link>
-        </li>
-        <li className="nav-item">
           <Link className={ appContext?.currentSubPage=="pending work orders" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo', 'pending work orders')} to="/work-orders-listings">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
             <span className="nav-link-text ms-1">Pending Work Orders</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentSubPage=="preventative maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo','preventative maintenance')} to="/work-orders-listings">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span className="nav-link-text ms-1">Preventive Maintenance (PM)</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentSubPage=="repairs" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo','repairs')} to="/work-orders-listings">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+            </div>
+            <span className="nav-link-text ms-1">Unscheduled Preventive Maintenance (PM)</span>
           </Link>
         </li>
         <li className="nav-item">
@@ -79,7 +87,7 @@ const WorkOrderSideBar: React.FC = ()=>{
           </div>
         </div> */}
       </div>
-      <Link to="/" onClick={()=>appContext?.showSideNav('home','')} className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
+      <Link to="/home" onClick={()=>appContext?.showSideNav('home','')} className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
       {/* <a className="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a> */}
     </div>
   </aside>

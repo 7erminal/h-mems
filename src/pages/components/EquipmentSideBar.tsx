@@ -18,7 +18,15 @@ const EquipmentSideBar: React.FC = ()=>{
     <div className="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="home" ? "nav-link  active" : "nav-link"} to="/equipment-listing" onClick={()=>appContext?.showSideNav('equipment-listing','')}>
+          <Link className={ appContext?.currentPage=="home" ? "nav-link  active" : "nav-link"} to="/equipment-library" onClick={()=>appContext?.showSideNav('equipment-listing','')}>
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i className="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            </div>
+            <span className="nav-link-text ms-1">Equipment Management</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentPage=="equipment-listing" ? "nav-link  active" : "nav-link"} to="/equipment-listing" onClick={()=>appContext?.showSideNav('equipment-listing','')}>
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -63,7 +71,7 @@ const EquipmentSideBar: React.FC = ()=>{
           </div>
         </div> */}
       </div>
-      <Link to="/" onClick={()=>appContext?.showSideNav('home','')} className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
+      <Link to="/home" onClick={()=>appContext?.showSideNav('home','')} className="btn btn-dark btn-sm w-100 mb-3"><Icon icon="fluent-mdl2:skype-arrow" height={20} /> Back</Link>
       {/* <a className="btn btn-primary btn-sm mb-0 w-100" href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a> */}
     </div>
   </aside>

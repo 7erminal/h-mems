@@ -17,6 +17,9 @@ import SignIn from "./pages/SignIn.tsx";
 import DepartmentsPage from "./pages/DepartmentsPage.tsx";
 import EquipmentListPage from "./pages/EquipmentListPage.tsx";
 import LandingPage from "./pages/LandingPage.tsx";
+import DashboardPage from "./pages/dashboard.tsx";
+import LoadingOverlay from "./pages/widgets/LoadingOverlay.tsx";
+import EquipmentLibraryPage from "./pages/EquipmentLibraryPage.tsx";
 
 
 const ARoutes: React.FC = () => {
@@ -28,9 +31,11 @@ const ARoutes: React.FC = () => {
                     {/* <Route path="*" element={<NotFoundPage />} /> */}
                     {/* <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} /> */}
                     <Route path='/' element={<LandingPage />} />
-                    <Route path='/dashboard' element={<HomePage />} />
+                    <Route path='/home' element={<HomePage />} />
+                    <Route path='/dashboard' element={<DashboardPage />} />
                     <Route path='/clinical-engineering-report' element={<ClinicalEngineeringMonthlyReport />} />
                     <Route path='/equipment-listing' element={<EquipmentListing />} />
+                    <Route path='/equipment-library' element={<EquipmentLibraryPage />} />
                     <Route path='/work-orders' element={<WorkOrders />} />
                     <Route path='/work-orders-listings' element={<WorkOrdersListing />} />
                     <Route path='/equipment-details' element={<ViewEquipmentDetails eqDetails={appContext?.selectedEquipment} />} />
@@ -44,6 +49,7 @@ const ARoutes: React.FC = () => {
                 {/* <Invoice showModal={showInvoice} handleClose={handleShowInvoiceModalClose} invoice={selectedInvoice} />
                 <NotififcationModal notificationProps={appContext!.notificationProps!} />
                 <Loading show={appContext?.loading} handleClose={appContext!.handleLoadingClose} /> */}
+                <LoadingOverlay show={appContext?.showLoading} handleClose={appContext!.handleLoadingClose}/>
               {/* </ActivityTracker> */}
             </AnimatePresence>
 }

@@ -10,6 +10,11 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
     const [selectedEquipment, setSelectedEquipment] = useState<Device>()
     const [selectedWorkOrder, setSelectedWorkOrder] = useState<WorkOrder>()
 
+    const [showLoading, setShowLoading] = useState(false)
+
+    const handleLoadingClose = () => setShowLoading(false);
+    const handleLoadingShow = () => setShowLoading(true);
+
     // Show Side Nav
     const showSideNav = async (page: string, subPage: string) =>{
         console.log("Showing side nav")
@@ -74,7 +79,10 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
             selectedEquipment,
             setSelectedEquipment,
             selectedWorkOrder,
-            setSelectedWorkOrder
+            setSelectedWorkOrder,
+            showLoading,
+            handleLoadingClose,
+            handleLoadingShow
         }
     }>
         {children}
