@@ -1,4 +1,4 @@
-import { Device, Engineer, Status, WorkOrder, WorkOrderType, User, Department } from "../types/Types";
+import { Device, Engineer, Status, WorkOrder, WorkOrderType, User, Department, Facility, FLocation, Priority, Note } from "../types/Types";
 
 export var statuses: Array<Status> = [
     {
@@ -31,32 +31,126 @@ export var statuses: Array<Status> = [
     }
 ]
 
+export const priorityList: Array<Priority> = [
+    {
+        PriorityCode: 'LIFE_SUPPORTING',
+        PriorityName: 'Life Supporting'
+    },
+    {
+        PriorityCode: 'NONE_LIFE_SUPPORTING',
+        PriorityName: 'Non-Life Supporting'
+    },
+    {
+        PriorityCode: 'HIGH_RISK',
+        PriorityName: 'High Risk'
+    },
+]
+
+export const locations: Array<FLocation> = [
+    {
+        Location: "Command Center"
+    },
+    {
+        Location: "Ward"
+    },
+    {
+        Location: "Server room"
+    },
+    {
+        Location: "Office"
+    },
+    {
+        Location: "Research center"
+    },
+]
+
 export const departments: Array<Department> = [
     {
         DepartmentId: 1,
         Department: 'Ophthalmology',
-        DepartmentPhone: '0269008514'
+        DepartmentPhone: '0269008514',
     },
     {
         DepartmentId: 2,
         Department: 'Otolaryngology',
-        DepartmentPhone: '0269008514'
+        DepartmentPhone: '0269008514',
     },
     {
         DepartmentId: 3,
         Department: 'Orthopaedics',
-        DepartmentPhone: '0269008514'
+        DepartmentPhone: '0269008514',
     },
     {
         DepartmentId: 4,
         Department: 'Midwifery',
-        DepartmentPhone: '0269008514'
+        DepartmentPhone: '0269008514',
     },
     {
         DepartmentId: 5,
         Department: 'Emergency',
-        DepartmentPhone: '0269008514'
+        DepartmentPhone: '0269008514',
     }
+]
+
+export const facilities: Array<Facility> = [
+    {
+        FacilityId: 1,
+        FacilityName: "Ambulatory surgical",
+        Departments: [
+            departments[0],
+            departments[1]
+        ]
+    },
+    {
+        FacilityId: 2,
+        FacilityName: "Birth center",
+        Departments: [
+            departments[3],
+        ]
+    },
+    {
+        FacilityId: 3,
+        FacilityName: "Blood bank",
+        Departments: [
+            departments[1],
+            departments[2]
+        ]
+    },
+    {
+        FacilityId: 4,
+        FacilityName: "Clinics and medical office",
+        Departments: [
+            departments[0],
+            departments[1],
+            departments[3],
+            departments[4]
+        ]
+    },
+    {
+        FacilityId: 5,
+        FacilityName: "Dialysis Center",
+        Departments: [
+            departments[1]
+        ]
+    },
+    {
+        FacilityId: 6,
+        FacilityName: "Hospital",
+        Departments: [
+            departments[0],
+            departments[1],
+            departments[2],
+            departments[3],
+            departments[4]
+        ]
+    },
+    {
+        FacilityId: 7,
+        FacilityName: "Imaging and radiology",
+        Departments: [
+            departments[2]
+        ]
+    },
 ]
 
 export const users: Array<User> = [
@@ -205,7 +299,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Microsoft",
         Status: statuses[0],
-        AssignedTo: users[0]
+        AssignedTo: users[0],
+        DevicePriorityState: priorityList[0]
     },
     {
         SerialNo: "4400383940",
@@ -220,7 +315,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: users[1]
+        AssignedTo: users[1],
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "4400383941",
@@ -235,7 +331,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: users[2]
+        AssignedTo: users[2],
+        DevicePriorityState: priorityList[0]
     },
     {
         SerialNo: "4400383942",
@@ -250,7 +347,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: users[3]
+        AssignedTo: users[3],
+        DevicePriorityState: priorityList[0]
     },
     {
         SerialNo: "4400383943",
@@ -265,7 +363,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: users[4]
+        AssignedTo: users[4],
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "4400383944",
@@ -280,7 +379,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: users[5]
+        AssignedTo: users[5],
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "4400383945",
@@ -295,7 +395,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: undefined
+        AssignedTo: undefined,
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "1200383956",
@@ -310,7 +411,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: undefined
+        AssignedTo: undefined,
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "1200383957",
@@ -325,7 +427,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[1],
-        AssignedTo: users[6]
+        AssignedTo: users[6],
+        DevicePriorityState: priorityList[0]
     },
     {
         SerialNo: "1200383959",
@@ -340,7 +443,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[1],
-        AssignedTo: users[7]
+        AssignedTo: users[7],
+        DevicePriorityState: priorityList[2]
     },
     {
         SerialNo: "1200383257",
@@ -355,7 +459,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[1],
-        AssignedTo: users[8]
+        AssignedTo: users[8],
+        DevicePriorityState: priorityList[2]
     },
     {
         SerialNo: "1200383357",
@@ -370,7 +475,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[1],
-        AssignedTo: users[9]
+        AssignedTo: users[9],
+        DevicePriorityState: priorityList[2]
     },
     {
         SerialNo: "1200383358",
@@ -385,7 +491,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: users[10]
+        AssignedTo: users[10],
+        DevicePriorityState: priorityList[0]
     },
     {
         SerialNo: "4400383841",
@@ -400,7 +507,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Microsoft",
         Status: statuses[0],
-        AssignedTo: users[0]
+        AssignedTo: users[0],
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "4400383842",
@@ -415,7 +523,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Microsoft",
         Status: statuses[0],
-        AssignedTo: undefined
+        AssignedTo: undefined,
+        DevicePriorityState: priorityList[2]
     },
     {
         SerialNo: "4400367844",
@@ -430,7 +539,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Microsoft",
         Status: statuses[0],
-        AssignedTo: undefined
+        AssignedTo: undefined,
+        DevicePriorityState: priorityList[0]
     },
     {
         SerialNo: "4400367844",
@@ -445,7 +555,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Microsoft",
         Status: statuses[0],
-        AssignedTo: users[0]
+        AssignedTo: users[0],
+        DevicePriorityState: priorityList[0]
     },
     {
         SerialNo: "4400367845",
@@ -460,7 +571,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Microsoft",
         Status: statuses[0],
-        AssignedTo: users[4]
+        AssignedTo: users[4],
+        DevicePriorityState: priorityList[2]
     },
     {
         SerialNo: "4400367857",
@@ -475,7 +587,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Microsoft",
         Status: statuses[0],
-        AssignedTo: users[8]
+        AssignedTo: users[8],
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "4400367858",
@@ -490,7 +603,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Microsoft",
         Status: statuses[0],
-        AssignedTo: users[9]
+        AssignedTo: users[9],
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "4400367859",
@@ -505,7 +619,8 @@ export var equipment: Array<Device> = [
         Class: "A2",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: undefined
+        AssignedTo: undefined,
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "4400367860",
@@ -520,7 +635,8 @@ export var equipment: Array<Device> = [
         Class: "A2",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: undefined
+        AssignedTo: undefined,
+        DevicePriorityState: priorityList[1]
     },
     {
         SerialNo: "4400367860",
@@ -535,7 +651,8 @@ export var equipment: Array<Device> = [
         Class: "A2",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: undefined
+        AssignedTo: undefined,
+        DevicePriorityState: priorityList[0]
     },
     {
         SerialNo: "4400367865",
@@ -550,7 +667,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: undefined
+        AssignedTo: undefined,
+        DevicePriorityState: priorityList[2]
     },
     {
         SerialNo: "4400367867",
@@ -565,7 +683,8 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: users[7]
+        AssignedTo: users[7],
+        DevicePriorityState: priorityList[2]
     },
     {
         SerialNo: "4400367868",
@@ -580,9 +699,149 @@ export var equipment: Array<Device> = [
         Class: "A1",
         System: "Unix",
         Status: statuses[0],
-        AssignedTo: users[6]
+        AssignedTo: users[6],
+        DevicePriorityState: priorityList[1]
+    },
+    {
+        SerialNo: "4400367820",
+        ModelName: "Tipa Reeds",
+        ModelNumber: "542201110001",
+        ManufacturedBy: "Tipa",
+        SuppliedBy: "Bulldozer Inc",
+        ECRIName: "Grida TF",
+        ECRINo: "1003190", 
+        EQType: "Radiocleptra",
+        ControlNo: "1000122932",
+        Class: "A2",
+        System: "Unix",
+        Status: statuses[0],
+        AssignedTo: users[3],
+        DevicePriorityState: priorityList[1]
+    },
+    {
+        SerialNo: "4400367868",
+        ModelName: "Fountain Opts",
+        ModelNumber: "5433889958",
+        ManufacturedBy: "Fountain Group",
+        SuppliedBy: "Fountain Supplies",
+        ECRIName: "Fountain",
+        ECRINo: "399059", 
+        EQType: "X-Ray",
+        ControlNo: "9002388829",
+        Class: "A1",
+        System: "Android",
+        Status: statuses[0],
+        AssignedTo: users[2],
+        DevicePriorityState: priorityList[2]
+    },
+    {
+        SerialNo: "4400367867",
+        ModelName: "Fountain Opts",
+        ModelNumber: "5433889950",
+        ManufacturedBy: "Fountain Group",
+        SuppliedBy: "Bulldozer Inc",
+        ECRIName: "Fountain",
+        ECRINo: "299059", 
+        EQType: "X-Ray",
+        ControlNo: "8002388829",
+        Class: "A1",
+        System: "Android",
+        Status: statuses[0],
+        AssignedTo: users[0],
+        DevicePriorityState: priorityList[2]
+    },
+];
+
+export var notes: Array<Note> = [
+    {
+        Note: "Changed the upper ramp and lens",
+        dateCreated: "2024-12-25",
+        dateModified: "2024-12-25",
+        Attachment: "",
+        Resolved: true,
+        Duration: "1 hour"
+    },
+    {
+        Note: "Cleaned device and restarted",
+        dateCreated: "2024-12-27",
+        dateModified: "2024-12-27",
+        Attachment: "",
+        Resolved: false,
+        Duration: "40 minutes"
+    },
+    {
+        Note: "Tigthened screws and tried again",
+        dateCreated: "2024-12-29",
+        dateModified: "2024-12-29",
+        Attachment: "",
+        Resolved: true,
+        Duration: "20 minutes"
+    },
+    {
+        Note: "Cleaned device and replaced lens",
+        dateCreated: "2024-12-29",
+        dateModified: "2024-12-29",
+        Attachment: "",
+        Resolved: true,
+        Duration: "2 hours"
+    },
+    {
+        Note: "Device overhaul and replace parts",
+        dateCreated: "2024-12-25",
+        dateModified: "2024-12-25",
+        Attachment: "",
+        Resolved: false,
+        Duration: "4 hours"
+    },
+    {
+        Note: "Fittens replaced, oil changed and scanner replaced",
+        dateCreated: "2024-12-27",
+        dateModified: "2024-12-27",
+        Attachment: "",
+        Resolved: true,
+        Duration: "2 hours 30 minutes"
+    },
+    {
+        Note: "Leakage patched and device rebooted",
+        dateCreated: "2024-12-25",
+        dateModified: "2024-12-25",
+        Attachment: "",
+        Resolved: true,
+        Duration: "1 hour"
+    },
+    {
+        Note: "System software reinstalled",
+        dateCreated: "2024-12-25",
+        dateModified: "2024-12-25",
+        Attachment: "",
+        Resolved: true,
+        Duration: "50 minutes"
+    },
+    {
+        Note: "Power socket and adapter replaced",
+        dateCreated: "2024-12-26",
+        dateModified: "2024-12-26",
+        Attachment: "",
+        Resolved: true,
+        Duration: "12 minutes"
+    },
+    {
+        Note: "Cord patched. Device might need replacement as this is a temporal fix.",
+        dateCreated: "2024-12-25",
+        dateModified: "2024-12-25",
+        Attachment: "",
+        Resolved: false,
+        Duration: "30 minutes"
+    },
+    {
+        Note: "Leakage blocked. Should hold up for some months but part would need to be replaced. Part currently not available.",
+        dateCreated: "2025-01-02",
+        dateModified: "2025-01-02",
+        Attachment: "",
+        Resolved: true,
+        Duration: "1 hour 30 minutes"
     }
-]
+];
 
 export var workOrders: Array<WorkOrder> = [
     {
@@ -601,7 +860,11 @@ export var workOrders: Array<WorkOrder> = [
         Description: 'Yellow light keeps blinking after starting',
         Cost: 0.0,
         EstimatedCost: 2400,
-        OpenedBy: users[0]
+        OpenedBy: users[0],
+        Notes: [
+            notes[0],
+            notes[3]
+        ]
     },
     {
         WorkOrderId: 2, 
@@ -619,7 +882,12 @@ export var workOrders: Array<WorkOrder> = [
         Description: 'Check all screws are intact and secured',
         Cost: 120,
         EstimatedCost: 0.0,
-        OpenedBy: users[1]
+        OpenedBy: users[1],
+        Notes: [
+            notes[1],
+            notes[2],
+            notes[6]
+        ]
     },
     {
         WorkOrderId: 3, 
@@ -637,7 +905,10 @@ export var workOrders: Array<WorkOrder> = [
         Description: 'The device over heats shortly after startup',
         Cost: 24000,
         EstimatedCost: 25000,
-        OpenedBy: users[2]
+        OpenedBy: users[2],
+        Notes: [
+            notes[8],
+        ]
     },
     {
         WorkOrderId: 4, 
@@ -655,7 +926,13 @@ export var workOrders: Array<WorkOrder> = [
         Description: 'Check oil, lightning and rotation speed',
         Cost: 0.0,
         EstimatedCost: 1345.0,
-        OpenedBy: users[3]
+        OpenedBy: users[3],
+        Notes: [
+            notes[9],
+            notes[2],
+            notes[6],
+            notes[5]
+        ]
     },
     {
         WorkOrderId: 5, 
@@ -673,7 +950,11 @@ export var workOrders: Array<WorkOrder> = [
         Description: 'Inventory count',
         Cost: 0.0,
         EstimatedCost: 500.0,
-        OpenedBy: users[4]
+        OpenedBy: users[4],
+        Notes: [
+            notes[1],
+            notes[8]
+        ]
     },
     {
         WorkOrderId: 6, 
@@ -691,7 +972,14 @@ export var workOrders: Array<WorkOrder> = [
         Description: 'Screw not intact. Replacement needed.',
         Cost: 0.0,
         EstimatedCost: 420.0,
-        OpenedBy: users[2]
+        OpenedBy: users[2],
+        Notes: [
+            notes[3],
+            notes[4],
+            notes[5],
+            notes[7],
+            notes[9]
+        ]
     },
     {
         WorkOrderId: 7, 
@@ -709,7 +997,11 @@ export var workOrders: Array<WorkOrder> = [
         Description: 'Faulty nuts.',
         Cost: 0.0,
         EstimatedCost: 32.0,
-        OpenedBy: users[2]
+        OpenedBy: users[2],
+        Notes: [
+            notes[2],
+            notes[1]
+        ]
     },
     {
         WorkOrderId: 8, 
@@ -727,6 +1019,38 @@ export var workOrders: Array<WorkOrder> = [
         Description: 'Led reading not showing making it difficult to tell what the issue is when checking patients',
         Cost: 0.0,
         EstimatedCost: 78.0,
-        OpenedBy: users[2]
+        OpenedBy: users[2],
+        Notes: [
+            notes[5],
+            notes[3],
+            notes[9],
+            notes[8],
+            notes[0],
+            notes[9],
+            notes[1],
+            notes[2]
+        ]
+    },
+    {
+        WorkOrderId: 9, 
+        AssignedEngineer: engineers[0],
+        Priority: 3,
+        Procedure: "Led light was replaced",
+        Device: equipment[28],
+        Status: statuses[4],
+        WorkOrderType: workOrderTypes[1],
+        DateCreated: "2024-12-25",
+        DateModified: "2024-12-25",
+        OpenedDate: "2024-12-25",
+        ClosedDate: "2024-12-28",
+        Title: 'Device not coming on',
+        Description: 'Device not coming on',
+        Cost: 0.0,
+        EstimatedCost: 78.0,
+        OpenedBy: users[2],
+        Notes: [
+            notes[7],
+            notes[8]
+        ]
     }
 ];

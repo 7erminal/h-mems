@@ -49,14 +49,14 @@ const WorkOrderSideBar: React.FC = ()=>{
             <span className="nav-link-text ms-1">Closed Work Orders</span>
           </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link className={ appContext?.currentSubPage=="work orders cost/hour" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('wo', 'work orders cost/hour')} to="/work-orders-listings">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <Icon icon="skill-icons:workers-light" height={400} />
             </div>
             <span className="nav-link-text ms-1">Work Orders Cost/Hour</span>
           </Link>
-        </li>
+        </li> */}
         <li className="nav-item mt-3">
           <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account</h6>
         </li>

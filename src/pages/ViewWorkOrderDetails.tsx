@@ -6,6 +6,7 @@ import 'chart.js/auto';
 import WorkOrderSideBar from "./components/WorkOrderSideBar";
 import EquipmentListTable from "./components/EquipmentListTable";
 import UpdateWorkOrder from "./components/UpdateWorkOrder";
+import WorkOrderNotes from "./components/WorkOrderNotes";
 
 type Props = {
     woDetails: WorkOrder | undefined
@@ -140,6 +141,19 @@ const ViewWorkOrderDetails: React.FC<Props> = ({woDetails})=>{
                         </div>
                         <div className="card-body px-0 pt-0 pb-2">
                         <EquipmentListTable equipment={[woDetails?.Device]} />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div className="row mt-4">
+                    <div className="col-12">
+                    <div className="card mb-4">
+                        <div className="card-header pb-0">
+                        <h6>Work History</h6>
+                        </div>
+                        <div className="card-body px-0 pt-0 pb-2">
+                        <WorkOrderNotes workOrderNotes={woDetails?.Notes} />
                         </div>
                     </div>
                     </div>

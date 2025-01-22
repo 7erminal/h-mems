@@ -46,7 +46,7 @@ const SideBar: React.FC = ()=>{
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <Icon icon="devicon:trpc" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Equipment Listing</span>
+            <span className="nav-link-text ms-1">Device Management</span>
           </Link>
         </li>
         <li className="nav-item">
@@ -57,6 +57,25 @@ const SideBar: React.FC = ()=>{
             <span className="nav-link-text ms-1">Work Orders</span>
           </Link>
         </li>
+        <li className="nav-item mt-3">
+          <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Users</h6>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentPage=="departments" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('departments','')} to="/departments">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <Icon icon="fluent-emoji-flat:department-store" height={400} />
+            </div>
+            <span className="nav-link-text ms-1">Departments</span>
+          </Link>
+        </li>
+        {/* <li className="nav-item">
+          <Link className={ appContext?.currentPage=="staff" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('profile','')} to="/profile">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i className="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span className="nav-link-text ms-1">Staff</span>
+          </Link>
+        </li> */}
         <li className="nav-item mt-3">
           <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account</h6>
         </li>

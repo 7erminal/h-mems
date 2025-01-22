@@ -32,8 +32,12 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
                     setWorkOrderFilters({...workOrderFilters, ...wo})
                 }
             } else if (page = "equipment-listing"){
-                if(subPage=='pending equipment work orders'){
-                    const wo: WorkOrderFilters = {limit: 0, statusFilter: statuses[1].Status, typeFilter: 'ALL', title: 'Pending Work Orders Report'}
+                if(subPage=='maintenance'){
+                    const wo: WorkOrderFilters = {limit: 0, statusFilter: statuses[1].Status, typeFilter: 'MAINTENANCE', title: 'Maintenance Equipment'}
+                    setWorkOrderFilters({...workOrderFilters, ...wo})
+                }
+                if(subPage=='faulty'){
+                    const wo: WorkOrderFilters = {limit: 0, statusFilter: statuses[1].Status, typeFilter: 'REPAIRS', title: 'Faulty Equipment'}
                     setWorkOrderFilters({...workOrderFilters, ...wo})
                 }
             }

@@ -26,6 +26,12 @@ const UpdateWorkOrder: React.FC<Props> = ({show, handleClose})=>{
                     </FloatingLabel>
                 </Col>
             </Row>
+            <Row>
+                <Form.Group controlId="formFile" className="mt-3">
+                    <Form.Label>Attach document</Form.Label>
+                    <Form.Control type="file" />
+                </Form.Group>
+            </Row>
 
             <Row className="mt-2">
                 <Col>

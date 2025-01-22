@@ -40,7 +40,7 @@
 .quicklink-button{
     background: transparent;
     color: black;
-    border: 2px solid #2b00ff;
+    border: 2px solid #24ACF5;
     padding-top: 80px;
     padding-bottom: 80px;
     width: 100%;
@@ -48,7 +48,7 @@
 
 .quicklink-button:hover{
     background: transparent;
-    border: 2px solid #e30000; /* Green */
+    border: 2px solid #24ACF5; /* Green */
     color: black;
 }
 
@@ -77,6 +77,10 @@
     position: relative;
     width: 100vw;
     height: 100vh;
+    background: #36D1DC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .sign-in-card{
@@ -93,4 +97,551 @@
 
 .chart-height-1{
     height: 200px;
+}
+
+.carousel-color-1{
+    background: #114357;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #F29492, #114357);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #F29492, #114357); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.carousel-color-2{
+    background: #4e54c8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8f94fb, #4e54c8);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.carousel-color-3{
+    background: #11998e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.danger-button{
+    background-color: #EC7063;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.danger-button:hover,
+.danger-button:focus {
+  background-color: #E74C3C;
+}
+
+.note-duration{
+    padding: 5px;
+    border: 1px solid #3498DB;
+    border-radius: 5px;
+}
+
+.customCard{
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    background-color: #ECFFFE;
+    border-radius: 10px;
+    /* min-height: 400px; */
+}
+.customCardF{
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    background-color: #F4FAFC;
+    border-radius: 10px;
+    min-height: 130px;
+    transition: 0.2s ease-in;
+}
+
+.customCardF:hover{
+    transform: translateY(-4px);
+    cursor: pointer;
+    transition: 0.4s ease-out;
+}
+
+.customCardH{
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.landing-page{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #36D1DC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.centerDiv{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.larger-circle{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 1s ease-in-out;
+}
+
+.logo-loading{
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    /* padding: 15px; */
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    transition: 1s ease-in-out;
+}
+
+.logo-logo{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+@keyframes up-down {
+    0% {transform: translateY(0px);}
+    25%{transform: translateY(-10px);}
+    50% {transform: translateY(0px);}
+    75%{transform: translateY(10px);}
+    100% {transform: translateY(0px);}
+}
+
+@keyframes down-up {
+    0% {transform: translateY(0px);}
+    25%{transform: translateY(10px);}
+    50% {transform: translateY(0px);}
+    75%{transform: translateY(-10px);}
+    100% {transform: translateY(0px);}
+}
+
+.B{
+    animation-name: down-up;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.K{
+    animation-name: up-down;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.rounded{
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+}
+
+@keyframes rotate1 {
+    0% {transform: rotate(0deg) translate(50px);}
+2.777777778% {transform: rotate(10deg) translate(50px);}
+5.555555556% {transform: rotate(20deg) translate(50px);}
+8.333333333% {transform: rotate(30deg) translate(50px);}
+    11.11111111% {transform: rotate(40deg) translate(50px);}
+    13.88888889% {transform: rotate(50deg) translate(50px);}
+    16.66666667% {transform: rotate(60deg) translate(50px);}
+    19.44444444% {transform: rotate(70deg) translate(50px);}
+    22.22222222% {transform: rotate(80deg) translate(50px);}
+    25% {transform: rotate(90deg) translate(50px);}
+27.77777778% {transform: rotate(100deg) translate(50px);}
+    30.55555556% {transform: rotate(110deg) translate(50px);}
+    33.33333333% {transform: rotate(120deg) translate(50px);}
+    36.11111111% {transform: rotate(130deg) translate(50px);}
+    38.88888889% {transform: rotate(140deg) translate(50px);}
+    41.66666667% {transform: rotate(150deg) translate(50px);}
+    44.44444444% {transform: rotate(160deg) translate(50px);}
+    47.22222222% {transform: rotate(170deg) translate(50px);}
+    50% {transform: rotate(180deg) translate(50px);}
+    52.77777778% {transform: rotate(190deg) translate(50px);}
+55.55555556% {transform: rotate(200deg) translate(50px);}
+    58.33333333% {transform: rotate(210deg) translate(50px);}
+    61.11111111% {transform: rotate(220deg) translate(50px);}
+    63.88888889% {transform: rotate(230deg) translate(50px);}
+    66.66666667% {transform: rotate(240deg) translate(50px);}
+    69.44444445% {transform: rotate(250deg) translate(50px);}
+    72.22222222% {transform: rotate(260deg) translate(50px);}
+    75% {transform: rotate(270deg) translate(50px);}
+    77.77777778% {transform: rotate(280deg) translate(50px);}
+    80.55555556% {transform: rotate(290deg) translate(50px);}
+83.33333333% {transform: rotate(300deg) translate(50px);}
+    86.11111111% {transform: rotate(310deg) translate(50px);}
+    88.88888889% {transform: rotate(320deg) translate(50px);}
+    91.66666667% {transform: rotate(330deg) translate(50px);}
+    94.44444445% {transform: rotate(340deg) translate(50px);}
+    97.22222222% {transform: rotate(350deg) translate(50px);}
+    100% {transform: rotate(360deg) translate(50px);}
+}
+
+@keyframes rotate2 {
+    0% {transform: rotate(15deg) translate(50px);}
+    2.777777778% {transform: rotate(25deg) translate(50px);}
+    5.555555556% {transform: rotate(35deg) translate(50px);}
+    8.333333333% {transform: rotate(45deg) translate(50px);}
+    11.11111111% {transform: rotate(55deg) translate(50px);}
+    13.88888889% {transform: rotate(65deg) translate(50px);}
+    16.66666667% {transform: rotate(75deg) translate(50px);}
+    19.44444444% {transform: rotate(85deg) translate(50px);}
+    22.22222222% {transform: rotate(95deg) translate(50px);}
+    25% {transform: rotate(105deg) translate(50px);}
+    27.77777778% {transform: rotate(115deg) translate(50px);}
+    30.55555556% {transform: rotate(125deg) translate(50px);}
+    33.33333333% {transform: rotate(135deg) translate(50px);}
+    36.11111111% {transform: rotate(145deg) translate(50px);}
+    38.88888889% {transform: rotate(155deg) translate(50px);}
+    41.66666667% {transform: rotate(165deg) translate(50px);}
+    44.44444444% {transform: rotate(175deg) translate(50px);}
+    47.22222222% {transform: rotate(185deg) translate(50px);}
+    50% {transform: rotate(195deg) translate(50px);}
+    52.77777778% {transform: rotate(205deg) translate(50px);}
+    55.55555556% {transform: rotate(215deg) translate(50px);}
+    58.33333333% {transform: rotate(225deg) translate(50px);}
+    61.11111111% {transform: rotate(235deg) translate(50px);}
+    63.88888889% {transform: rotate(245deg) translate(50px);}
+    66.66666667% {transform: rotate(255deg) translate(50px);}
+    69.44444445% {transform: rotate(265deg) translate(50px);}
+    72.22222222% {transform: rotate(275deg) translate(50px);}
+    75% {transform: rotate(285deg) translate(50px);}
+    77.77777778% {transform: rotate(295deg) translate(50px);}
+    80.55555556% {transform: rotate(305deg) translate(50px);}
+    83.33333333% {transform: rotate(315deg) translate(50px);}
+    86.11111111% {transform: rotate(325deg) translate(50px);}
+    88.88888889% {transform: rotate(335deg) translate(50px);}
+    91.66666667% {transform: rotate(345deg) translate(50px);}
+    94.44444445% {transform: rotate(355deg) translate(50px);}
+    97.22222222% {transform: rotate(360deg) translate(50px);}
+    100% {transform: rotate(375deg) translate(50px);}
+}
+
+@keyframes rotate3 {
+    0% {transform: rotate(30deg) translate(50px);}
+2.777777778% {transform: rotate(40deg) translate(50px);}
+5.555555556% {transform: rotate(50deg) translate(50px);}
+8.333333333% {transform: rotate(60deg) translate(50px);}
+    11.11111111% {transform: rotate(70deg) translate(50px);}
+    13.88888889% {transform: rotate(80deg) translate(50px);}
+    16.66666667% {transform: rotate(90deg) translate(50px);}
+    19.44444444% {transform: rotate(100deg) translate(50px);}
+    22.22222222% {transform: rotate(110deg) translate(50px);}
+    25% {transform: rotate(120deg) translate(50px);}
+27.77777778% {transform: rotate(130deg) translate(50px);}
+    30.55555556% {transform: rotate(140deg) translate(50px);}
+    33.33333333% {transform: rotate(150deg) translate(50px);}
+    36.11111111% {transform: rotate(160deg) translate(50px);}
+    38.88888889% {transform: rotate(170deg) translate(50px);}
+    41.66666667% {transform: rotate(180deg) translate(50px);}
+    44.44444444% {transform: rotate(190deg) translate(50px);}
+    47.22222222% {transform: rotate(200deg) translate(50px);}
+    50% {transform: rotate(210deg) translate(50px);}
+    52.77777778% {transform: rotate(220deg) translate(50px);}
+55.55555556% {transform: rotate(230deg) translate(50px);}
+    58.33333333% {transform: rotate(240deg) translate(50px);}
+    61.11111111% {transform: rotate(250deg) translate(50px);}
+    63.88888889% {transform: rotate(260deg) translate(50px);}
+    66.66666667% {transform: rotate(270deg) translate(50px);}
+    69.44444445% {transform: rotate(280deg) translate(50px);}
+    72.22222222% {transform: rotate(290deg) translate(50px);}
+    75% {transform: rotate(300deg) translate(50px);}
+    77.77777778% {transform: rotate(310deg) translate(50px);}
+    80.55555556% {transform: rotate(320deg) translate(50px);}
+83.33333333% {transform: rotate(330deg) translate(50px);}
+    86.11111111% {transform: rotate(340deg) translate(50px);}
+    88.88888889% {transform: rotate(350deg) translate(50px);}
+    91.66666667% {transform: rotate(360deg) translate(50px);}
+    94.44444445% {transform: rotate(370deg) translate(50px);}
+    97.22222222% {transform: rotate(380deg) translate(50px);}
+    100% {transform: rotate(390deg) translate(50px);}
+}
+
+@keyframes rotate4 {
+    0% {transform: rotate(45deg) translate(50px);}
+2.777777778% {transform: rotate(55deg) translate(50px);}
+5.555555556% {transform: rotate(65deg) translate(50px);}
+8.333333333% {transform: rotate(75deg) translate(50px);}
+    11.11111111% {transform: rotate(85deg) translate(50px);}
+    13.88888889% {transform: rotate(95deg) translate(50px);}
+    16.66666667% {transform: rotate(105deg) translate(50px);}
+    19.44444444% {transform: rotate(115deg) translate(50px);}
+    22.22222222% {transform: rotate(125deg) translate(50px);}
+    25% {transform: rotate(135deg) translate(50px);}
+27.77777778% {transform: rotate(145deg) translate(50px);}
+    30.55555556% {transform: rotate(155deg) translate(50px);}
+    33.33333333% {transform: rotate(165deg) translate(50px);}
+    36.11111111% {transform: rotate(175deg) translate(50px);}
+    38.88888889% {transform: rotate(185deg) translate(50px);}
+    41.66666667% {transform: rotate(195deg) translate(50px);}
+    44.44444444% {transform: rotate(205deg) translate(50px);}
+    47.22222222% {transform: rotate(215deg) translate(50px);}
+    50% {transform: rotate(225deg) translate(50px);}
+    52.77777778% {transform: rotate(235deg) translate(50px);}
+55.55555556% {transform: rotate(245deg) translate(50px);}
+    58.33333333% {transform: rotate(255deg) translate(50px);}
+    61.11111111% {transform: rotate(265deg) translate(50px);}
+    63.88888889% {transform: rotate(275deg) translate(50px);}
+    66.66666667% {transform: rotate(285deg) translate(50px);}
+    69.44444445% {transform: rotate(295deg) translate(50px);}
+    72.22222222% {transform: rotate(305deg) translate(50px);}
+    75% {transform: rotate(315deg) translate(50px);}
+    77.77777778% {transform: rotate(325deg) translate(50px);}
+    80.55555556% {transform: rotate(335deg) translate(50px);}
+83.33333333% {transform: rotate(345deg) translate(50px);}
+    86.11111111% {transform: rotate(355deg) translate(50px);}
+    88.88888889% {transform: rotate(365deg) translate(50px);}
+    91.66666667% {transform: rotate(375deg) translate(50px);}
+    94.44444445% {transform: rotate(385deg) translate(50px);}
+    97.22222222% {transform: rotate(395deg) translate(50px);}
+    100% {transform: rotate(405deg) translate(50px);}
+}
+
+@keyframes rotate5 {
+    0% {transform: rotate(60deg) translate(50px);}
+2.777777778% {transform: rotate(70deg) translate(50px);}
+5.555555556% {transform: rotate(80deg) translate(50px);}
+8.333333333% {transform: rotate(90deg) translate(50px);}
+    11.11111111% {transform: rotate(100deg) translate(50px);}
+    13.88888889% {transform: rotate(110deg) translate(50px);}
+    16.66666667% {transform: rotate(120deg) translate(50px);}
+    19.44444444% {transform: rotate(130deg) translate(50px);}
+    22.22222222% {transform: rotate(140deg) translate(50px);}
+    25% {transform: rotate(150deg) translate(50px);}
+27.77777778% {transform: rotate(160deg) translate(50px);}
+    30.55555556% {transform: rotate(170deg) translate(50px);}
+    33.33333333% {transform: rotate(180deg) translate(50px);}
+    36.11111111% {transform: rotate(190deg) translate(50px);}
+    38.88888889% {transform: rotate(200deg) translate(50px);}
+    41.66666667% {transform: rotate(210deg) translate(50px);}
+    44.44444444% {transform: rotate(220deg) translate(50px);}
+    47.22222222% {transform: rotate(230deg) translate(50px);}
+    50% {transform: rotate(240deg) translate(50px);}
+    52.77777778% {transform: rotate(250deg) translate(50px);}
+55.55555556% {transform: rotate(260deg) translate(50px);}
+    58.33333333% {transform: rotate(270deg) translate(50px);}
+    61.11111111% {transform: rotate(280deg) translate(50px);}
+    63.88888889% {transform: rotate(290deg) translate(50px);}
+    66.66666667% {transform: rotate(300deg) translate(50px);}
+    69.44444445% {transform: rotate(310deg) translate(50px);}
+    72.22222222% {transform: rotate(320deg) translate(50px);}
+    75% {transform: rotate(330deg) translate(50px);}
+    77.77777778% {transform: rotate(340deg) translate(50px);}
+    80.55555556% {transform: rotate(350deg) translate(50px);}
+83.33333333% {transform: rotate(360deg) translate(50px);}
+    86.11111111% {transform: rotate(370deg) translate(50px);}
+    88.88888889% {transform: rotate(380deg) translate(50px);}
+    91.66666667% {transform: rotate(390deg) translate(50px);}
+    94.44444445% {transform: rotate(400deg) translate(50px);}
+    97.22222222% {transform: rotate(410deg) translate(50px);}
+    100% {transform: rotate(420deg) translate(50px);}
+}
+
+@keyframes rotate6 {
+    0% {transform: rotate(75deg) translate(50px);}
+2.777777778% {transform: rotate(85deg) translate(50px);}
+5.555555556% {transform: rotate(95deg) translate(50px);}
+8.333333333% {transform: rotate(105deg) translate(50px);}
+    11.11111111% {transform: rotate(115deg) translate(50px);}
+    13.88888889% {transform: rotate(125deg) translate(50px);}
+    16.66666667% {transform: rotate(135deg) translate(50px);}
+    19.44444444% {transform: rotate(145deg) translate(50px);}
+    22.22222222% {transform: rotate(155deg) translate(50px);}
+    25% {transform: rotate(165deg) translate(50px);}
+27.77777778% {transform: rotate(175deg) translate(50px);}
+    30.55555556% {transform: rotate(185deg) translate(50px);}
+    33.33333333% {transform: rotate(195deg) translate(50px);}
+    36.11111111% {transform: rotate(205deg) translate(50px);}
+    38.88888889% {transform: rotate(215deg) translate(50px);}
+    41.66666667% {transform: rotate(225deg) translate(50px);}
+    44.44444444% {transform: rotate(235deg) translate(50px);}
+    47.22222222% {transform: rotate(245deg) translate(50px);}
+    50% {transform: rotate(255deg) translate(50px);}
+    52.77777778% {transform: rotate(265deg) translate(50px);}
+55.55555556% {transform: rotate(275deg) translate(50px);}
+    58.33333333% {transform: rotate(285deg) translate(50px);}
+    61.11111111% {transform: rotate(295deg) translate(50px);}
+    63.88888889% {transform: rotate(305deg) translate(50px);}
+    66.66666667% {transform: rotate(315deg) translate(50px);}
+    69.44444445% {transform: rotate(325deg) translate(50px);}
+    72.22222222% {transform: rotate(335deg) translate(50px);}
+    75% {transform: rotate(345deg) translate(50px);}
+    77.77777778% {transform: rotate(355deg) translate(50px);}
+    80.55555556% {transform: rotate(365deg) translate(50px);}
+83.33333333% {transform: rotate(375deg) translate(50px);}
+    86.11111111% {transform: rotate(385deg) translate(50px);}
+    88.88888889% {transform: rotate(395deg) translate(50px);}
+    91.66666667% {transform: rotate(405deg) translate(50px);}
+    94.44444445% {transform: rotate(415deg) translate(50px);}
+    97.22222222% {transform: rotate(425deg) translate(50px);}
+    100% {transform: rotate(435deg) translate(50px);}
+}
+
+@keyframes rotate7 {
+    0% {transform: rotate(90deg) translate(50px);}
+2.777777778% {transform: rotate(100deg) translate(50px);}
+5.555555556% {transform: rotate(110deg) translate(50px);}
+8.333333333% {transform: rotate(120deg) translate(50px);}
+    11.11111111% {transform: rotate(130deg) translate(50px);}
+    13.88888889% {transform: rotate(140deg) translate(50px);}
+    16.66666667% {transform: rotate(150deg) translate(50px);}
+    19.44444444% {transform: rotate(160deg) translate(50px);}
+    22.22222222% {transform: rotate(170deg) translate(50px);}
+    25% {transform: rotate(180deg) translate(50px);}
+27.77777778% {transform: rotate(190deg) translate(50px);}
+    30.55555556% {transform: rotate(200deg) translate(50px);}
+    33.33333333% {transform: rotate(210deg) translate(50px);}
+    36.11111111% {transform: rotate(220deg) translate(50px);}
+    38.88888889% {transform: rotate(230deg) translate(50px);}
+    41.66666667% {transform: rotate(240deg) translate(50px);}
+    44.44444444% {transform: rotate(250deg) translate(50px);}
+    47.22222222% {transform: rotate(260deg) translate(50px);}
+    50% {transform: rotate(270deg) translate(50px);}
+    52.77777778% {transform: rotate(280deg) translate(50px);}
+55.55555556% {transform: rotate(290deg) translate(50px);}
+    58.33333333% {transform: rotate(300deg) translate(50px);}
+    61.11111111% {transform: rotate(310deg) translate(50px);}
+    63.88888889% {transform: rotate(320deg) translate(50px);}
+    66.66666667% {transform: rotate(330deg) translate(50px);}
+    69.44444445% {transform: rotate(340deg) translate(50px);}
+    72.22222222% {transform: rotate(350deg) translate(50px);}
+    75% {transform: rotate(360deg) translate(50px);}
+    77.77777778% {transform: rotate(370deg) translate(50px);}
+    80.55555556% {transform: rotate(380deg) translate(50px);}
+83.33333333% {transform: rotate(390deg) translate(50px);}
+    86.11111111% {transform: rotate(400deg) translate(50px);}
+    88.88888889% {transform: rotate(410deg) translate(50px);}
+    91.66666667% {transform: rotate(420deg) translate(50px);}
+    94.44444445% {transform: rotate(430deg) translate(50px);}
+    97.22222222% {transform: rotate(440deg) translate(50px);}
+    100% {transform: rotate(450deg) translate(50px);}
+}
+
+@keyframes rotate8 {
+    0% {transform: rotate(105deg) translate(50px);}
+2.777777778% {transform: rotate(115deg) translate(50px);}
+5.555555556% {transform: rotate(125deg) translate(50px);}
+8.333333333% {transform: rotate(135deg) translate(50px);}
+    11.11111111% {transform: rotate(145deg) translate(50px);}
+    13.88888889% {transform: rotate(155deg) translate(50px);}
+    16.66666667% {transform: rotate(165deg) translate(50px);}
+    19.44444444% {transform: rotate(175deg) translate(50px);}
+    22.22222222% {transform: rotate(185deg) translate(50px);}
+    25% {transform: rotate(195deg) translate(50px);}
+27.77777778% {transform: rotate(205deg) translate(50px);}
+    30.55555556% {transform: rotate(215deg) translate(50px);}
+    33.33333333% {transform: rotate(225deg) translate(50px);}
+    36.11111111% {transform: rotate(235deg) translate(50px);}
+    38.88888889% {transform: rotate(245deg) translate(50px);}
+    41.66666667% {transform: rotate(255deg) translate(50px);}
+    44.44444444% {transform: rotate(265deg) translate(50px);}
+    47.22222222% {transform: rotate(275deg) translate(50px);}
+    50% {transform: rotate(285deg) translate(50px);}
+    52.77777778% {transform: rotate(295deg) translate(50px);}
+55.55555556% {transform: rotate(305deg) translate(50px);}
+    58.33333333% {transform: rotate(315deg) translate(50px);}
+    61.11111111% {transform: rotate(325deg) translate(50px);}
+    63.88888889% {transform: rotate(335deg) translate(50px);}
+    66.66666667% {transform: rotate(345deg) translate(50px);}
+    69.44444445% {transform: rotate(355deg) translate(50px);}
+    72.22222222% {transform: rotate(365deg) translate(50px);}
+    75% {transform: rotate(375deg) translate(50px);}
+    77.77777778% {transform: rotate(385deg) translate(50px);}
+    80.55555556% {transform: rotate(395deg) translate(50px);}
+83.33333333% {transform: rotate(405deg) translate(50px);}
+    86.11111111% {transform: rotate(415deg) translate(50px);}
+    88.88888889% {transform: rotate(425deg) translate(50px);}
+    91.66666667% {transform: rotate(435deg) translate(50px);}
+    94.44444445% {transform: rotate(445deg) translate(50px);}
+    97.22222222% {transform: rotate(455deg) translate(50px);}
+    100% {transform: rotate(465deg) translate(50px);}
+}
+
+.rounded:nth-child(1){
+    transform: rotate(0deg) translate(50px);
+    animation-name: rotate1;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.rounded:nth-child(2){
+    transform: rotate(15deg) translate(50px);
+    animation-name: rotate2;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.rounded:nth-child(3){
+    transform: rotate(30deg) translate(50px);
+    animation-name: rotate3;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.rounded:nth-child(4){
+    transform: rotate(45deg) translate(50px);
+    animation-name: rotate4;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.rounded:nth-child(5){
+    transform: rotate(60deg) translate(50px);
+    animation-name: rotate5;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.rounded:nth-child(6){
+    transform: rotate(75deg) translate(50px);
+    animation-name: rotate6;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.rounded:nth-child(7){
+    transform: rotate(90deg) translate(50px);
+    animation-name: rotate7;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.rounded:nth-child(8){
+    transform: rotate(105deg) translate(50px);
+    animation-name: rotate8;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.landing-button{
+    transition: 1s ease-in-out;
+}
+
+.sign-in-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

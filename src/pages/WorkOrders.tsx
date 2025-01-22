@@ -62,26 +62,23 @@ const WorkOrders: React.FC = ()=>{
 
         setData(tempdata)
 
-        const priority1 = workOrders?.filter((wo: WorkOrder)=>wo.Priority==1).length
-        const priority2 = workOrders?.filter((wo: WorkOrder)=>wo.Priority==2).length
-        const priority3 = workOrders?.filter((wo: WorkOrder)=>wo.Priority==3).length
-        const priority4 = workOrders?.filter((wo: WorkOrder)=>wo.Priority==4).length
+        const priority1 = workOrders?.filter((wo: WorkOrder)=>wo.Device.DevicePriorityState.PriorityCode=="LIFE_SUPPORTING").length
+        const priority2 = workOrders?.filter((wo: WorkOrder)=>wo.Device.DevicePriorityState.PriorityCode=="HIGH_RISK").length
+        const priority3 = workOrders?.filter((wo: WorkOrder)=>wo.Device.DevicePriorityState.PriorityCode=="NONE_LIFE_SUPPORTING").length
 
         const tempdatap = {
           labels: [
             'Priority 1',
             'Priority 2',
             'Priority 3',
-            'Priority 4',
           ],
           datasets: [{
             label: 'Work orders',
-            data: [priority1, priority2, priority3, priority4],
+            data: [priority1, priority2, priority3],
             backgroundColor: [
               'rgb(255, 99, 132)',
               'rgb(54, 162, 235)',
               'rgb(26, 216, 0)',
-              'rgb(14, 68, 236)'
             ],
             hoverOffset: 4
           }]
@@ -141,7 +138,8 @@ const WorkOrders: React.FC = ()=>{
             <div className="card-body p-3">
                 <ListGroup variant="flush">
                     <ListGroup.Item action onClick={handleCreateWOShow}>Create Work Order</ListGroup.Item>
-                    <ListGroup.Item action><Link to="/clinical-engineering-report">Update Work Order</Link></ListGroup.Item>
+                    <ListGroup.Item action><Link to="/clinical-engineering-report">View Faulty Equipment Work Orders</Link></ListGroup.Item>
+                    <ListGroup.Item action><Link to="/clinical-engineering-report">View Maintenance Work Orders</Link></ListGroup.Item>
                 </ListGroup>
             </div>
           </div>

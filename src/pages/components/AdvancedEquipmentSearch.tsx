@@ -8,9 +8,10 @@ type Props = {
 
 const AdvancedEquipmentSearch: React.FC<Props> = ({show, handleClose})=>{
     return <Modal show={show} onHide={handleClose} fullscreen={true}>
-    <Modal.Header closeButton>
+    <Modal.Header className="d-flex justify-content-around">
         {/* <Row><Col style={{justifyContent: 'left', display: 'flex', alignItems: 'left'}}><span className="align-right">Close</span></Col></Row> */}
       <Modal.Title>Advanced Search</Modal.Title>
+      <button className="danger-button" type="button" onClick={handleClose}>Close</button>
     </Modal.Header>
     <Modal.Body>
         <Form>

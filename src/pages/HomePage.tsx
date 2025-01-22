@@ -53,8 +53,7 @@ const HomePage: React.FC = ()=>{
           <div className="card card-carousel overflow-hidden h-100 p-0">
             <div id="carouselExampleCaptions" className="carousel slide h-100" data-bs-ride="carousel">
               <div className="carousel-inner border-radius-lg h-100">
-                <div className="carousel-item h-100 active" style={{ backgroundImage: "url('../assets/img/carousel-1.jpg')",
-      backgroundSize: "cover" }}>
+                <div className="carousel-item h-100 active carousel-color-1">
                   <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-camera-compact text-dark opacity-10"></i>
@@ -63,24 +62,22 @@ const HomePage: React.FC = ()=>{
                     <p>Explore equipment data with detailed information to keep track of performance</p>
                   </div>
                 </div>
-                <div className="carousel-item h-100" style={{ backgroundImage: "url('/assets/img/carousel-2.jpg')",
-      backgroundSize: "cover"}}>
+                <div className="carousel-item h-100 carousel-color-2">
                   <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-bulb-61 text-dark opacity-10"></i>
                     </div>
-                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
-                    <p>Explore equipment data with detailed information to keep track of performance</p>
+                    <h5 className="text-white mb-1">Schedule tasks</h5>
+                    <p>Schedule maintenance performed on devices and assign to engineers</p>
                   </div>
                 </div>
-                <div className="carousel-item h-100" style={{backgroundImage: "url('/assets/img/carousel-3.jpg')",
-      backgroundSize: "cover"}}>
+                <div className="carousel-item h-100 carousel-color-3">
                   <div className="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                     <div className="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                       <i className="ni ni-trophy text-dark opacity-10"></i>
                     </div>
-                    <h5 className="text-white mb-1">Get started with B-Mems</h5>
-                    <p>Explore equipment data with detailed information to keep track of performance</p>
+                    <h5 className="text-white mb-1">Be Informed</h5>
+                    <p>Work order history help with more understanding on device performances</p>
                   </div>
                 </div>
               </div>
@@ -104,14 +101,14 @@ const HomePage: React.FC = ()=>{
             <QuickLinkCard title="Work Orders" icon="skill-icons:workers-light" onClick={()=>onLinkClick('/work-orders')} />
         </div>
         <div className="col-3">
-            <QuickLinkCard title="Equipment Listing" icon="devicon:trpc" onClick={()=>onLinkClick('/equipment-listing')} />
+            <QuickLinkCard title="Device Management" icon="devicon:trpc" onClick={()=>onLinkClick('/equipment-listing')} />
         </div>
         <div className="col-3">
-            <QuickLinkCard title="Work Order Cost/Hour" icon="logos:baseline" onClick={()=>onLinkClick('/work-orders')} />
+            <QuickLinkCard title="User Management" icon="logos:baseline" onClick={()=>onLinkClick('/user-management')} />
         </div>
-        <div className="col-3">
+        {/* <div className="col-3">
             <QuickLinkCard title="Preventative Maintenance (PM)" icon="vscode-icons:file-type-config" onClick={()=>onLinkClick('/preventative-maintenance')} />
-        </div>
+        </div> */}
       </div>
       <div className="row mt-4" style={{width: '100%'}}>
         <div className="col-12">

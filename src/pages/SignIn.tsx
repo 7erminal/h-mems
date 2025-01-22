@@ -1,26 +1,35 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const SignIn: React.FC = ()=>{
+    const navigate = useNavigate();
+
     return <div className="sign-in-page">
+        <div className="sign-in-background" style={{backgroundImage: "url('/assets/img/microscope-772297_1280.jpg')", backgroundPosition: 'center', backgroundSize: 'cover', filter: "brightness(30%)"}}></div>
         <Container style={{height: '100%'}}>
             <Row style={{height: '100%'}}>
-                <Col xs={12} md={6} style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <Col xs={12} md={4} style={{justifyContent: 'center', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                    {/* <div className="sign-in-pic" style={{backgroundImage: "url('/assets/img/microscope-772297_1280.jpg')", backgroundPosition: 'center', backgroundSize: 'cover'}}>
+
+                    </div> */}
+                </Col>
+                <Col xs={12} md={4} style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Container>
-                        <Row>
-                            <Col style={{justifyContent: 'center', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                                <div className="my-4">
-                                    <img src="/assets/img/logos/h-mems.png" className="navbar-brand-img" alt="main_logo" style={{width: '120px'}} />
-                                </div>
-                            </Col>
-                        </Row>
                         <Row>
                             <Col xs={12} md={12}>
                                 <div className="card z-index-2 sign-in-card">
-                                    <Form>
+                                    <Row>
+                                        <Col style={{justifyContent: 'center', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                                            <div className="my-4">
+                                                <img src="/assets/img/logos/h-mems.png" className="navbar-brand-img" alt="main_logo" style={{width: '120px'}} />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <Form onSubmit={()=>{ navigate("/dashboard") }}>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <Form.Label>Email address</Form.Label>
-                                            <Form.Control type="email" placeholder="Enter email" />
+                                            <Form.Control type="email" placeholder="Enter email" required />
                                             <Form.Text className="text-muted">
                                             We'll never share your email with anyone else.
                                             </Form.Text>
@@ -28,7 +37,7 @@ const SignIn: React.FC = ()=>{
 
                                         <Form.Group className="mb-3" controlId="formBasicPassword">
                                             <Form.Label>Password</Form.Label>
-                                            <Form.Control type="password" placeholder="Password" />
+                                            <Form.Control type="password" placeholder="Password" required/>
                                         </Form.Group>
                                         {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                             <Form.Check type="checkbox" label="Check me out" />
@@ -42,10 +51,10 @@ const SignIn: React.FC = ()=>{
                         </Row>
                     </Container>
                 </Col>
-                <Col xs={12} md={6} style={{justifyContent: 'center', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                    <div className="sign-in-pic" style={{backgroundImage: "url('/assets/img/microscope-772297_1280.jpg')", backgroundPosition: 'center', backgroundSize: 'cover'}}>
+                <Col xs={12} md={4} style={{justifyContent: 'center', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                    {/* <div className="sign-in-pic" style={{backgroundImage: "url('/assets/img/microscope-772297_1280.jpg')", backgroundPosition: 'center', backgroundSize: 'cover'}}>
 
-                    </div>
+                    </div> */}
                 </Col>
             </Row>
         </Container>

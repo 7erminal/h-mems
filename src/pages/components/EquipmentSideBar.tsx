@@ -26,19 +26,19 @@ const EquipmentSideBar: React.FC = ()=>{
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentSubPage=="add equipment" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing', 'add equipment')} to="/equipment-listing">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i className="ni ni-credit-card text-success text-sm opacity-10"></i>
-            </div>
-            <span className="nav-link-text ms-1">Add Equipment</span>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className={ appContext?.currentSubPage=="pending equipment work orders" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing', 'pending equipment work orders')} to="/equipment-work-orders">
+          <Link className={ appContext?.currentSubPage=="pending equipment work orders" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing', 'maintenance')} to="/equipment-list">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <Icon icon="skill-icons:workers-light" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Pending Work Orders</span>
+            <span className="nav-link-text ms-1">Incoming Maintenance</span>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentSubPage=="pending equipment work orders" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('equipment-listing', 'faulty')} to="/equipment-list">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <Icon icon="skill-icons:workers-light" height={400} />
+            </div>
+            <span className="nav-link-text ms-1">Faulty Equipment</span>
           </Link>
         </li>
         <li className="nav-item mt-3">

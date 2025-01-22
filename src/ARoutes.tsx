@@ -14,6 +14,9 @@ import ViewEquipmentDetails from "./pages/ViewEquipmentDetails.tsx";
 import ApplicationContext from "./resources/contexts/ApplicationContext";
 import ViewWorkOrderDetails from "./pages/ViewWorkOrderDetails.tsx";
 import SignIn from "./pages/SignIn.tsx";
+import DepartmentsPage from "./pages/DepartmentsPage.tsx";
+import EquipmentListPage from "./pages/EquipmentListPage.tsx";
+import LandingPage from "./pages/LandingPage.tsx";
 
 
 const ARoutes: React.FC = () => {
@@ -24,7 +27,8 @@ const ARoutes: React.FC = () => {
                 <Routes>
                     {/* <Route path="*" element={<NotFoundPage />} /> */}
                     {/* <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} /> */}
-                    <Route path='/' element={<HomePage />} />
+                    <Route path='/' element={<LandingPage />} />
+                    <Route path='/dashboard' element={<HomePage />} />
                     <Route path='/clinical-engineering-report' element={<ClinicalEngineeringMonthlyReport />} />
                     <Route path='/equipment-listing' element={<EquipmentListing />} />
                     <Route path='/work-orders' element={<WorkOrders />} />
@@ -32,6 +36,8 @@ const ARoutes: React.FC = () => {
                     <Route path='/equipment-details' element={<ViewEquipmentDetails eqDetails={appContext?.selectedEquipment} />} />
                     <Route path='/work-order-details' element={<ViewWorkOrderDetails woDetails={appContext?.selectedWorkOrder} />} />
                     <Route path='/equipment-work-orders' element={<WorkOrdersListing />} />
+                    <Route path='/equipment-list' element={<EquipmentListPage />} />
+                    <Route path='/departments' element={<DepartmentsPage />} />
                     <Route path='/sign-in' element={<SignIn />} />
                     <Route path="*" element={<Navigate replace to="/" />} />
                 </Routes>

@@ -3,6 +3,21 @@ export type Status = {
     Status: string
 }
 
+export type Priority = {
+    PriorityCode: string
+    PriorityName: string
+}
+
+export type Facility = {
+    FacilityId: number
+    FacilityName: string
+    Departments: Array<Department>
+}
+
+export type FLocation = {
+    Location: string
+}
+
 export type Department = {
     DepartmentId: number
     Department: string
@@ -32,6 +47,7 @@ export type Device = {
     System: string
     Status: Status
     AssignedTo: User | undefined
+    DevicePriorityState: Priority
 }
 
 export type Engineer = {
@@ -64,6 +80,7 @@ export type WorkOrder = {
     Cost: number
     EstimatedCost: number
     OpenedBy: User
+    Notes: Array<Note>
 }
 
 export type WorkOrderFilters = {
@@ -71,4 +88,13 @@ export type WorkOrderFilters = {
     statusFilter: string
     typeFilter: string
     title: string
+}
+
+export type Note = {
+    Note: string
+    dateCreated: string
+    dateModified: string
+    Attachment: string
+    Resolved: boolean
+    Duration: string
 }
