@@ -3,14 +3,13 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { workOrders } from "../utils/data/Data";
 import { ListGroup } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import WorkOrdersTable from "./components/WorkOrdersTable";
 import { statuses } from "../utils/data/Data";
 import CreateWorkOrder from "./components/CreateWorkOrder";
-import WorkOrderSideBar from "./components/WorkOrderSideBar";
 import { WorkOrder } from "../utils/types/Types";
 import { Doughnut } from "react-chartjs-2";
-import QuickLinkCard from "./widgets/QuickLinkCard";
+import SideBar from "./components/SideBar";
 
 const tempdata = {
   labels: [
@@ -31,18 +30,12 @@ const tempdata = {
 };
 
 const WorkOrders: React.FC = ()=>{
-  const navigate = useNavigate()
     const [createWorkOrder, setCreateWorkOrder] = useState(false)
     const [availableWorkOrders, setAvailableWorkOrders] = useState<Array<WorkOrder>>()
     const [data, setData] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
     const [dataPriority, setDataPriority] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
     const [dataCost, setDataCost] = useState<{labels: Array<string>, datasets: Array<{label: string, data: Array<number>, backgroundColor: Array<string>, hoverOffset: number}>}>(tempdata)
 
-    const onLinkClick = (page: string)=>{
-      console.log("Clicked")
-
-      navigate(page);
-    }
 
     useEffect(()=>{
         setAvailableWorkOrders(workOrders)
@@ -127,7 +120,7 @@ const WorkOrders: React.FC = ()=>{
 
     return <>
     <div className="min-height-300 bg-primary position-absolute w-100"></div>
-  <WorkOrderSideBar />
+  <SideBar />
   <main className="main-content position-relative border-radius-lg ">
     <NavBar />
     <div className="container-fluid py-4">
@@ -186,8 +179,8 @@ const WorkOrders: React.FC = ()=>{
             <div className="card-body p-3">
                 <ListGroup variant="flush">
                     <ListGroup.Item action onClick={handleCreateWOShow}>Create Work Order</ListGroup.Item>
-                    <ListGroup.Item action><Link to="/clinical-engineering-report">View Faulty Equipment Work Orders</Link></ListGroup.Item>
-                    <ListGroup.Item action><Link to="/clinical-engineering-report">View Maintenance Work Orders</Link></ListGroup.Item>
+                    <ListGroup.Item action><Link to="/clinical-engineering-report">Assign work order</Link></ListGroup.Item>
+                    {/* <ListGroup.Item action><Link to="/clinical-engineering-report">View Maintenance Work Orders</Link></ListGroup.Item> */}
                 </ListGroup>
             </div>
           </div>
@@ -230,7 +223,7 @@ const WorkOrders: React.FC = ()=>{
         </div>
       </div>
 
-      <div className="row mt-4">
+      {/* <div className="row mt-4">
         <div className="col-3">
             <QuickLinkCard title="PPM" icon="flat-color-icons:steam" onClick={()=>onLinkClick('/equipment-library')} />
         </div>
@@ -242,11 +235,11 @@ const WorkOrders: React.FC = ()=>{
         </div>
         <div className="col-3">
             <QuickLinkCard title="Work Order Reports" icon="flat-color-icons:statistics" onClick={()=>onLinkClick('/equipment-library')} />
-        </div>
+        </div> */}
         {/* <div className="col-3">
             <QuickLinkCard title="Preventative Maintenance (PM)" icon="vscode-icons:file-type-config" onClick={()=>onLinkClick('/preventative-maintenance')} />
         </div> */}
-      </div>
+      {/* </div> */}
       
       <div className="row mt-4" style={{width: '100%'}}>
         <div className="col-12">

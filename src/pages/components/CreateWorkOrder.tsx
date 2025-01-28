@@ -39,7 +39,7 @@ const CreateWorkOrder: React.FC<Props> = ({show, handleClose})=>{
     </Modal.Header>
     <Modal.Body>
         <Form>
-            <Row className="mt-2">
+            {/* <Row className="mt-2">
                 <FloatingLabel
                         controlId="floatingInput"
                         label="Priority"
@@ -51,7 +51,7 @@ const CreateWorkOrder: React.FC<Props> = ({show, handleClose})=>{
                         <option value="3">3</option>
                     </Form.Select>
                 </FloatingLabel>
-            </Row>
+            </Row> */}
             <Row className="mt-2">
                 <Col>
                     <FloatingLabel

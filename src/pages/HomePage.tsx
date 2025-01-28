@@ -2,17 +2,12 @@ import React from "react";
 import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import { useNavigate } from "react-router-dom";
-import QuickLinkCard from "./widgets/QuickLinkCard";
+import Stats from "./components/Stats";
+import QuickLinkCardMain from "./widgets/QuickLinkCardMain";
+import WorkOrderReportGraphs from "./components/WorkOrderReportGraphs";
+import EquipmentReportGraphs from "./components/EquipmentReportGraphs";
 
 const HomePage: React.FC = ()=>{
-    const navigate = useNavigate()
-
-    const onLinkClick = (page: string)=>{
-        console.log("Clicked")
-
-        navigate(page);
-    }
 
     return <>
     <div className="min-height-300 bg-primary position-absolute w-100"></div>
@@ -20,8 +15,12 @@ const HomePage: React.FC = ()=>{
   <main className="main-content position-relative border-radius-lg ">
     <NavBar />
     <div className="container-fluid py-4">
+    <Stats />
+    <QuickLinkCardMain />
+    <WorkOrderReportGraphs />
+      <EquipmentReportGraphs />
       <div className="row mt-4">
-        <div className="col-3">
+        {/* <div className="col-3">
             <QuickLinkCard title="Equipment Library" icon="flat-color-icons:steam" onClick={()=>onLinkClick('/equipment-library')} />
         </div>
         <div className="col-3">
@@ -44,7 +43,7 @@ const HomePage: React.FC = ()=>{
         </div>
         <div className="col-3">
             <QuickLinkCard title="Third Parties" icon="basil:other-1-outline" onClick={()=>onLinkClick('/user-management')} />
-        </div>
+        </div> */}
         {/* <div className="col-3">
             <QuickLinkCard title="Preventative Maintenance (PM)" icon="vscode-icons:file-type-config" onClick={()=>onLinkClick('/preventative-maintenance')} />
         </div> */}

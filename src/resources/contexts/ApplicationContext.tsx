@@ -26,6 +26,13 @@ type ApplicationContextProps = {
     showLoading: boolean | undefined
     handleLoadingClose: ()=>void | undefined
     handleLoadingShow: ()=>void | undefined
+    toggleSidenav: ()=>void
+    pageTrack: string
+    setPageTrack: Dispatch<SetStateAction<string>>
+    subpageTrack: string
+    setSubpageTrack: Dispatch<SetStateAction<string>>
+    sideBarStateChange: boolean
+    setSideBarStateChange: Dispatch<SetStateAction<boolean>>
   }
 
 const ApplicationContext = createContext<ApplicationContextProps | undefined>(undefined);

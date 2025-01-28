@@ -382,6 +382,7 @@ if (iconSidenav) {
 }
 
 function toggleSidenav() {
+  console.log("Togle side nav")
   if (body.classList.contains(className)) {
     body.classList.remove(className);
     setTimeout(function() {

@@ -48,6 +48,8 @@ export type Device = {
     Status: Status
     AssignedTo: User | undefined
     DevicePriorityState: Priority
+    DateCreated: string
+    DateModified: string
 }
 
 export type Engineer = {

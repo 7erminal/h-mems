@@ -5,24 +5,24 @@ import Footer from "./components/Footer";
 import Search from "./widgets/search/search.jsx";
 import { Form } from "react-bootstrap";
 import ApplicationContext from "../resources/contexts/ApplicationContext";
-import EquipmentListTable from "./components/EquipmentListTable";
-import { Device, WorkOrder } from "../utils/types/Types.js";
+import { WorkOrder } from "../utils/types/Types.js";
 import { workOrders } from "../utils/data/Data.js";
 import SideBar from "./components/SideBar.js";
+import EquipmentWorkOrderListTable from "./components/EquipmentWorkOrderListTable.js";
 
-const EquipmentListPage: React.FC = ()=>{
+const EquipmentWorkOrdersPage: React.FC = ()=>{
     const [searchAdvanced, setSearchAdvanced] = useState(false)
     const appContext = useContext(ApplicationContext);
-    const [equipment, setEquipment] = useState<Array<Device>>()
+    const [wo, setWo] = useState<Array<WorkOrder>>()
 
     useEffect(()=>{
-        let tempEquipment: Array<Device> = []
+        let tempWo: Array<WorkOrder> = []
         workOrders.map((wo: WorkOrder)=>{
             wo.WorkOrderType.Type == appContext?.workOrderFilters?.typeFilter ? 
-                tempEquipment.push(wo.Device) : ""
+            tempWo.push(wo) : ""
         })
 
-        setEquipment(tempEquipment)
+        setWo(tempWo)
     },[])
 
     const toggleAdvancedSearch = ()=>{
@@ -70,7 +70,7 @@ const EquipmentListPage: React.FC = ()=>{
               <h6>{appContext?.workOrderFilters?.title}</h6>
             </div>
             <div className="card-body px-0 pt-0 pb-2">
-                <EquipmentListTable equipment={equipment} />
+                <EquipmentWorkOrderListTable wo={wo} />
             </div>
           </div>
         </div>
@@ -82,4 +82,4 @@ const EquipmentListPage: React.FC = ()=>{
     </>
 }
 
-export default EquipmentListPage
+export default EquipmentWorkOrdersPage

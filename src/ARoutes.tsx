@@ -20,6 +20,10 @@ import LandingPage from "./pages/LandingPage.tsx";
 import DashboardPage from "./pages/dashboard.tsx";
 import LoadingOverlay from "./pages/widgets/LoadingOverlay.tsx";
 import EquipmentLibraryPage from "./pages/EquipmentLibraryPage.tsx";
+import StockManagementPage from "./pages/StockManagementPage.tsx";
+import WorkOrdersReportsPage from "./pages/WorkOrdersReportsPage.tsx";
+import EquipmentReportsPage from "./pages/EquipmentReportsPage.tsx";
+import EquipmentWorkOrdersPage from "./pages/EquipmentWorkOrdersPage.tsx";
 
 
 const ARoutes: React.FC = () => {
@@ -36,7 +40,11 @@ const ARoutes: React.FC = () => {
                     <Route path='/clinical-engineering-report' element={<ClinicalEngineeringMonthlyReport />} />
                     <Route path='/equipment-listing' element={<EquipmentListing />} />
                     <Route path='/equipment-library' element={<EquipmentLibraryPage />} />
+                    <Route path='/equipment-work-orders' element={<EquipmentWorkOrdersPage />} />
+                    <Route path='/equipment-reports' element={<EquipmentReportsPage />} />
+                    <Route path='/stock-management' element={<StockManagementPage />} />
                     <Route path='/work-orders' element={<WorkOrders />} />
+                    <Route path='/work-orders-reports' element={<WorkOrdersReportsPage />} />
                     <Route path='/work-orders-listings' element={<WorkOrdersListing />} />
                     <Route path='/equipment-details' element={<ViewEquipmentDetails eqDetails={appContext?.selectedEquipment} />} />
                     <Route path='/work-order-details' element={<ViewWorkOrderDetails woDetails={appContext?.selectedWorkOrder} />} />

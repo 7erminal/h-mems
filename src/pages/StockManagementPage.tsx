@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 // @ts-ignore
 import Search from "./widgets/search/search.jsx";
-import { Form, ListGroup } from "react-bootstrap";
-import EquipmentListTable from "./components/EquipmentListTable.js";
+import { ListGroup } from "react-bootstrap";
 import AdvancedEquipmentSearch from "./components/AdvancedEquipmentSearch.js";
 import { equipment, workOrders } from "../utils/data/Data";
 import { Device, WorkOrder } from "../utils/types/Types";
 import EquipmentStats from "./components/EquipmentStats.js";
 import AddEquipment from "./components/AddEquipment.js";
+import { Link, useNavigate } from "react-router-dom";
 import AddSparePart from "./components/AddSparePart.js";
+import ApplicationContext from "../resources/contexts/ApplicationContext.js";
+import QuickLinkCard from "./widgets/QuickLinkCard.js";
 import SideBar from "./components/SideBar.js";
 
-const EquipmentListing: React.FC = ()=>{
+const StockManagementPage: React.FC = ()=>{
+  const appContext = useContext(ApplicationContext);
+  const navigate = useNavigate()
   const [addEquipmentModal, setAddEquipmentModal] = useState(false)
   const [addSparePartModal, setSparePartModal] = useState(false)
     const [searchAdvanced, setSearchAdvanced] = useState(false)
@@ -22,6 +26,12 @@ const EquipmentListing: React.FC = ()=>{
     useEffect(()=>{
         setAvailableEquipment(equipment);
     },[])
+
+    const onLinkClick = (page: string)=>{
+        console.log("Clicked")
+
+        navigate(page);
+    }
     
     const handleClose = () => setSearchAdvanced(false);
     // const handleShow = () => setSearchAdvanced(true);
@@ -30,15 +40,15 @@ const EquipmentListing: React.FC = ()=>{
     const handleAddEquipmentModalShow = () => setAddEquipmentModal(true);
 
     const handleSparePartModalClose = () => setSparePartModal(false);
-    // const handleSparePartModalShow = () => setSparePartModal(true);
+    const handleSparePartModalShow = () => setSparePartModal(true);
 
-    const toggleAdvancedSearch = ()=>{
-        setSearchAdvanced(!searchAdvanced)
-    }
+    // const toggleAdvancedSearch = ()=>{
+    //     setSearchAdvanced(!searchAdvanced)
+    // }
 
-    const getValue = (value: string)=>{
-      console.log("Value is "+value)
-    }
+    // const getValue = (value: string)=>{
+    //   console.log("Value is "+value)
+    // }
 
     const colors = ['#e74c3c', '#34495e', '#8e44ad']
 
@@ -70,7 +80,9 @@ const EquipmentListing: React.FC = ()=>{
             </div>
             <div className="card-body p-3">
                 <ListGroup variant="flush">
-                    <ListGroup.Item action onClick={handleAddEquipmentModalShow}>Add Equipment</ListGroup.Item>
+                    <ListGroup.Item action onClick={handleAddEquipmentModalShow}>Add Consumable</ListGroup.Item>
+                    <ListGroup.Item action onClick={handleSparePartModalShow}>Add Spare Part</ListGroup.Item>
+                    <ListGroup.Item action onClick={()=>appContext?.showSideNav('equipment-listing', 'maintenance')}><Link to="/equipment-list">Maintenance</Link></ListGroup.Item>
                 </ListGroup>
             </div>
           </div>
@@ -112,41 +124,26 @@ const EquipmentListing: React.FC = ()=>{
           </div>
         </div>
       </div>
-      <div className="row my-4" >
-        <div className="col-xl-12 col-sm-12 mb-xl-0 mb-4">
-          <div className="card">
-            <div className="card-body p-3">
-              <div className="row">
-                <div className="col-12">
-                    {/* <p>Search</p> */}
-                    <Search getValue={getValue} />
 
-                    <Form.Check // prettier-ignore
-                        type="switch"
-                        id="custom-switch"
-                        label="Advanced search"
-                        className="mt-3"
-                        onChange={toggleAdvancedSearch}
-                        checked={searchAdvanced}
-                    />
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="row mt-4">
+        <div className="col-3">
+            <QuickLinkCard title="Stock Control" icon="flat-color-icons:steam" onClick={()=>onLinkClick('/equipment-library')} />
         </div>
-      </div>
-
-      <div className="row mt-4" style={{width: '100%'}}>
-        <div className="col-12">
-          <div className="card mb-4">
-            <div className="card-header pb-0">
-              <h6>Equipment Inventory List Report</h6>
-            </div>
-            <div className="card-body px-0 pt-0 pb-2">
-              <EquipmentListTable equipment={availableEquipment} />
-            </div>
-          </div>
+        <div className="col-3">
+            <QuickLinkCard title="Maintenance Equipment" icon="flat-color-icons:reading-ebook" onClick={()=>onLinkClick('/equipment-library')} />
         </div>
+        <div className="col-3">
+            <QuickLinkCard title="Faulty Equipment" icon="skill-icons:workers-light" onClick={()=>onLinkClick('/equipment-library')} />
+        </div>
+        <div className="col-3">
+            <QuickLinkCard title="Equipment Reports" icon="flat-color-icons:statistics" onClick={()=>onLinkClick('/equipment-library')} />
+        </div>
+        <div className="col-3">
+            <QuickLinkCard title="Schedule Maintenance" icon="flat-color-icons:statistics" onClick={()=>onLinkClick('/equipment-library')} />
+        </div>
+        {/* <div className="col-3">
+            <QuickLinkCard title="Preventative Maintenance (PM)" icon="vscode-icons:file-type-config" onClick={()=>onLinkClick('/preventative-maintenance')} />
+        </div> */}
       </div>
         <AdvancedEquipmentSearch show={searchAdvanced} handleClose={handleClose} />
         <AddEquipment show={addEquipmentModal} handleClose={handleAddEquipmentModalClose} />
@@ -157,4 +154,4 @@ const EquipmentListing: React.FC = ()=>{
     </>
 }
 
-export default EquipmentListing
+export default StockManagementPage

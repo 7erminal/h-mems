@@ -653,3 +653,47 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
     width: 100vw;
     height: 100vh;
 }
+
+@keyframes menuitemreveal {
+    from {transform: translateY(-14px); opacity: 0;}
+    to {transform: translateY(0px); opacity: 1;}
+  }
+  
+
+.menu-items-show{
+    display: block;
+    animation-name: menuitemreveal;
+    animation-duration: 0.2s;
+}
+
+@keyframes menuitemhide {
+    from {transform: translateY(0px); display: block; opacity: 1;}
+    to {transform: translateY(-14px); display: none; opacity: 0;}
+  }
+
+.menu-items-hidden{
+    animation-name: menuitemhide;
+    animation-duration: 0.15s;
+    animation-fill-mode: forwards;
+}
+
+.card-right{
+    border-right: 1px #F0F0F0 solid;
+    padding: 60px;
+    align-items: center;
+    text-align: center;
+}
+
+.card-right:hover, .card-left:hover{
+    cursor: pointer;
+    background-color: #FCFCFC;
+}
+
+.card-left{
+    padding: 60px;
+}
+
+.nav-link-c{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

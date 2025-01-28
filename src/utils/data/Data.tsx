@@ -300,7 +300,9 @@ export var equipment: Array<Device> = [
         System: "Microsoft",
         Status: statuses[0],
         AssignedTo: users[0],
-        DevicePriorityState: priorityList[0]
+        DevicePriorityState: priorityList[0],
+        DateCreated: "2024/02/18",
+        DateModified: "2024/02/18"
     },
     {
         SerialNo: "4400383940",
@@ -316,7 +318,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[1],
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2024/02/11",
+        DateModified: "2024/02/11"
     },
     {
         SerialNo: "4400383941",
@@ -332,7 +336,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[2],
-        DevicePriorityState: priorityList[0]
+        DevicePriorityState: priorityList[0],
+        DateCreated: "2024/01/21",
+        DateModified: "2024/01/26"
     },
     {
         SerialNo: "4400383942",
@@ -348,7 +354,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[3],
-        DevicePriorityState: priorityList[0]
+        DevicePriorityState: priorityList[0],
+        DateCreated: "2023/12/21",
+        DateModified: "2023/12/26"
     },
     {
         SerialNo: "4400383943",
@@ -364,7 +372,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[4],
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/12/18",
+        DateModified: "2023/12/20"
     },
     {
         SerialNo: "4400383944",
@@ -380,7 +390,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[5],
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/12/15",
+        DateModified: "2023/12/16"
     },
     {
         SerialNo: "4400383945",
@@ -396,7 +408,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: undefined,
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/12/09",
+        DateModified: "2023/12/09"
     },
     {
         SerialNo: "1200383956",
@@ -412,7 +426,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: undefined,
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/11/04",
+        DateModified: "2023/11/04"
     },
     {
         SerialNo: "1200383957",
@@ -428,7 +444,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[1],
         AssignedTo: users[6],
-        DevicePriorityState: priorityList[0]
+        DevicePriorityState: priorityList[0],
+        DateCreated: "2023/11/04",
+        DateModified: "2023/11/04"
     },
     {
         SerialNo: "1200383959",
@@ -444,7 +462,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[1],
         AssignedTo: users[7],
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/10/24",
+        DateModified: "2023/10/24"
     },
     {
         SerialNo: "1200383257",
@@ -460,7 +480,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[1],
         AssignedTo: users[8],
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/10/12",
+        DateModified: "2023/10/22"
     },
     {
         SerialNo: "1200383357",
@@ -476,7 +498,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[1],
         AssignedTo: users[9],
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/10/12",
+        DateModified: "2023/10/22"
     },
     {
         SerialNo: "1200383358",
@@ -492,7 +516,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[10],
-        DevicePriorityState: priorityList[0]
+        DevicePriorityState: priorityList[0],
+        DateCreated: "2023/10/02",
+        DateModified: "2023/10/02"
     },
     {
         SerialNo: "4400383841",
@@ -508,7 +534,9 @@ export var equipment: Array<Device> = [
         System: "Microsoft",
         Status: statuses[0],
         AssignedTo: users[0],
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/09/30",
+        DateModified: "2023/10/02"
     },
     {
         SerialNo: "4400383842",
@@ -524,7 +552,9 @@ export var equipment: Array<Device> = [
         System: "Microsoft",
         Status: statuses[0],
         AssignedTo: undefined,
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/09/17",
+        DateModified: "2023/09/27"
     },
     {
         SerialNo: "4400367844",
@@ -540,7 +570,9 @@ export var equipment: Array<Device> = [
         System: "Microsoft",
         Status: statuses[0],
         AssignedTo: undefined,
-        DevicePriorityState: priorityList[0]
+        DevicePriorityState: priorityList[0],
+        DateCreated: "2023/09/01",
+        DateModified: "2023/09/13"
     },
     {
         SerialNo: "4400367844",
@@ -556,7 +588,9 @@ export var equipment: Array<Device> = [
         System: "Microsoft",
         Status: statuses[0],
         AssignedTo: users[0],
-        DevicePriorityState: priorityList[0]
+        DevicePriorityState: priorityList[0],
+        DateCreated: "2023/09/01",
+        DateModified: "2023/09/13"
     },
     {
         SerialNo: "4400367845",
@@ -572,7 +606,9 @@ export var equipment: Array<Device> = [
         System: "Microsoft",
         Status: statuses[0],
         AssignedTo: users[4],
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/09/01",
+        DateModified: "2023/09/13"
     },
     {
         SerialNo: "4400367857",
@@ -588,7 +624,9 @@ export var equipment: Array<Device> = [
         System: "Microsoft",
         Status: statuses[0],
         AssignedTo: users[8],
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/08/29",
+        DateModified: "2023/09/06"
     },
     {
         SerialNo: "4400367858",
@@ -604,7 +642,9 @@ export var equipment: Array<Device> = [
         System: "Microsoft",
         Status: statuses[0],
         AssignedTo: users[9],
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/08/28",
+        DateModified: "2023/09/03"
     },
     {
         SerialNo: "4400367859",
@@ -620,7 +660,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: undefined,
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/08/04",
+        DateModified: "2023/08/25"
     },
     {
         SerialNo: "4400367860",
@@ -636,7 +678,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: undefined,
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/07/20",
+        DateModified: "2023/08/24"
     },
     {
         SerialNo: "4400367860",
@@ -652,7 +696,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: undefined,
-        DevicePriorityState: priorityList[0]
+        DevicePriorityState: priorityList[0],
+        DateCreated: "2023/06/26",
+        DateModified: "2023/07/15"
     },
     {
         SerialNo: "4400367865",
@@ -668,7 +714,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: undefined,
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/06/15",
+        DateModified: "2023/06/24"
     },
     {
         SerialNo: "4400367867",
@@ -684,7 +732,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[7],
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/06/01",
+        DateModified: "2023/06/05"
     },
     {
         SerialNo: "4400367868",
@@ -700,7 +750,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[6],
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/05/31",
+        DateModified: "2023/07/20"
     },
     {
         SerialNo: "4400367820",
@@ -716,7 +768,9 @@ export var equipment: Array<Device> = [
         System: "Unix",
         Status: statuses[0],
         AssignedTo: users[3],
-        DevicePriorityState: priorityList[1]
+        DevicePriorityState: priorityList[1],
+        DateCreated: "2023/06/27",
+        DateModified: "2023/08/28"
     },
     {
         SerialNo: "4400367868",
@@ -732,7 +786,9 @@ export var equipment: Array<Device> = [
         System: "Android",
         Status: statuses[0],
         AssignedTo: users[2],
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/05/14",
+        DateModified: "2023/06/25"
     },
     {
         SerialNo: "4400367867",
@@ -748,7 +804,9 @@ export var equipment: Array<Device> = [
         System: "Android",
         Status: statuses[0],
         AssignedTo: users[0],
-        DevicePriorityState: priorityList[2]
+        DevicePriorityState: priorityList[2],
+        DateCreated: "2023/05/01",
+        DateModified: "2023/08/26"
     },
 ];
 
