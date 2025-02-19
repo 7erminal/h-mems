@@ -22,7 +22,7 @@ const KRoutes: React.FC = () => {
                     {/* <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} /> */}
                     <Route path='/1/*' element={<TRoutes />} />
                     <Route path='/2/*' element={<ARoutes />} />
-                    <Route path="*" element={<Navigate replace to="/" />} />
+                    <Route path="*" element={<Navigate replace to="/1" />} />
                 </Routes>
                 {/* <Invoice showModal={showInvoice} handleClose={handleShowInvoiceModalClose} invoice={selectedInvoice} />
                 <NotififcationModal notificationProps={appContext!.notificationProps!} />
