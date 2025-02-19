@@ -1,5 +1,4 @@
 import React from "react";
-import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Stats from "./components/Stats";
@@ -8,10 +7,23 @@ import WorkOrderReportGraphs from "./components/WorkOrderReportGraphs";
 import EquipmentReportGraphs from "./components/EquipmentReportGraphs";
 
 const HomePage: React.FC = ()=>{
+  // useEffect(()=>{
+  //   console.log("Logged in value is "+sessionStorage.getItem("isLoggedIn"))
+  //   if(sessionStorage.getItem("isLoggedIn") == null || sessionStorage.getItem("isLoggedIn") != "true"){
+  //     console.log("Null status...redirecting to sign in")
+  //     if(!window.location.pathname.includes("sign-in")){
+  //       sessionStorage.setItem("url", window.location.pathname)
+  //     }
+      
+  //     navigate("/1/sign-in");
+  //   } else {
+  //     console.log("Not null status. User is logged in")
+  //     authContext?.toggleIsLoggedIn(true)
+  //   }
+
+  // },[])
 
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100"></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg ">
     <NavBar />
     <div className="container-fluid py-4">

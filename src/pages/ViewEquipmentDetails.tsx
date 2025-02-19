@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
-import EquipmentSideBar from "./components/EquipmentSideBar";
 import NavBar from "./components/NavBar";
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { Device, WorkOrder } from "../utils/types/Types";
@@ -62,8 +61,6 @@ const ViewEquipmentDetails: React.FC<Props> = ({eqDetails})=>{
     },[])
     
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100"></div>
-  <EquipmentSideBar />
   <main className="main-content position-relative border-radius-lg ">
     <NavBar />
     <div className="container-fluid py-4">

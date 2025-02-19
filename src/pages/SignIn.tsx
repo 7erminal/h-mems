@@ -1,19 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ApplicationContext from "../resources/contexts/ApplicationContext";
+import AuthContext from "../resources/contexts/AuthContext";
 
 const SignIn: React.FC = ()=>{
     const navigate = useNavigate();
     const appContext = useContext(ApplicationContext);
+    const authContext = useContext(AuthContext);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+    const [showError, setShowError] = useState(false)
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        appContext?.handleLoadingShow()
-        setTimeout(()=>{
-            appContext?.handleLoadingClose()
-            navigate("/home")
-        }, 2000)
+        // appContext?.loadingShow()
+        var resp = await authContext?.signIn()
+        // appContext?.loadingClose()
+        if(resp == true){
+            navigate("/2/home")
+        } else {
+            setTimeout(()=>{
+                setShowError(false)
+              },5000)
+            setShowError(true)
+        }
     }
 
     return <div className="sign-in-page">
@@ -37,10 +47,18 @@ const SignIn: React.FC = ()=>{
                                             </div>
                                         </Col>
                                     </Row>
+                                    {
+                                        showError == true ?
+                                        <Row>
+                                            <Col style={{justifyContent: 'center', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                                                <p style={{color: 'red'}}>{appContext?.errorMessage}</p>
+                                            </Col>
+                                        </Row> : ''
+                                    }
                                     <Form onSubmit={(e)=>handleSubmit(e)}>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <Form.Label>Email address</Form.Label>
-                                            <Form.Control type="email" placeholder="Enter email" required />
+                                            <Form.Control value={authContext?.email} onChange={(e)=>authContext?.setEmail(e.target.value)} type="email" placeholder="Enter email" required />
                                             <Form.Text className="text-muted">
                                             We'll never share your email with anyone else.
                                             </Form.Text>
@@ -48,7 +66,7 @@ const SignIn: React.FC = ()=>{
 
                                         <Form.Group className="mb-3" controlId="formBasicPassword">
                                             <Form.Label>Password</Form.Label>
-                                            <Form.Control type="password" placeholder="Password" required/>
+                                            <Form.Control value={authContext?.password} onChange={(e)=>authContext?.setPassword(e.target.value)} type="password" placeholder="Password" required/>
                                         </Form.Group>
                                         {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                             <Form.Check type="checkbox" label="Check me out" />

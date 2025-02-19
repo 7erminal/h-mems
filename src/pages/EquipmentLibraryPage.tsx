@@ -12,7 +12,6 @@ import AddEquipment from "./components/AddEquipment.js";
 import { Link } from "react-router-dom";
 import AddSparePart from "./components/AddSparePart.js";
 import ApplicationContext from "../resources/contexts/ApplicationContext.js";
-import SideBar from "./components/SideBar.js";
 import EquipmentReportGraphs from "./components/EquipmentReportGraphs.js";
 
 const EquipmentLibraryPage: React.FC = ()=>{
@@ -46,8 +45,6 @@ const EquipmentLibraryPage: React.FC = ()=>{
     const colors = ['#e74c3c', '#34495e', '#8e44ad']
 
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100" style={{width: '100vw', top: '0'}}></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg">
   <NavBar />
     <div className="container-fluid py-4" >

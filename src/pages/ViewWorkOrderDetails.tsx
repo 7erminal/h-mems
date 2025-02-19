@@ -6,7 +6,6 @@ import 'chart.js/auto';
 import EquipmentListTable from "./components/EquipmentListTable";
 import UpdateWorkOrder from "./components/UpdateWorkOrder";
 import WorkOrderNotes from "./components/WorkOrderNotes";
-import SideBar from "./components/SideBar";
 
 type Props = {
     woDetails: WorkOrder | undefined
@@ -25,8 +24,6 @@ const ViewWorkOrderDetails: React.FC<Props> = ({woDetails})=>{
     const handleShowUpdateModal = () => setShowProvideUpdate(true);
     
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100"></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg ">
     <NavBar />
     <div className="container-fluid py-4">

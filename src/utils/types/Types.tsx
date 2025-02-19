@@ -1,3 +1,29 @@
+export type Address = {
+    country: string
+    region: string
+    city: string
+    address: string
+    district: string
+    subDistrict: string
+}
+
+export type Contact = {
+    email: string
+    phoneNumber: string
+}
+
+export type User = {
+    id: number | undefined
+    address: Address | undefined
+    token: string | undefined
+    fullName: string | undefined
+    email: string | undefined
+    phoneNumber: string | undefined
+    Department: Department | undefined
+    hospital: string | undefined
+    roles: Array<string> | undefined
+}
+
 export type Status = {
     StatusId: number
     Status: string
@@ -8,10 +34,37 @@ export type Priority = {
     PriorityName: string
 }
 
+export type Institution = {
+    id: string
+    name: string
+    status: string
+    type: string
+    address: Address | undefined
+    code: string
+    contact: Contact | undefined
+    description: string
+    createdDate: string
+    website: string
+}
+
+export type Hospital = {
+    id: string
+    institutionName: string
+    name: string
+    status: string
+    type: string
+    address: Address | undefined
+    code: string
+    contact: Contact | undefined
+    description: string
+    createdDate: string
+    website: string
+}
+
 export type Facility = {
     FacilityId: number
     FacilityName: string
-    Departments: Array<Department>
+    Departments: Array<DepartmentT>
 }
 
 export type FLocation = {
@@ -19,17 +72,25 @@ export type FLocation = {
 }
 
 export type Department = {
+    id: string
+    name: string
+    description: string
+    status: string
+    createdDate: string
+}
+
+export type DepartmentT = {
     DepartmentId: number
     Department: string
     DepartmentPhone: string
 }
 
-export type User = {
+export type UserT = {
     UserId: number
     Username: string
     Password: string
     FullName: string
-    Department: Department
+    Department: DepartmentT
     Phone: string
 }
 
@@ -46,7 +107,7 @@ export type Device = {
     Class: string
     System: string
     Status: Status
-    AssignedTo: User | undefined
+    AssignedTo: UserT | undefined
     DevicePriorityState: Priority
     DateCreated: string
     DateModified: string
@@ -81,7 +142,7 @@ export type WorkOrder = {
     Description: string
     Cost: number
     EstimatedCost: number
-    OpenedBy: User
+    OpenedBy: UserT
     Notes: Array<Note>
 }
 

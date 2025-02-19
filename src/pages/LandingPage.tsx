@@ -19,7 +19,7 @@ const LandingPage: React.FC = ()=>{
         <div className="centerDiv">
             {
                 showButton ? 
-                <Button className="landing-button" style={{display: showButton == true ? "block" : "none"}} onClick={()=>{ navigate("/sign-in") }}>Continue</Button> : 
+                <Button className="landing-button" style={{display: showButton == true ? "block" : "none"}} onClick={()=>{ navigate("/1/sign-in") }}>Continue</Button> : 
                 <div className="larger-circle">
                 <div className="rounded"></div>
                 <div className="rounded"></div>

@@ -13,7 +13,6 @@ import { Link, useNavigate } from "react-router-dom";
 import AddSparePart from "./components/AddSparePart.js";
 import ApplicationContext from "../resources/contexts/ApplicationContext.js";
 import QuickLinkCard from "./widgets/QuickLinkCard.js";
-import SideBar from "./components/SideBar.js";
 
 const StockManagementPage: React.FC = ()=>{
   const appContext = useContext(ApplicationContext);
@@ -53,8 +52,6 @@ const StockManagementPage: React.FC = ()=>{
     const colors = ['#e74c3c', '#34495e', '#8e44ad']
 
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100" style={{width: '100vw', top: '0'}}></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg">
   <NavBar />
     <div className="container-fluid py-4" >

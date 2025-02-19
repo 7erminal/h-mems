@@ -11,7 +11,6 @@ import { Device, WorkOrder } from "../utils/types/Types";
 import EquipmentStats from "./components/EquipmentStats.js";
 import AddEquipment from "./components/AddEquipment.js";
 import AddSparePart from "./components/AddSparePart.js";
-import SideBar from "./components/SideBar.js";
 
 const EquipmentListing: React.FC = ()=>{
   const [addEquipmentModal, setAddEquipmentModal] = useState(false)
@@ -43,8 +42,6 @@ const EquipmentListing: React.FC = ()=>{
     const colors = ['#e74c3c', '#34495e', '#8e44ad']
 
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100" style={{width: '100vw', top: '0'}}></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg">
   <NavBar />
     <div className="container-fluid py-4" >

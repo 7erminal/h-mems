@@ -38,7 +38,7 @@ const SideBar: React.FC = ()=>{
     return <aside className="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div className="sidenav-header">
       <i className="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a className="navbar-brand m-0" href="/homd" target="_blank">
+      <a className="navbar-brand m-0" href="/2/home" target="_blank">
         <img src="/assets/img/logos/h-mems.png" className="navbar-brand-img h-100" alt="main_logo" />
         <span className="ms-1 font-weight-bold">B-MEMS</span>
       </a>
@@ -47,7 +47,7 @@ const SideBar: React.FC = ()=>{
     <div className="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="home" ? "nav-link  active" : "nav-link"} to="/home" onClick={()=>toggleMenu('home','')}>
+          <Link className={ appContext?.currentPage=="home" ? "nav-link  active" : "nav-link"} to="/2/home" onClick={()=>toggleMenu('home','')}>
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -55,22 +55,25 @@ const SideBar: React.FC = ()=>{
           </Link>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="equipment-library" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('equipment-library','')} to="/equipment-library">
+          <Link className={ appContext?.currentPage=="equipment-library" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('equipment-library','')} to="/2/equipment-library">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <Icon icon="flat-color-icons:steam" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Equipment <br/>Management</span> &nbsp;&nbsp;{ appContext?.currentPage=="equipment-library" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
+            <span className="nav-link-text ms-1">Medical <br/>Equipment <br/>Management</span> &nbsp;&nbsp;{ appContext?.currentPage=="equipment-library" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
           </Link>
           <div className={ appContext?.currentPage=="equipment-library" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
               <ListGroup variant="flush">
-                <ListGroup.Item action><Link className={ appContext?.currentSubPage=="equipment-listing" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("equipment-library","equipment-listing")} to="/equipment-listing"><Icon icon="fluent-color:library-24" height={15} /> &nbsp;&nbsp;Equipment library</Link></ListGroup.Item>
-                <ListGroup.Item action><Link className={ appContext?.currentSubPage=="maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('equipment-library','maintenance')} to="/equipment-work-orders"><Icon icon="flowbite:fix-tables-outline" height={15} /> &nbsp;&nbsp;Asset Maintenance</Link></ListGroup.Item>
+                <ListGroup.Item action><Link className={ appContext?.currentSubPage=="equipment-listing" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("equipment-library","equipment-listing")} to="/2/equipment-listing"><Icon icon="fluent-color:library-24" height={15} /> &nbsp;&nbsp;Equipment library</Link></ListGroup.Item>
+                <ListGroup.Item action><Link className={ appContext?.currentSubPage=="maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('equipment-library','maintenance')} to="/2/equipment-work-orders"><Icon icon="flowbite:fix-tables-outline" height={15} /> &nbsp;&nbsp;Equipment Maintenance</Link></ListGroup.Item>
+                <ListGroup.Item action><Link className={ appContext?.currentSubPage=="maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('equipment-library','maintenance')} to="/2/equipment-work-orders"><Icon icon="flowbite:fix-tables-outline" height={15} /> &nbsp;&nbsp;Equipment Maintenance tracking</Link></ListGroup.Item>
+                <ListGroup.Item action><Link className={ appContext?.currentSubPage=="maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('equipment-library','maintenance')} to="/2/equipment-work-orders"><Icon icon="flowbite:fix-tables-outline" height={15} /> &nbsp;&nbsp;Loan equipment</Link></ListGroup.Item>
+                <ListGroup.Item action><Link className={ appContext?.currentSubPage=="maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('equipment-library','maintenance')} to="/2/equipment-work-orders"><Icon icon="flowbite:fix-tables-outline" height={15} /> &nbsp;&nbsp;RFID & Asset tracking</Link></ListGroup.Item>
                 <hr />
               </ListGroup>
             </div>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('reports','')} to="/clinical-engineering-report">
+          <Link className={ appContext?.currentPage=="reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('reports','')} to="/2/clinical-engineering-report">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <Icon icon="flat-color-icons:statistics" height={400} />
             </div>
@@ -78,39 +81,94 @@ const SideBar: React.FC = ()=>{
           </Link>
           <div className={ appContext?.currentPage=="reports" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
               <ListGroup variant="flush">
-                <ListGroup.Item><Link className={ appContext?.currentSubPage=="equipment-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/equipment-reports"><Icon icon="file-icons:graphite" height={15} /> &nbsp;&nbsp;Equipment reports</Link></ListGroup.Item>
-                <ListGroup.Item><Link className={ appContext?.currentSubPage=="work-orders-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","work-orders-reports")} to="/work-orders-reports"><Icon icon="skill-icons:graphql-light" height={15} /> &nbsp;&nbsp;Work order reports</Link></ListGroup.Item>
-                <ListGroup.Item><Link className={ appContext?.currentSubPage=="stock-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-listing")} to="/equipment-listing"><Icon icon="fxemoji:stockchart" height={15} /> &nbsp;&nbsp;Stock reports</Link></ListGroup.Item>
-                <ListGroup.Item><Link className={ appContext?.currentSubPage=="cost-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-listing")} to="/equipment-listing"><Icon icon="file-icons:grapher" height={15} /> &nbsp;&nbsp;Cost reports</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="equipment-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="file-icons:graphite" height={15} /> &nbsp;&nbsp;Equipment reports</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="work-orders-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","work-orders-reports")} to="/2/work-orders-reports"><Icon icon="skill-icons:graphql-light" height={15} /> &nbsp;&nbsp;Work order reports</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="stock-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="fxemoji:stockchart" height={15} /> &nbsp;&nbsp;Stock reports</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="cost-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="file-icons:grapher" height={15} /> &nbsp;&nbsp;Cost reports</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="cost-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="file-icons:grapher" height={15} /> &nbsp;&nbsp;Other reports</Link></ListGroup.Item>
               </ListGroup>
             </div>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="wo" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('wo','')} to="/work-orders">
+          <Link className={ appContext?.currentPage=="wo" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('wo','')} to="/2/work-orders">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <Icon icon="skill-icons:workers-light" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Work Orders</span> &nbsp;&nbsp;{ appContext?.currentPage=="wo" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
+            <span className="nav-link-text ms-1">Work Order Management</span> &nbsp;&nbsp;{ appContext?.currentPage=="wo" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
           </Link>
           <div className={ appContext?.currentPage=="wo" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
               <ListGroup variant="flush">
-                <ListGroup.Item><Link className={ appContext?.currentSubPage=="pending work orders" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("wo","pending work orders")} to="/work-orders-listings"><Icon icon="fluent-emoji:open-book" height={15} /> &nbsp;&nbsp;Open work orders</Link></ListGroup.Item>
-                <ListGroup.Item><Link className={ appContext?.currentSubPage=="preventative maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("wo","preventative maintenance")} to="/work-orders-listings"><Icon icon="fluent-emoji-flat:stop-button" height={15} /> &nbsp;&nbsp;Preventive maintenance</Link></ListGroup.Item>
-                <ListGroup.Item><Link className={ appContext?.currentSubPage=="corrective maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("wo","preventative maintenance")} to="/work-orders-listings"><Icon icon="fluent:autocorrect-20-filled" height={15} /> &nbsp;&nbsp;Corrective maintenance</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="pending work orders" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("wo","pending work orders")} to="/2/work-orders-listings"><Icon icon="fluent-emoji:open-book" height={15} /> &nbsp;&nbsp;Open work orders</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="preventative maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("wo","preventative maintenance")} to="/2/work-orders-listings"><Icon icon="fluent-emoji-flat:stop-button" height={15} /> &nbsp;&nbsp;Preventive maintenance</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="corrective maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("wo","preventative maintenance")} to="/2/work-orders-listings"><Icon icon="fluent:autocorrect-20-filled" height={15} /> &nbsp;&nbsp;Corrective maintenance</Link></ListGroup.Item>
               </ListGroup>
             </div>
         </li>
         <li style={{wordWrap: 'break-word'}} className="nav-item">
-          <Link style={{wordWrap: 'break-word'}} className={ appContext?.currentPage=="stock-management" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('stock-management','')} to="/stock-management">
+          <Link style={{wordWrap: 'break-word'}} className={ appContext?.currentPage=="stock-management" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('stock-management','')} to="/2/stock-management">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <Icon icon="fluent-emoji-flat:mobile-phone" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Stock <br/>Management</span> &nbsp;&nbsp;{ appContext?.currentPage=="stock-management" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
+            <span className="nav-link-text ms-1">Spares & Stock <br/>Control</span> &nbsp;&nbsp;{ appContext?.currentPage=="stock-management" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
           </Link>
           <div className={ appContext?.currentPage=="stock-management" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
               <ListGroup variant="flush">
-                <ListGroup.Item><Icon icon="fluent:temperature-20-regular" height={15} /> &nbsp;&nbsp;Consumables</ListGroup.Item>
-                <ListGroup.Item><Icon icon="file-icons:metal" height={15} /> &nbsp;&nbsp;Spares</ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="pending work orders" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("wo","pending work orders")} to="/2/work-orders-listings"><Icon icon="fluent-emoji:open-book" height={15} /> &nbsp;&nbsp;Consumables</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="preventative maintenance" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("wo","preventative maintenance")} to="/2/work-orders-listings"><Icon icon="fluent-emoji-flat:stop-button" height={15} /> &nbsp;&nbsp;Spare parts</Link></ListGroup.Item>
+              </ListGroup>
+            </div>
+        </li>
+        <li className="nav-item mt-3">
+          <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Finance</h6>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentPage=="reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('reports','')} to="/2/clinical-engineering-report">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <Icon icon="flat-color-icons:statistics" height={400} />
+            </div>
+            <span className="nav-link-text ms-1">Cost management<br/>&<br/>Financial planning</span> &nbsp;&nbsp;{ appContext?.currentPage=="reports" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
+          </Link>
+          <div className={ appContext?.currentPage=="reports" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
+              <ListGroup variant="flush">
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="equipment-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="file-icons:graphite" height={15} /> &nbsp;&nbsp;Invoice generation</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="work-orders-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","work-orders-reports")} to="/2/work-orders-reports"><Icon icon="skill-icons:graphql-light" height={15} /> &nbsp;&nbsp;Processing</Link></ListGroup.Item>
+              </ListGroup>
+            </div>
+        </li>
+        <li className="nav-item mt-3">
+          <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Legal</h6>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentPage=="reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('reports','')} to="/2/clinical-engineering-report">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <Icon icon="flat-color-icons:statistics" height={400} />
+            </div>
+            <span className="nav-link-text ms-1">Contract management</span> &nbsp;&nbsp;{ appContext?.currentPage=="reports" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
+          </Link>
+          <div className={ appContext?.currentPage=="reports" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
+              <ListGroup variant="flush">
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="equipment-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="file-icons:graphite" height={15} /> &nbsp;&nbsp;External maintenance contract</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="work-orders-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","work-orders-reports")} to="/work-orders-reports"><Icon icon="skill-icons:graphql-light" height={15} /> &nbsp;&nbsp;Internal maintenance contract</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="stock-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="fxemoji:stockchart" height={15} /> &nbsp;&nbsp;Other maintenance contracts</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="cost-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="file-icons:grapher" height={15} /> &nbsp;&nbsp;Service Level Agreement (SLA)</Link></ListGroup.Item>
+              </ListGroup>
+            </div>
+        </li>
+        <li className="nav-item mt-3">
+          <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Team</h6>
+        </li>
+        <li className="nav-item">
+          <Link className={ appContext?.currentPage=="team" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('team','')} to="/2/clinical-engineering-report">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <Icon icon="flat-color-icons:statistics" height={400} />
+            </div>
+            <span className="nav-link-text ms-1">Staff &<br/>Training records</span> &nbsp;&nbsp;{ appContext?.currentPage=="team" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
+          </Link>
+          <div className={ appContext?.currentPage=="team" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
+              <ListGroup variant="flush">
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="equipment-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="file-icons:graphite" height={15} /> &nbsp;&nbsp;Certifications</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="work-orders-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","work-orders-reports")} to="/work-orders-reports"><Icon icon="skill-icons:graphql-light" height={15} /> &nbsp;&nbsp;Teams & Technicians</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="stock-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="fxemoji:stockchart" height={15} /> &nbsp;&nbsp;Training programs</Link></ListGroup.Item>
               </ListGroup>
             </div>
         </li>
@@ -118,28 +176,36 @@ const SideBar: React.FC = ()=>{
           <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">System</h6>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="departments" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('departments','')} to="/departments">
+          <Link className={ appContext?.currentPage=="institutions" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('institutions','')} to="/2/institutions">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <Icon icon="fluent-emoji-flat:department-store" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Departments</span>
+            <span className="nav-link-text ms-1">Institutions</span> &nbsp;&nbsp;{ appContext?.currentPage=="institutions" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
           </Link>
+          <div className={ appContext?.currentPage=="institutions" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
+              <ListGroup variant="flush">
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="institutions" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("institutions","institutions")} to="/2/institutions"><Icon icon="file-icons:graphite" height={15} /> &nbsp;&nbsp;Institutions</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="hospitals" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("institutions","hospitals")} to="/2/hospitals"><Icon icon="skill-icons:graphql-light" height={15} /> &nbsp;&nbsp;Hospitals</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="departments" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("institutions","departments")} to="/2/departments"><Icon icon="fxemoji:stockchart" height={15} /> &nbsp;&nbsp;Departments</Link></ListGroup.Item>
+              </ListGroup>
+            </div>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="departments" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('departments','')} to="/departments">
+          <Link className={ appContext?.currentPage=="system-configs" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('system-configs','')} to="/2/clinical-engineering-report">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <Icon icon="fa:users" height={400} />
+              <Icon icon="flat-color-icons:statistics" height={400} />
             </div>
-            <span className="nav-link-text ms-1">Staff Management</span>
+            <span className="nav-link-text ms-1">System Configurations</span> &nbsp;&nbsp;{ appContext?.currentPage=="system-configs" && appContext?.sideBarStateChange == true ? <Icon icon="basil:caret-up-outline" height={25} /> : <Icon icon="basil:caret-down-outline" height={25} /> }
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link className={ appContext?.currentPage=="departments" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('departments','')} to="/departments">
-            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <Icon icon="fluent-emoji-flat:japanese-application-button" height={400} />
+          <div className={ appContext?.currentPage=="system-configs" && appContext?.sideBarStateChange == true ? "menu-items-show menu-items text-sm" : "menu-items-hidden menu-items text-sm" }>
+              <ListGroup variant="flush">
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="equipment-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="file-icons:graphite" height={15} /> &nbsp;&nbsp;Integrations</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="work-orders-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","work-orders-reports")} to="/2/work-orders-reports"><Icon icon="skill-icons:graphql-light" height={15} /> &nbsp;&nbsp;Risk-based Management</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="stock-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="fxemoji:stockchart" height={15} /> &nbsp;&nbsp;System Administration</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="stock-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="fxemoji:stockchart" height={15} /> &nbsp;&nbsp;System Security & Audit</Link></ListGroup.Item>
+                <ListGroup.Item><Link className={ appContext?.currentSubPage=="stock-reports" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu("reports","equipment-reports")} to="/2/equipment-reports"><Icon icon="fxemoji:stockchart" height={15} /> &nbsp;&nbsp;Technology Integration: PDA, RFID, Wireless capability</Link></ListGroup.Item>
+              </ListGroup>
             </div>
-            <span className="nav-link-text ms-1">System Configurations</span>
-          </Link>
         </li>
         {/* <li className="nav-item">
           <Link className={ appContext?.currentPage=="staff" ? "nav-link  active" : "nav-link"} onClick={()=>appContext?.showSideNav('profile','')} to="/profile">
@@ -153,27 +219,27 @@ const SideBar: React.FC = ()=>{
           <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account</h6>
         </li>
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="profile" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('profile','')} to="/profile">
+          <Link className={ appContext?.currentPage=="profile" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('profile','')} to="/1/profile">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-single-02 text-dark text-sm opacity-10"></i>
             </div>
             <span className="nav-link-text ms-1">Profile</span>
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className={ appContext?.currentPage=="sign-in" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('sign-in','')} to="/sign-in">
+        {/* <li className="nav-item">
+          <Link className={ appContext?.currentPage=="sign-in" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('sign-in','')} to="/1/sign-in">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
             </div>
             <span className="nav-link-text ms-1">Sign In</span>
           </Link>
-        </li>
+        </li> */}
         <li className="nav-item">
-          <Link className={ appContext?.currentPage=="sign-up" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('sign-up','')} to="/sign-up">
+          <Link className={ appContext?.currentPage=="sign-up" ? "nav-link  active" : "nav-link"} onClick={()=>toggleMenu('sign-up','')} to="/1/sign-up">
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-collection text-info text-sm opacity-10"></i>
             </div>
-            <span className="nav-link-text ms-1">Sign Up</span>
+            <span className="nav-link-text ms-1">Invite User</span>
           </Link>
         </li>
       </ul>

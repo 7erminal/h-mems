@@ -24,8 +24,8 @@ type ApplicationContextProps = {
     selectedWorkOrder: WorkOrder | undefined
     setSelectedWorkOrder: Dispatch<SetStateAction<WorkOrder | undefined>>
     showLoading: boolean | undefined
-    handleLoadingClose: ()=>void | undefined
-    handleLoadingShow: ()=>void | undefined
+    loadingClose: ()=>void | undefined
+    loadingShow: ()=>void | undefined
     toggleSidenav: ()=>void
     pageTrack: string
     setPageTrack: Dispatch<SetStateAction<string>>
@@ -33,6 +33,11 @@ type ApplicationContextProps = {
     setSubpageTrack: Dispatch<SetStateAction<string>>
     sideBarStateChange: boolean
     setSideBarStateChange: Dispatch<SetStateAction<boolean>>
+    errorMessage: string
+    setErrorMessage: Dispatch<SetStateAction<string>>
+    toggleMenu: (p: string, r: string)=>void
+    showError: boolean
+    setShowError: Dispatch<SetStateAction<boolean>>
   }
 
 const ApplicationContext = createContext<ApplicationContextProps | undefined>(undefined);

@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Form, Row, Col, FloatingLabel, Button } from "react-bootstrap";
 import { departments, facilities, locations, users, priorityList } from "../../utils/data/Data";
-import { Department, Facility, FLocation, Priority, User } from "../../utils/types/Types";
+import { DepartmentT, Facility, FLocation, Priority, UserT } from "../../utils/types/Types";
 
 type Props = {
     show: boolean
@@ -290,7 +290,7 @@ const AddSparePart: React.FC<Props> = ({show, handleClose})=>{
                         >
                         <Form.Select aria-label="Default select example">
                             {
-                                departments.map((dp: Department)=>{
+                                departments.map((dp: DepartmentT)=>{
                                     return <option value={dp.DepartmentId}>{dp.Department}</option>
                                 })
                             }
@@ -322,7 +322,7 @@ const AddSparePart: React.FC<Props> = ({show, handleClose})=>{
                         >
                         <Form.Select aria-label="Default select example">
                             {
-                                users.map((us: User)=>{
+                                users.map((us: UserT)=>{
                                     return <option value={us.UserId}>{us.FullName}</option>
                                 })
                             }

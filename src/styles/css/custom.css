@@ -5,6 +5,10 @@
     .cust-modal-content .modal-content{
         padding-left: 0;
     }
+
+    .instu-modal .modal-content{
+        padding-left: 0;
+    }
 }
 
 .primary-button{
@@ -247,7 +251,7 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
     100% {transform: translateY(0px);}
 }
 
-.B{
+/* .B{
     animation-name: down-up;
     animation-duration: 4s;
     animation-iteration-count: infinite;
@@ -257,7 +261,7 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
     animation-name: up-down;
     animation-duration: 4s;
     animation-iteration-count: infinite;
-}
+} */
 
 .rounded{
     width: 10px;
@@ -655,15 +659,15 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
 }
 
 @keyframes menuitemreveal {
-    from {transform: translateY(-14px); opacity: 0;}
-    to {transform: translateY(0px); opacity: 1;}
+    from {transform: translateY(-14px); display: none; opacity: 0;}
+    to {transform: translateY(0px); display: block; opacity: 1;}
   }
   
 
 .menu-items-show{
-    display: block;
     animation-name: menuitemreveal;
-    animation-duration: 0.2s;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
 }
 
 @keyframes menuitemhide {
@@ -673,7 +677,7 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
 
 .menu-items-hidden{
     animation-name: menuitemhide;
-    animation-duration: 0.15s;
+    animation-duration: 0.2s;
     animation-fill-mode: forwards;
 }
 
@@ -691,9 +695,66 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
 
 .card-left{
     padding: 60px;
+    align-items: center;
+    text-align: center;
 }
 
 .nav-link-c{
     padding-top: 2px;
     padding-bottom: 2px;
+}
+
+.logo-area{
+    position: relative;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.facility-box{
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    position: relative;
+    border-radius: 20px;
+    /* width: 100%;
+    height: 100%; */
+    /* background-color: blue; */
+}
+
+.facility-box:hover{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.pill{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #51a7f3;
+    color: white;
+    border-radius: 15px;
+    transition: 0.1s all ease;
+    /* margin-top: 8px; */
+    margin-left: 8px;
+}
+
+.pill:hover{
+    transition: 0.2s all ease;
+    cursor: pointer;
+    background-color: #507af6;
+}
+
+.pill-holder{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
 }

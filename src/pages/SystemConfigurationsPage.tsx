@@ -1,6 +1,5 @@
 import React from "react"
 import NavBar from "./components/NavBar";
-import EquipmentSideBar from "./components/EquipmentSideBar";
 import Footer from "./components/Footer";
 import QuickLinkCard from "./widgets/QuickLinkCard";
 import { useNavigate } from "react-router-dom";
@@ -15,8 +14,6 @@ const SystemConfigPage: React.FC = ()=>{
     }
 
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100"></div>
-    <EquipmentSideBar />
     <main className="main-content position-relative border-radius-lg ">
     <NavBar />
         <div className="container-fluid py-4">

@@ -1,4 +1,4 @@
-import { Device, Engineer, Status, WorkOrder, WorkOrderType, User, Department, Facility, FLocation, Priority, Note } from "../types/Types";
+import { Device, Engineer, Status, WorkOrder, WorkOrderType, Facility, FLocation, Priority, Note, UserT, DepartmentT } from "../types/Types";
 
 export var statuses: Array<Status> = [
     {
@@ -64,7 +64,7 @@ export const locations: Array<FLocation> = [
     },
 ]
 
-export const departments: Array<Department> = [
+export const departments: Array<DepartmentT> = [
     {
         DepartmentId: 1,
         Department: 'Ophthalmology',
@@ -153,7 +153,7 @@ export const facilities: Array<Facility> = [
     },
 ]
 
-export const users: Array<User> = [
+export const users: Array<UserT> = [
     {
         UserId: 1,
         Username: 'terminal',

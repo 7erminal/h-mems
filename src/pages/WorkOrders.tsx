@@ -9,7 +9,6 @@ import { statuses } from "../utils/data/Data";
 import CreateWorkOrder from "./components/CreateWorkOrder";
 import { WorkOrder } from "../utils/types/Types";
 import { Doughnut } from "react-chartjs-2";
-import SideBar from "./components/SideBar";
 
 const tempdata = {
   labels: [
@@ -119,8 +118,6 @@ const WorkOrders: React.FC = ()=>{
     const colors = ['#e74c3c', '#34495e', '#8e44ad']
 
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100"></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg ">
     <NavBar />
     <div className="container-fluid py-4">

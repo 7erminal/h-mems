@@ -7,7 +7,6 @@ import { Form } from "react-bootstrap";
 import ApplicationContext from "../resources/contexts/ApplicationContext";
 import { WorkOrder } from "../utils/types/Types.js";
 import { workOrders } from "../utils/data/Data.js";
-import SideBar from "./components/SideBar.js";
 import EquipmentWorkOrderListTable from "./components/EquipmentWorkOrderListTable.js";
 
 const EquipmentWorkOrdersPage: React.FC = ()=>{
@@ -34,8 +33,6 @@ const EquipmentWorkOrdersPage: React.FC = ()=>{
       }
       
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100" style={{width: '100vw', top: '0'}}></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg">
   <NavBar />
     <div className="container-fluid py-4" style={{width: '100%'}}>

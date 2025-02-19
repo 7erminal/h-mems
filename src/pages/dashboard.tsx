@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import SideBar from "./components/SideBar";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import EquipmentListTable from "./components/EquipmentListTable";
@@ -25,8 +24,6 @@ const DashboardPage: React.FC = ()=>{
     }
 
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100"></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg ">
     <NavBar />
     <div className="container-fluid py-4">

@@ -9,7 +9,6 @@ import AdvancedWorkOrdersSearch from "./components/AdvancedWorkOrdersSearch.js";
 import WorkOrdersTable from "./components/WorkOrdersTable.js";
 import { WorkOrder } from "../utils/types/Types.js";
 import { workOrders } from "../utils/data/Data";
-import SideBar from "./components/SideBar.js";
 
 const WorkOrdersListing: React.FC = ()=>{
     const appContext = useContext(ApplicationContext);
@@ -37,8 +36,6 @@ const WorkOrdersListing: React.FC = ()=>{
     }
 
     return <>
-    <div className="min-height-300 bg-primary position-absolute w-100" style={{width: '100vw', top: '0'}}></div>
-  <SideBar />
   <main className="main-content position-relative border-radius-lg">
   <NavBar />
     <div className="container-fluid py-4" style={{width: '100%'}}>

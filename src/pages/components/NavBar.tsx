@@ -1,9 +1,16 @@
 import React, { useContext } from "react";
 import ApplicationContext from "../../resources/contexts/ApplicationContext";
 import { Link } from "react-router-dom";
+import AuthContext from "../../resources/contexts/AuthContext";
 
 const NavBar: React.FC = ()=>{
     const appContext = useContext(ApplicationContext);
+    const authContext = useContext(AuthContext);
+
+    const signOut = ()=>{
+      authContext?.logOut()
+    }
+
     {/* <!-- Navbar --> */}
     return <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
       <div className="container-fluid py-1 px-3">
@@ -23,9 +30,9 @@ const NavBar: React.FC = ()=>{
           </div>
           <ul className="navbar-nav  justify-content-end">
             <li className="nav-item d-flex align-items-center">
-              <Link to="/sign-in" className="nav-link text-white font-weight-bold px-0">
+              <Link to="/1/sign-in" onClick={signOut} className="nav-link text-white font-weight-bold px-0">
                 <i className="fa fa-user me-sm-1"></i>
-                <span className="d-sm-inline d-none">Sign In</span>
+                <span className="d-sm-inline d-none">Sign Out</span>
               </Link>
             </li>
             <li className="nav-item d-xl-none ps-3 d-flex align-items-center">

@@ -13,10 +13,26 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
     const [selectedEquipment, setSelectedEquipment] = useState<Device>()
     const [selectedWorkOrder, setSelectedWorkOrder] = useState<WorkOrder>()
 
+    const [showError, setShowError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
     const [showLoading, setShowLoading] = useState(false)
 
-    const handleLoadingClose = () => setShowLoading(false);
-    const handleLoadingShow = () => setShowLoading(true);
+    const loadingClose = () => setShowLoading(false);
+    const loadingShow = () => setShowLoading(true);
+
+    const toggleMenu = (page: string, subPage: string)=>{
+        console.log("Setting page track to "+page+" with sub page "+subPage+". Current page track is "+pageTrack)
+        if(page==pageTrack){
+          console.log("toggle menu: Current page and page track are not different. Same thing selected. Change state view "+sideBarStateChange)
+          if(subPage == ""){
+            setSideBarStateChange(sideBarStateChange)
+          }
+        }
+  
+        showSideNav(page, subPage)
+        console.log("Changing page track to "+page)
+      }
 
     // Show Side Nav
     const showSideNav = (page: string, subPage: string) =>{
@@ -108,6 +124,7 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
     return <ApplicationContext.Provider value={
         {
             showSideNav,
+            toggleMenu,
             currentPage,
             currentSubPage,
             setCurrentSubPage,
@@ -118,15 +135,19 @@ export const ApplicationProvider: React.FC<{ children: ReactNode }> = ({ childre
             selectedWorkOrder,
             setSelectedWorkOrder,
             showLoading,
-            handleLoadingClose,
-            handleLoadingShow,
+            loadingClose,
+            loadingShow,
             toggleSidenav,
             pageTrack,
             subpageTrack,
             setPageTrack,
             setSubpageTrack,
             sideBarStateChange,
-            setSideBarStateChange
+            setSideBarStateChange,
+            errorMessage,
+            setErrorMessage,
+            showError,
+            setShowError
         }
     }>
         {children}
