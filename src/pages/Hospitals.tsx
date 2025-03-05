@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ApplicationContext from "../resources/contexts/ApplicationContext";
 import AddHospital1 from "./components/AddHospital1";
 import AddHospital2 from "./components/AddHospital2";
@@ -10,6 +10,7 @@ import AddHospital5 from "./components/AddHospital5";
 import InstitutionContext from "../resources/contexts/InstitutionContext";
 import { Hospital } from "../utils/types/Types";
 import AddDepartmentToHospital from "./components/AddDepartmentToHospital";
+import QuickLinkCard2 from "./widgets/QuickLinkCard2";
 
 const Hospitals: React.FC = ()=>{
     const navigate = useNavigate()
@@ -89,7 +90,7 @@ const Hospitals: React.FC = ()=>{
 
             if(module=="ADDDEPTHOSP"){
                 appContext?.loadingShow()
-                var resp = await institutionContext?.addDepartment()
+                var resp = await institutionContext?.addDepartmentToHospital()
                 appContext?.loadingClose()
 
                 if(resp==true){
@@ -111,15 +112,16 @@ const Hospitals: React.FC = ()=>{
                     <div className="card mb-4">
                         <div className="card-body p-3">
                             <div className="row">
-                                <Link to="#" className="col-lg-4 col-sm-12 card-right" onClick={()=>handleShowAddHospital1()}>
-                                    <h6>Add Hospital</h6>
-                                </Link>
-                                <Link to="#" className="col-lg-4 col-sm-12 card-right" onClick={()=>handleShowAddHospital1()}>
+                                <div className="col-lg-4 col-sm-12 card-right">
+                                    <QuickLinkCard2 action={()=>handleShowAddHospital1()} name="Hospital(s)" count={institutionContext?.hospitals.length ?? 0} icon="fluent:add-20-filled" />
+                                </div>
+                                <div className="col-lg-4 col-sm-12 card-right">
+                                    <QuickLinkCard2 action={()=>handleShowAddHospital1()} name="Update Hospital" count={undefined} icon="fluent:add-20-filled" />
                                     <h6>Update Hospital</h6>
-                                </Link>
-                                <Link to="#" className="col-lg-4 col-sm-12 card-left" onClick={()=>handleShowAddDepartmentToHospital()}>
-                                    <h6>Add Department to Hospital</h6>
-                                </Link>
+                                </div>
+                                <div className="col-lg-4 col-sm-12 card-left">
+                                    <QuickLinkCard2 action={()=>handleShowAddDepartmentToHospital()} name="Add Department to Hospital" count={undefined} icon="fluent:add-20-filled" />
+                                </div>
                             </div>
                         </div>
                     </div>

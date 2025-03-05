@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Modal, Form, Row, Col, FloatingLabel, Button } from "react-bootstrap";
 import InstitutionContext from "../../resources/contexts/InstitutionContext";
 import ApplicationContext from "../../resources/contexts/ApplicationContext";
-import { Hospital, Institution } from "../../utils/types/Types";
+import { Department, Hospital } from "../../utils/types/Types";
 
 type Props = {
     show: boolean
@@ -42,6 +42,29 @@ const AddDepartmentToHospital: React.FC<Props> = ({show, handleClose, toggle})=>
         appContext?.loadingClose()
     }
 
+    const getSelectedItem = (id: string, type: string)=>{
+            console.log("ID is "+id)
+            if(type=="DEPARTMENT"){
+                var p = institutionContext?.departments.filter((dpt: Department)=>{
+                    return dpt.id==id
+                })
+    
+                console.log("Department is ")
+                console.log(p)
+                p != undefined ? institutionContext?.setSelectedDepartment(p[0]) : ''
+            }
+    
+            if(type=="HOSPITAL"){
+                var q = institutionContext?.hospitals.filter((hsp: Hospital)=>{
+                    return hsp.id==id
+                })
+    
+                console.log("Hospital is ")
+                console.log(q)
+                q != undefined ? institutionContext?.setSelectedHospital(q[0]) : ''
+            }
+        }
+
 
     return <Modal show={show} onHide={handleClose} className="instu-modal" size="lg" centered>
     <Modal.Header className="d-flex justify-content-around">
@@ -54,10 +77,10 @@ const AddDepartmentToHospital: React.FC<Props> = ({show, handleClose, toggle})=>
                 <Col>
                     <FloatingLabel
                         controlId="floatingInput"
-                        label="Name"
+                        label="Hospital"
                         className="mb-3"
                     >
-                        <Form.Select aria-label="Default select example" value={institutionContext?.selectedHospital?.id} onChange={(e)=>{console.log("Selected value is: "+e.target.value); institutionContext?.setInstitutionType(e.target.value)}} required>
+                        <Form.Select aria-label="Default select example" value={institutionContext?.selectedHospital?.id} onChange={(e)=>{console.log("Selected value is: "+e.target.value); getSelectedItem(e.target.value, "HOSPITAL")}} required>
                             <option value=""></option>
                             {
                                 institutionContext != undefined && institutionContext?.hospitals.length > 0 ? institutionContext?.hospitals.map((hosp: Hospital, i: number)=>{
@@ -72,14 +95,14 @@ const AddDepartmentToHospital: React.FC<Props> = ({show, handleClose, toggle})=>
                 <Col>
                     <FloatingLabel
                         controlId="floatingInput"
-                        label="Description"
+                        label="Department"
                         className="mb-3"
                     >
-                        <Form.Select aria-label="Default select example" value={institutionContext?.institutionType} onChange={(e)=>{console.log("Selected value is: "+e.target.value); institutionContext?.setInstitutionType(e.target.value)}} required>
+                        <Form.Select aria-label="Default select example" value={institutionContext?.selectedDepartment?.id} onChange={(e)=>{console.log("Selected value is: "+e.target.value); getSelectedItem(e.target.value, "DEPARTMENT")}} required>
                             <option value=""></option>
                             {
-                                institutionContext != undefined && institutionContext?.institutions.length > 0 ? institutionContext?.institutions.map((inst: Institution, i: number)=>{
-                                    return <option key={i} value={inst.id}>{inst.name}</option>
+                                institutionContext != undefined && institutionContext?.departments.length > 0 ? institutionContext?.departments.map((dpt: Department, i: number)=>{
+                                    return <option key={i} value={dpt.id}>{dpt.name}</option>
                                 }) : ''
                             }
                         </Form.Select>

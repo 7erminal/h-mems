@@ -112,16 +112,29 @@ const ViewHospitalPage: React.FC = ()=>{
         if(action=="ADD"){
 
             institutionContext?.setDepartmentId(departmentid)
-            appContext?.loadingShow()
-            var resp = await institutionContext?.addDepartmentToHospital()
-            appContext?.loadingClose()
+            var p = institutionContext?.departments.filter((dpt: Department)=>{
+                return dpt.id==departmentid
+            })
 
-            if(resp==true){
-                getHospitalDepartments()
-                // handleCloseAddDepartmentToHospital()
-            } else {
-                appContext?.setShowError(true)
-            }
+            console.log("Department is ")
+            console.log(p)
+            p != undefined ? institutionContext?.setSelectedDepartment(p[0]) : ''
+            p != undefined ? institutionContext?.setDepartmentId(p[0].id) : ''
+            
+            appContext?.loadingShow()
+            setTimeout(async function () {
+                //your code to be executed after 1 second
+                var resp = await institutionContext?.addDepartmentToHospital()
+                appContext?.loadingClose()
+                if(resp==true){
+                    getHospitalDepartments()
+                    // handleCloseAddDepartmentToHospital()
+                } else {
+                    appContext?.setShowError(true)
+                }
+              }, 1000);
+            
+
             
         }
     }
@@ -162,7 +175,7 @@ const ViewHospitalPage: React.FC = ()=>{
                                     <div className="pill-holder">
                                     {
                                         hospitalDepartments != undefined && hospitalDepartments.length > 0 ? hospitalDepartments.map((dept: Department, i: number)=>{
-                                            return <Pill key={i} name={dept.name} onClick={()=>{}} />
+                                            return <Pill key={i} name={dept.name} onClick={()=>{}} id={dept.id} />
                                         }) : ''
                                     }
                                     </div>
@@ -180,7 +193,7 @@ const ViewHospitalPage: React.FC = ()=>{
                                         <div className="pill-holder">
                                         {
                                             departments != undefined && departments.length > 0 ? departments.map((dept: Department, i: number)=>{
-                                                return <Pill key={i} name={dept.name} onClick={()=>addOrRemoveDepartment("ADD", dept.id) } />
+                                                return <Pill key={i} name={dept.name} onClick={addOrRemoveDepartment} id={dept.id} />
                                             }) : ''
                                         }
                                         </div>

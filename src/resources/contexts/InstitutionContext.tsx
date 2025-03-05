@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
-import { Department, Hospital, Institution } from '../../utils/types/Types';
+import { Department, GroupC, Hospital, Institution, PermissionC, RoleC } from '../../utils/types/Types';
 
 type InstitutionContextProps = {
     institutionName: string
@@ -81,7 +81,36 @@ type InstitutionContextProps = {
     setHospitalId: Dispatch<SetStateAction<string>>
     setDepartmentId: Dispatch<SetStateAction<string>>
     addDepartmentToHospital: ()=>Promise<boolean>
-
+    addGroup: ()=>Promise<boolean>
+    addUser: ()=>Promise<boolean>
+    addPermission: ()=>Promise<boolean>
+    getPermissions: ()=>Promise<boolean>
+    addRole: ()=>Promise<boolean>
+    getRoles: ()=>Promise<boolean>
+    addPermissionToRole: ()=>Promise<boolean>
+    addPermissionToGroup: ()=>Promise<boolean>
+    getGroups: ()=>Promise<boolean>
+    permissionName: string
+    setPermissionName: Dispatch<SetStateAction<string>>
+    permissionDescription: string
+    setPermissionDescription: Dispatch<SetStateAction<string>>
+    groupName: string
+    setGroupName: Dispatch<SetStateAction<string>>
+    groupDescription: string
+    setGroupDescription: Dispatch<SetStateAction<string>>
+    roleName: string
+    setRoleName: Dispatch<SetStateAction<string>>
+    roleDescription: string
+    setRoleDescription: Dispatch<SetStateAction<string>>
+    permissions: Array<PermissionC>
+    groups: Array<GroupC>
+    roles: Array<RoleC>
+    selectedPermission: PermissionC | undefined
+    setSelectedPermission: Dispatch<SetStateAction<PermissionC | undefined>>
+    selectedGroup: GroupC | undefined
+    setSelectedGroup: Dispatch<SetStateAction<GroupC | undefined>>
+    selectedRole: RoleC | undefined
+    setSelectedRole: Dispatch<SetStateAction<RoleC | undefined>>
   }
   
 

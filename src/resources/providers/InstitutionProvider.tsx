@@ -5,7 +5,7 @@ import Api from '../../apis/apis';
 import { ROUTES } from '../../apis/bkEndpoints'
 import InstitutionContext from '../contexts/InstitutionContext';
 import ApplicationContext from '../contexts/ApplicationContext';
-import { Department, Hospital, Institution } from '../../utils/types/Types';
+import { Department, GroupC, Hospital, Institution, PermissionC, RoleC } from '../../utils/types/Types';
 
 export const InstitutionProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const appContext = useContext(ApplicationContext);
@@ -42,12 +42,29 @@ export const InstitutionProvider: React.FC<{ children: ReactNode }> = ({ childre
     const [departmentName, setDepartmentName] = useState('')
     const [departmentDescription, setDepartmentDescription] = useState('')
 
+    const [permissionName, setPermissionName] = useState('')
+    const [permissionDescription, setPermissionDescription] = useState('')
+
+    const [groupName, setGroupName] = useState('')
+    const [groupDescription, setGroupDescription] = useState('')
+
+    const [roleName, setRoleName] = useState('')
+    const [roleDescription, setRoleDescription] = useState('')
+
     // Data holding objects
     const [institutions, setInstitutions] = useState<Array<Institution>>([])
     const [selectedInstitution, setSelectedInstitution] = useState<Institution>()
     const [hospitals, setHospitals] = useState<Array<Hospital>>([])
     const [selectedHospital, setSelectedHospital] = useState<Hospital>()
+    const [selectedPermission, setSelectedPermission] = useState<PermissionC>()
+    const [selectedGroup, setSelectedGroup] = useState<GroupC>()
+    const [selectedRole, setSelectedRole] = useState<RoleC>()
     const [departments, setDepartments] = useState<Array<Department>>([])
+    const [permissions, setPermissions] = useState<Array<PermissionC>>([])
+    const [groups, setGroups] = useState<Array<GroupC>>([])
+    const [roles, setRoles] = useState<Array<RoleC>>([])
+
+    // const [selectedDepartment, setSelectedDepartment] = useState<Institution>()
 
     const [selectedDepartment, setSelectedDepartment] = useState<Department>()
 
@@ -218,8 +235,8 @@ export const InstitutionProvider: React.FC<{ children: ReactNode }> = ({ childre
         let resp = false;
 
         const params = {
-            hospitalId: hospitalId,
-            departmentId: departmentId,
+            hospitalId: selectedHospital?.id,
+            departmentId: selectedDepartment?.id,
           }
 
           await new Api().post_(params, ROUTES.addDepartmentToHospital).then((response: any)=>{
@@ -365,6 +382,327 @@ export const InstitutionProvider: React.FC<{ children: ReactNode }> = ({ childre
         return resp;
     }
 
+    const addGroup = async ()=>{
+      let resp = false;
+  
+      const params = {
+          name: groupName,
+          description: groupDescription,
+        }
+  
+        await new Api().post_(params, ROUTES.createGroupApi).then((response: any)=>{
+          console.log("Response is ...")
+          console.log(response)
+  
+          if(response.status==200){
+            if(response.data.isSuccess == true){
+              setGroupName('')
+              setGroupDescription('')
+              
+              resp = true
+            } else {
+              appContext?.setErrorMessage("Error adding group: "+response.data.errorMessage)
+          }
+          } else {
+              console.log("An error occurred adding group. 200 not returned.")
+              appContext?.setErrorMessage("Error adding group")
+          }
+        }).catch((error: any) => {
+        // appContext?.setIsLoading(false)
+          console.log("Error returned is ... ")
+          console.log(error)
+          appContext?.setErrorMessage("Error adding group")
+      })
+  
+      return resp;
+  }
+
+    const getGroups = async ()=>{
+      let resp = false;
+      setGroups([])
+
+      await new Api().get_(ROUTES.getGroupsApi).then((response: any)=>{
+          console.log("Response is ...")
+          console.log(response)
+
+          if(response.status==200){
+            if(response.data.isSuccess == true){
+              console.log("Response for groups is ")
+              console.log(response.data.result)
+              // for(var i=0; i<response.data.result.length; i++){
+              //     console.log("Each institution to be inserted is ")
+              //     console.log(response.data.result[i])
+              //     console.log(institutions)
+              //     setInstitutions((prevList)=>[...prevList, response.data.result[i]])
+              // }
+              setGroups([...response.data.result])
+              resp = true
+            } else {
+              appContext?.setErrorMessage("Error getting groups: "+response.data.errorMessage)
+          }
+          } else {
+              console.log("An error occurred getting groups. 200 not returned.")
+              appContext?.setErrorMessage("Error getting groups")
+          }
+        }).catch((error: any) => {
+        // appContext?.setIsLoading(false)
+          console.log("Error returned is ... ")
+          console.log(error)
+          appContext?.setErrorMessage("Error getting groups")
+      })
+
+      return resp;
+  }
+
+  const addPermission = async ()=>{
+    let resp = false;
+
+    const params = {
+        name: permissionName,
+        description: permissionDescription,
+      }
+
+      await new Api().post_(params, ROUTES.createPermissionApi).then((response: any)=>{
+        console.log("Response is ...")
+        console.log(response)
+
+        if(response.status==200){
+          if(response.data.isSuccess == true){
+            setPermissionName('')
+            setPermissionDescription('')
+            
+            resp = true
+          } else {
+            appContext?.setErrorMessage("Error adding permission: "+response.data.errorMessage)
+        }
+        } else {
+            console.log("An error occurred adding permission. 200 not returned.")
+            appContext?.setErrorMessage("Error adding permission")
+        }
+      }).catch((error: any) => {
+      // appContext?.setIsLoading(false)
+        console.log("Error returned is ... ")
+        console.log(error)
+        appContext?.setErrorMessage("Error adding permission")
+    })
+
+    return resp;
+}
+
+const getPermissions = async ()=>{
+  let resp = false;
+  setPermissions([])
+
+  await new Api().get_(ROUTES.getPermissionsApi).then((response: any)=>{
+      console.log("Response is ...")
+      console.log(response)
+
+      if(response.status==200){
+        if(response.data.isSuccess == true){
+          console.log("Response for permissions is ")
+          console.log(response.data.result)
+          // for(var i=0; i<response.data.result.length; i++){
+          //     console.log("Each institution to be inserted is ")
+          //     console.log(response.data.result[i])
+          //     console.log(institutions)
+          //     setInstitutions((prevList)=>[...prevList, response.data.result[i]])
+          // }
+          setPermissions([...response.data.result])
+          resp = true
+        } else {
+          appContext?.setErrorMessage("Error getting permissions: "+response.data.errorMessage)
+      }
+      } else {
+          console.log("An error occurred getting permissions. 200 not returned.")
+          appContext?.setErrorMessage("Error getting permissions")
+      }
+    }).catch((error: any) => {
+    // appContext?.setIsLoading(false)
+      console.log("Error returned is ... ")
+      console.log(error)
+      appContext?.setErrorMessage("Error getting permissions")
+  })
+
+  return resp;
+}
+
+const addRole = async ()=>{
+  let resp = false;
+
+  const params = {
+      name: roleName,
+      description: roleDescription,
+    }
+
+    await new Api().post_(params, ROUTES.createRoleApi).then((response: any)=>{
+      console.log("Response is ...")
+      console.log(response)
+
+      if(response.status==200){
+        if(response.data.isSuccess == true){
+          setRoleName('')
+          setRoleDescription('')
+          
+          resp = true
+        } else {
+          appContext?.setErrorMessage("Error adding role: "+response.data.errorMessage)
+      }
+      } else {
+          console.log("An error occurred adding role. 200 not returned.")
+          appContext?.setErrorMessage("Error adding role")
+      }
+    }).catch((error: any) => {
+    // appContext?.setIsLoading(false)
+      console.log("Error returned is ... ")
+      console.log(error)
+      appContext?.setErrorMessage("Error adding role")
+  })
+
+  return resp;
+}
+
+const getRoles = async ()=>{
+  let resp = false;
+  setRoles([])
+
+  await new Api().get_(ROUTES.getRolesApi).then((response: any)=>{
+      console.log("Response is ...")
+      console.log(response)
+
+      if(response.status==200){
+        if(response.data.isSuccess == true){
+          console.log("Response for roles is ")
+          console.log(response.data.result)
+          // for(var i=0; i<response.data.result.length; i++){
+          //     console.log("Each institution to be inserted is ")
+          //     console.log(response.data.result[i])
+          //     console.log(institutions)
+          //     setInstitutions((prevList)=>[...prevList, response.data.result[i]])
+          // }
+          setRoles([...response.data.result])
+          resp = true
+        } else {
+          appContext?.setErrorMessage("Error getting roles: "+response.data.errorMessage)
+      }
+      } else {
+          console.log("An error occurred getting roles. 200 not returned.")
+          appContext?.setErrorMessage("Error getting roles")
+      }
+    }).catch((error: any) => {
+    // appContext?.setIsLoading(false)
+      console.log("Error returned is ... ")
+      console.log(error)
+      appContext?.setErrorMessage("Error getting roles")
+  })
+
+  return resp;
+}
+
+const addPermissionToGroup = async ()=>{
+  let resp = false;
+
+  const params = {
+      permissionId: selectedPermission?.id,
+      groupId: selectedGroup?.id,
+    }
+
+    await new Api().post_(params, ROUTES.addPermissionToGroupApi).then((response: any)=>{
+      console.log("Response is ...")
+      console.log(response)
+
+      if(response.status==200){
+        if(response.data.isSuccess == true){
+          setSelectedPermission(undefined)
+          setSelectedGroup(undefined)
+          
+          resp = true
+        } else {
+          appContext?.setErrorMessage("Error adding permission to group: "+response.data.errorMessage)
+      }
+      } else {
+          console.log("An error occurred adding permission to group. 200 not returned.")
+          appContext?.setErrorMessage("Error adding permission to group")
+      }
+    }).catch((error: any) => {
+    // appContext?.setIsLoading(false)
+      console.log("Error returned is ... ")
+      console.log(error)
+      appContext?.setErrorMessage("Error adding permission to group")
+  })
+
+  return resp;
+}
+
+const addPermissionToRole = async ()=>{
+  let resp = false;
+
+  const params = {
+      roleId: selectedRole?.id,
+      permissionId: selectedPermission?.id,
+    }
+
+    await new Api().post_(params, ROUTES.addPermissionToRoleApi).then((response: any)=>{
+      console.log("Response is ...")
+      console.log(response)
+
+      if(response.status==200){
+        if(response.data.isSuccess == true){
+          setSelectedRole(undefined)
+          setSelectedPermission(undefined)
+          
+          resp = true
+        } else {
+          appContext?.setErrorMessage("Error adding permission to role: "+response.data.errorMessage)
+      }
+      } else {
+          console.log("An error occurred adding permission to role. 200 not returned.")
+          appContext?.setErrorMessage("Error adding permission to role")
+      }
+    }).catch((error: any) => {
+    // appContext?.setIsLoading(false)
+      console.log("Error returned is ... ")
+      console.log(error)
+      appContext?.setErrorMessage("Error adding permission to role")
+  })
+
+  return resp;
+}
+
+const addUser = async ()=>{
+  let resp = false;
+
+  const params = {
+      name: departmentName,
+      description: departmentDescription,
+    }
+
+    await new Api().post_(params, ROUTES.createUserApi).then((response: any)=>{
+      console.log("Response is ...")
+      console.log(response)
+
+      if(response.status==200){
+        if(response.data.isSuccess == true){
+          setDepartmentName('')
+          setDepartmentDescription('')
+          
+          resp = true
+        } else {
+          appContext?.setErrorMessage("Error adding institution: "+response.data.errorMessage)
+      }
+      } else {
+          console.log("An error occurred adding institution. 200 not returned.")
+          appContext?.setErrorMessage("Error adding institution")
+      }
+    }).catch((error: any) => {
+    // appContext?.setIsLoading(false)
+      console.log("Error returned is ... ")
+      console.log(error)
+      appContext?.setErrorMessage("Error adding institution")
+  })
+
+  return resp;
+}
+
     return (
         <InstitutionContext.Provider value={
           { 
@@ -445,7 +783,37 @@ export const InstitutionProvider: React.FC<{ children: ReactNode }> = ({ childre
             setSelectedDepartment,
             setHospitalId,
             setDepartmentId,
-            addDepartmentToHospital
+            addDepartmentToHospital,
+            addUser,
+            addPermission,
+            getPermissions,
+            addRole,
+            getRoles,
+            addPermissionToRole,
+            addPermissionToGroup,
+            getGroups,
+            addGroup,
+            permissionName,
+            setPermissionName,
+            permissionDescription,
+            setPermissionDescription,
+            groupName,
+            setGroupName,
+            groupDescription,
+            setGroupDescription,
+            roleName,
+            setRoleName,
+            roleDescription,
+            setRoleDescription,
+            permissions,
+            groups,
+            roles,
+            selectedPermission,
+            setSelectedPermission,
+            selectedGroup,
+            setSelectedGroup,
+            selectedRole,
+            setSelectedRole
           }}>
           {children}
         </InstitutionContext.Provider>

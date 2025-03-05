@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ApplicationContext from "../resources/contexts/ApplicationContext";
 import AddInstitution1 from "./components/AddInstitution1";
 import AddInstitution2 from "./components/AddInstitution2";
@@ -16,6 +16,7 @@ import AddDepartment from "./components/AddDepartment";
 import InstitutionContext from "../resources/contexts/InstitutionContext";
 import { Institution } from "../utils/types/Types";
 import AddDepartmentToHospital from "./components/AddDepartmentToHospital";
+import QuickLinkCard2 from "./widgets/QuickLinkCard2";
 
 const Institutions: React.FC = ()=>{
     const navigate = useNavigate()
@@ -166,11 +167,10 @@ const Institutions: React.FC = ()=>{
 
             if(module=="ADDDEPTHOSP"){
                 appContext?.loadingShow()
-                var resp = await institutionContext?.addDepartment()
+                var resp = await institutionContext?.addDepartmentToHospital()
                 appContext?.loadingClose()
 
                 if(resp==true){
-                    institutionContext?.getInstitutions()
                     handleCloseAddDepartmentToHospital()
                 } else {
                     appContext?.setShowError(true)
@@ -185,24 +185,24 @@ const Institutions: React.FC = ()=>{
             <div className="container-fluid py-4">
                 <div className="row mt-4">
                     <div className="col-12">
-                    <div className="card mb-4">
-                        <div className="card-body p-3">
-                            <div className="row">
-                                <Link to="#" className="col-lg-3 col-sm-6 card-right" onClick={()=>handleShowAddInstitution1()}>
-                                    <h6>Add Institution</h6>
-                                </Link>
-                                <Link to="#" className="col-lg-3 col-sm-6 card-right" onClick={()=>handleShowAddHospital1()}>
-                                    <h6>Add Hospital</h6>
-                                </Link>
-                                <Link to="#" className="col-lg-3 col-sm-6 card-left" onClick={()=>handleShowAddDepartment()}>
-                                    <h6>Add Department</h6>
-                                </Link>
-                                <Link to="#" className="col-lg-3 col-sm-6 card-left" onClick={()=>handleShowAddDepartmentToHospital()}>
-                                    <h6>Add Department to Hospital</h6>
-                                </Link>
+                        <div className="card mb-4">
+                            <div className="card-body p-3">
+                                <div className="row">
+                                    <div className="col-lg-3 col-sm-6 card-right">
+                                        <QuickLinkCard2 action={()=>handleShowAddInstitution1()} name="Institution(s)" count={institutionContext?.institutions.length ?? 0} icon="fluent:add-20-filled" />
+                                    </div>
+                                    <div className="col-lg-3 col-sm-6 card-right" >
+                                        <QuickLinkCard2 action={()=>handleShowAddHospital1()} name="Hospital(s)" count={institutionContext?.hospitals.length ?? 0} icon="fluent:add-20-filled" />
+                                    </div>
+                                    <div className="col-lg-3 col-sm-6 card-left">
+                                        <QuickLinkCard2 action={()=>handleShowAddDepartment()} name="Department(s)" count={institutionContext?.departments.length ?? 0} icon="fluent:add-20-filled" />
+                                    </div>
+                                    <div className="col-lg-3 col-sm-6 card-left">
+                                        <QuickLinkCard2 action={()=>handleShowAddDepartmentToHospital()} name="Add Department to Hospital" count={undefined} icon="fluent:add-20-filled" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 

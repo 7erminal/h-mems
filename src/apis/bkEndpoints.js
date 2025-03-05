@@ -39,6 +39,36 @@ export const ROUTES = {
     // GET DEPARTMENTS
     getDepartmentsApi: `${userEndpoints}/departments`,
 
+    // CREATE PERMISSION
+    createPermissionApi: `${userEndpoints}/create-permission`,
+
+    // GET PERMISSIONS
+    getPermissionsApi: `${userEndpoints}/permissions`,
+
+    // CREATE GROUP
+    createGroupApi: `${userEndpoints}/create-group`,
+
+    // GET GROUPS
+    getGroupsApi: `${userEndpoints}/groups`,
+
+    // CREATE ROLE
+    createRoleApi: `${userEndpoints}/create-role`,
+
+    // GET ROLES
+    getRolesApi: `${userEndpoints}/roles`,
+
+    // CREATE USER
+    createUserApi: `${userEndpoints}/create-user`,
+
+    // GET USERS
+    getUsersApi: `${userEndpoints}/users`,
+
+    // ADD PERMISSION TO GROUP
+    addPermissionToGroupApi: `${userEndpoints}/create-group-permission`,
+
+    // ADD PERMISSION TO ROLE
+    addPermissionToRoleApi: `${userEndpoints}/create-role-permission`,
+
 
 
     // LOGIN

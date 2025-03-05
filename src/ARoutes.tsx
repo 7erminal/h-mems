@@ -29,6 +29,10 @@ import { InstitutionProvider } from "./resources/providers/InstitutionProvider.t
 import ViewInstitutionPage from "./pages/ViewInstitutionPage.tsx";
 import Hospitals from "./pages/Hospitals.tsx";
 import ViewHospitalPage from "./pages/ViewHospitalPage.tsx";
+import GroupsAndRoles from "./pages/GroupsAndRoles.tsx";
+import Groups from "./pages/Groups.tsx";
+import Roles from "./pages/Roles.tsx";
+import PermissionsC from "./pages/PermissionsC.tsx";
 
 
 const ARoutes: React.FC = () => {
@@ -63,6 +67,10 @@ const ARoutes: React.FC = () => {
                       <Route path='/user-management' element={<UserManagementPage />} />
                       <Route path='/view-institution' element={<ViewInstitutionPage />} />
                       <Route path='/view-hospital' element={<ViewHospitalPage />} />
+                      <Route path='/groups-and-roles' element={<GroupsAndRoles />} />
+                      <Route path='/groups' element={<Groups />} />
+                      <Route path='/roles' element={<Roles />} />
+                      <Route path='/permissions' element={<PermissionsC />} />
                       <Route path="*" element={<Navigate replace to="/" />} />
                   </Routes>
                   {/* <Invoice showModal={showInvoice} handleClose={handleShowInvoiceModalClose} invoice={selectedInvoice} />

@@ -19,7 +19,7 @@ const NavBar: React.FC = ()=>{
             <li className="breadcrumb-item text-sm"><a className="opacity-5 text-white" href="javascript:;">Pages</a></li>
             <li className="breadcrumb-item text-sm text-white active" aria-current="page">{appContext?.currentPage}</li>
           </ol>
-          <h6 className="font-weight-bolder text-white mb-0">{appContext?.currentPage}</h6>
+          <h6 className="font-weight-bolder text-white mb-0">{appContext?.currentSubPage}</h6>
         </nav>
         <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div className="ms-md-auto pe-md-3 d-flex align-items-center">

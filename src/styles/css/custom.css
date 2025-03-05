@@ -685,18 +685,41 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
     border-right: 1px #F0F0F0 solid;
     padding: 60px;
     align-items: center;
-    text-align: center;
+    text-align: left;
+    /* width: 100%; */
+    position: relative;
 }
 
 .card-right:hover, .card-left:hover{
-    cursor: pointer;
     background-color: #FCFCFC;
 }
 
 .card-left{
     padding: 60px;
     align-items: center;
+    text-align: left;
+    position: relative;
+}
+
+.add-button{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    color: white;
+    background-color: #98afba;
+    border-radius: 50%;
+    right: 5px;
+    top: -10px;
+    align-items: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add-button:hover{
+    cursor: pointer;
+    background-color: #3a7089;
 }
 
 .nav-link-c{
@@ -757,4 +780,21 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
     position: relative;
     flex-wrap: wrap;
     display: flex;
+}
+
+.nothing-circle{
+    width: 35px;
+    height: 35px;
+    background-color: #e7edff;
+    border-radius: 50%;
+    position: relative;
+}
+
+.menu-items-div{
+    align-items: right;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    /* background-color: #00aaff; */
 }

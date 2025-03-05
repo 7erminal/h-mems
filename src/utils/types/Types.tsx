@@ -161,3 +161,27 @@ export type Note = {
     Resolved: boolean
     Duration: string
 }
+
+export type PermissionC = {
+    id: string
+    name: string
+    status: string
+    description: string
+    createdDate: string
+}
+
+export type RoleC = {
+    id: string
+    name: string
+    status: string
+    description: string
+    createdDate: string
+}
+
+export type GroupC = {
+    id: string
+    name: string
+    status: string
+    description: string
+    createdDate: string
+}
