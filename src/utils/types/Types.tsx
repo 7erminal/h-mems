@@ -185,3 +185,95 @@ export type GroupC = {
     description: string
     createdDate: string
 }
+
+export type CostCenterReq = {
+    name: string
+    description: string
+    code: string
+}
+
+export type CostCenter = {
+    id: string
+    name: string
+    status: string
+    description: string
+    createdDate: string
+    code: string
+}
+
+export type DeviceInclusionReq = {
+    name: string
+    description: string
+    code: string
+}
+
+export type DeviceInclusion = {
+    id: string
+    name: string
+    status: string
+    description: string
+    createdDate: string
+    code: string
+}
+
+export type EquipmentClassReq = {
+    name: string
+    description: string
+    code: string
+    priority: string
+    workWindow: string
+}
+
+export type EquipmentClass = {
+    id: string
+    name: string
+    status: string
+    description: string
+    createdDate: string
+    code: string
+}
+
+export type Equipment = {
+    id: string
+    name: string
+    status: string
+    description: string
+    createdDate: string
+    code: string
+}
+export type EquipmentReq = {
+    assetNumber: string
+    serialNumber: string
+    classId: string
+    equipmentType: string
+    ecriNumber: string
+    make: string
+    model: string
+    manufacturer: string
+    supplier: string
+    system: string
+    deviceInclusionId: string
+    deviceInclusionType: string
+    ecriRevisionNumber: string
+    purchaseDate: string
+    serviceStartDate: string
+    serviceExpiryDate: string
+    warrantyExpiryDate: string
+    currency: string
+    cost: number
+    lifeExpectancy: string
+    country: string
+    region: string
+    district: string
+    subDistrict: string
+    institutionId: string
+    hospitalId: string
+    hospitalDepartmentId: string
+    costCenterId: string
+    location: string
+    building: string
+    floor: string
+    room: string
+    space: string
+    notes: string
+}

@@ -1,4 +1,4 @@
-import { Device, Engineer, Status, WorkOrder, WorkOrderType, Facility, FLocation, Priority, Note, UserT, DepartmentT } from "../types/Types";
+import { Device, Engineer, Status, WorkOrder, WorkOrderType, Facility, FLocation, Priority, Note, UserT, DepartmentT, EquipmentReq } from "../types/Types";
 
 export var statuses: Array<Status> = [
     {
@@ -1112,3 +1112,40 @@ export var workOrders: Array<WorkOrder> = [
         ]
     }
 ];
+
+export var equipmentRequestEmpty: EquipmentReq = {
+    assetNumber: "",
+    serialNumber: "",
+    classId: "",
+    equipmentType: "",
+    ecriNumber: "",
+    make: "",
+    model: "",
+    manufacturer: "",
+    supplier: "",
+    system: "",
+    deviceInclusionId: "",
+    deviceInclusionType: "",
+    ecriRevisionNumber: "",
+    purchaseDate: "",
+    serviceStartDate: "",
+    serviceExpiryDate: "",
+    warrantyExpiryDate: "",
+    currency: "",
+    cost: 0,
+    lifeExpectancy: "",
+    country: "",
+    region: "",
+    district: "",
+    subDistrict: "",
+    institutionId: "",
+    hospitalId: "",
+    hospitalDepartmentId: "",
+    costCenterId: "",
+    location: "",
+    building: "",
+    floor: "",
+    room: "",
+    space: "",
+    notes: ""
+}

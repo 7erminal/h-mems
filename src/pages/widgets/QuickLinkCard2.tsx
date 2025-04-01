@@ -10,7 +10,7 @@ type Props = {
 
 const QuickLinkCard2: React.FC<Props> = ({count, name, icon, action})=>{
     return <div>
-                <h2>{count}</h2>
+                <h2 className="count-val">{count}</h2>
                 <h4>{name}</h4>
                 <span className="add-button" onClick={action}><Icon icon={icon} width="35" height="35" color="white" /></span>
             </div>

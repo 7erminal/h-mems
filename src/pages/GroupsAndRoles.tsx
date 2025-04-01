@@ -100,11 +100,10 @@ const GroupsAndRoles: React.FC = ()=>{
                 <div className="card mb-4">
                     <div className="card-body p-3">
                         <div className="row">
-                            <div className="col-lg-3 col-sm-6 card-right" onClick={()=>handleShowAddGroup()}>
+                            <div className="col-lg-3 col-sm-6 card-right">
                                 <QuickLinkCard2 action={()=>handleShowAddGroup()} name="Group(s)" count={institutionContext?.groups.length ?? 0} icon="fluent:add-20-filled" />
-                                {/* <h6>Add Group</h6> */}
                             </div>
-                            <div className="col-lg-3 col-sm-6 card-right" onClick={()=>handleShowAddRole()}>
+                            <div className="col-lg-3 col-sm-6 card-right">
                                 <QuickLinkCard2 action={()=>handleShowAddRole()} name="Role(s)" count={institutionContext?.roles.length ?? 0} icon="fluent:add-20-filled" />
                             </div>
                             <div className="col-lg-3 col-sm-6 card-right">

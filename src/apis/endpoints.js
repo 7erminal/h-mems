@@ -1,5 +1,5 @@
 const customerUATBaseUrl = `https://solisapimanagement.azure-api.net`;
-const customerBaseUrl = `https://solisservicescustomerapi.azurewebsites.net`;
+const customerBaseUrl = `https://bems-userserviceuat.azurewebsites.net`;
 // const transactionsBaseUrl = `https://solisapimanagement.azure-api.net/transactions`;
 // const rewardBaseUrl = `https://solisapimanagement.azure-api.net/loyalty`;
 // const transactBaseUrl = `https://solisapimanagement.azure-api.net/uat/transactionservices`;

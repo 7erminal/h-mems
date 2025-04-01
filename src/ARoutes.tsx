@@ -33,6 +33,8 @@ import GroupsAndRoles from "./pages/GroupsAndRoles.tsx";
 import Groups from "./pages/Groups.tsx";
 import Roles from "./pages/Roles.tsx";
 import PermissionsC from "./pages/PermissionsC.tsx";
+import EquipmentConfiguration from "./pages/EquipmentConfiguration.tsx";
+import { EquipmentProvider } from "./resources/providers/EquipmentProvider.tsx";
 
 
 const ARoutes: React.FC = () => {
@@ -41,41 +43,44 @@ const ARoutes: React.FC = () => {
     return <AnimatePresence>
               <ActivityTracker>
                 <InstitutionProvider>
-                  <div className="min-height-300 bg-primary position-absolute w-100"></div>
-                  <SideBar />
-                  <Routes>
-                      {/* <Route path="*" element={<NotFoundPage />} /> */}
-                      {/* <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} /> */}
-                      <Route path='/home' element={<HomePage />} />
-                      <Route path='/dashboard' element={<DashboardPage />} />
-                      <Route path='/clinical-engineering-report' element={<ClinicalEngineeringMonthlyReport />} />
-                      <Route path='/equipment-listing' element={<EquipmentListing />} />
-                      <Route path='/equipment-library' element={<EquipmentLibraryPage />} />
-                      <Route path='/equipment-work-orders' element={<EquipmentWorkOrdersPage />} />
-                      <Route path='/equipment-reports' element={<EquipmentReportsPage />} />
-                      <Route path='/stock-management' element={<StockManagementPage />} />
-                      <Route path='/work-orders' element={<WorkOrders />} />
-                      <Route path='/work-orders-reports' element={<WorkOrdersReportsPage />} />
-                      <Route path='/work-orders-listings' element={<WorkOrdersListing />} />
-                      <Route path='/equipment-details' element={<ViewEquipmentDetails eqDetails={appContext?.selectedEquipment} />} />
-                      <Route path='/work-order-details' element={<ViewWorkOrderDetails woDetails={appContext?.selectedWorkOrder} />} />
-                      <Route path='/equipment-work-orders' element={<WorkOrdersListing />} />
-                      <Route path='/equipment-list' element={<EquipmentListPage />} />
-                      <Route path='/departments' element={<DepartmentsPage />} />
-                      <Route path='/hospitals' element={<Hospitals />} />
-                      <Route path='/institutions' element={<Institutions />} />
-                      <Route path='/user-management' element={<UserManagementPage />} />
-                      <Route path='/view-institution' element={<ViewInstitutionPage />} />
-                      <Route path='/view-hospital' element={<ViewHospitalPage />} />
-                      <Route path='/groups-and-roles' element={<GroupsAndRoles />} />
-                      <Route path='/groups' element={<Groups />} />
-                      <Route path='/roles' element={<Roles />} />
-                      <Route path='/permissions' element={<PermissionsC />} />
-                      <Route path="*" element={<Navigate replace to="/" />} />
-                  </Routes>
-                  {/* <Invoice showModal={showInvoice} handleClose={handleShowInvoiceModalClose} invoice={selectedInvoice} />
-                  <NotififcationModal notificationProps={appContext!.notificationProps!} />
-                  <Loading show={appContext?.loading} handleClose={appContext!.handleLoadingClose} /> */}
+                  <EquipmentProvider>
+                    <div className="min-height-300 bg-primary position-absolute w-100"></div>
+                    <SideBar />
+                    <Routes>
+                        {/* <Route path="*" element={<NotFoundPage />} /> */}
+                        {/* <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} /> */}
+                        <Route path='/home' element={<HomePage />} />
+                        <Route path='/dashboard' element={<DashboardPage />} />
+                        <Route path='/clinical-engineering-report' element={<ClinicalEngineeringMonthlyReport />} />
+                        <Route path='/equipment-listing' element={<EquipmentListing />} />
+                        <Route path='/equipment-library' element={<EquipmentLibraryPage />} />
+                        <Route path='/equipment-work-orders' element={<EquipmentWorkOrdersPage />} />
+                        <Route path='/equipment-reports' element={<EquipmentReportsPage />} />
+                        <Route path='/stock-management' element={<StockManagementPage />} />
+                        <Route path='/work-orders' element={<WorkOrders />} />
+                        <Route path='/work-orders-reports' element={<WorkOrdersReportsPage />} />
+                        <Route path='/work-orders-listings' element={<WorkOrdersListing />} />
+                        <Route path='/equipment-details' element={<ViewEquipmentDetails eqDetails={appContext?.selectedEquipment} />} />
+                        <Route path='/work-order-details' element={<ViewWorkOrderDetails woDetails={appContext?.selectedWorkOrder} />} />
+                        <Route path='/equipment-work-orders' element={<WorkOrdersListing />} />
+                        <Route path='/equipment-list' element={<EquipmentListPage />} />
+                        <Route path='/departments' element={<DepartmentsPage />} />
+                        <Route path='/hospitals' element={<Hospitals />} />
+                        <Route path='/institutions' element={<Institutions />} />
+                        <Route path='/user-management' element={<UserManagementPage />} />
+                        <Route path='/view-institution' element={<ViewInstitutionPage />} />
+                        <Route path='/view-hospital' element={<ViewHospitalPage />} />
+                        <Route path='/groups-and-roles' element={<GroupsAndRoles />} />
+                        <Route path='/equipment-configuration' element={<EquipmentConfiguration />} />
+                        <Route path='/groups' element={<Groups />} />
+                        <Route path='/roles' element={<Roles />} />
+                        <Route path='/permissions' element={<PermissionsC />} />
+                        <Route path="*" element={<Navigate replace to="/" />} />
+                    </Routes>
+                    {/* <Invoice showModal={showInvoice} handleClose={handleShowInvoiceModalClose} invoice={selectedInvoice} />
+                    <NotififcationModal notificationProps={appContext!.notificationProps!} />
+                    <Loading show={appContext?.loading} handleClose={appContext!.handleLoadingClose} /> */}
+                    </EquipmentProvider>
                 </InstitutionProvider>
               </ActivityTracker>
             </AnimatePresence>

@@ -1,4 +1,5 @@
 const customerBaseUrl = `https://bems-userserviceuat.azurewebsites.net`;
+const equipmentBaseUrl = `https://bems-equipmentserviceuat.azurewebsites.net`;
 // const transactionsBaseUrl = `https://solisapimanagement.azure-api.net/transactions`;
 // const rewardBaseUrl = `https://solisapimanagement.azure-api.net/loyalty`;
 // const transactBaseUrl = `https://solisapimanagement.azure-api.net/uat/transactionservices`;
@@ -6,6 +7,8 @@ const customerBaseUrl = `https://bems-userserviceuat.azurewebsites.net`;
 const authEndpoints = `${customerBaseUrl}/api/auth-services/v1`;
 
 const userEndpoints = `${customerBaseUrl}/api/user-management-services/v1`;
+
+const equipmentEndpoints = `${equipmentBaseUrl}/api/equipment-management-services/v1`;
 
 
 export const ROUTES = {
@@ -68,6 +71,26 @@ export const ROUTES = {
 
     // ADD PERMISSION TO ROLE
     addPermissionToRoleApi: `${userEndpoints}/create-role-permission`,
+
+    // GET COST CENTERS
+    getCostCenters: `${equipmentEndpoints}/cost-centers`,
+    // CREATE COST CENTER
+    createCostCenter: `${equipmentEndpoints}/create-cost-center`,
+    // GET EQUIPMENT CLASSES
+    getEquipmentClasses: `${equipmentEndpoints}/equipment-classes`,
+    // CREATE EQUIPMENT CLASS
+    createEquipmentClass: `${equipmentEndpoints}/create-equipment-class`,
+    // GET DEVICES
+    getDevices: `${equipmentEndpoints}/device-inclusions`,
+    // CREATE DEVICE
+    createDevice: `${equipmentEndpoints}/create-device-inclusion`,
+    // GET EQUIPMENT
+    getEquipment: `${equipmentEndpoints}/equipments`,
+    // CREATE EQUIPMENT
+    createEquipment: `${equipmentEndpoints}/create-equipment`,
+
+    // ADD PERMISSION TO GROUP
+    addPermissionToGroupApi: `${userEndpoints}/create-group-permission`,
 
 
 

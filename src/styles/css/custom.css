@@ -722,6 +722,10 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
     background-color: #3a7089;
 }
 
+.count-val{
+    color: #00a1f7;
+}
+
 .nav-link-c{
     padding-top: 2px;
     padding-bottom: 2px;
@@ -797,4 +801,10 @@ background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, F
     flex-direction: column;
     padding-left: 50px;
     /* background-color: #00aaff; */
+}
+
+.occupy-card{
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }

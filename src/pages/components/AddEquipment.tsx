@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Modal, Form, Row, Col, FloatingLabel, Button } from "react-bootstrap";
 import { departments, facilities, locations, users, priorityList } from "../../utils/data/Data";
-import { DepartmentT, Facility, FLocation, Priority, UserT } from "../../utils/types/Types";
+import { DepartmentT, DeviceInclusion, EquipmentClass, Facility, FLocation, Priority, UserT } from "../../utils/types/Types";
+import EquipmentContext from "../../resources/contexts/EquipmentContext";
+import ApplicationContext from "../../resources/contexts/ApplicationContext";
 
 type Props = {
     show: boolean
@@ -9,21 +11,38 @@ type Props = {
 }
 
 const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
+    const equipmentContext = useContext(EquipmentContext);
+    const appContext = useContext(ApplicationContext);
+
+    const submitForm = async (e: React.FormEvent<HTMLFormElement>)=> {
+                    e.preventDefault();
+                    appContext?.loadingShow()
+        var resp = await equipmentContext?.addEquipment()
+        appContext?.loadingClose()
+        if(resp==true){
+            equipmentContext?.getEquipment()
+            appContext?.setErrorMessage("Cost Center added successfully")
+            handleClose()
+        } else {
+            appContext?.setErrorMessage("Error adding cost center")
+        }
+    }
+    
     return <Modal show={show} onHide={handleClose} fullscreen={true}>
     <Modal.Header className="d-flex justify-content-around">
       <Modal.Title>Add Equipment</Modal.Title>
       <button className="danger-button" type="button" onClick={handleClose}>Close</button>
     </Modal.Header>
     <Modal.Body>
-        <Form>
+        <Form onSubmit={(e: React.FormEvent<HTMLFormElement>)=>submitForm(e)}>
             <Row className="mt-2">
                 <Col>
                     <FloatingLabel
                         controlId="floatingInput"
-                        label="Control Number"
+                        label="Asset Number"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Control #" />
+                        <Form.Control placeholder="Asset #" value={equipmentContext?.equipmentReq.assetNumber} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, assetNumber: e.target.value})} />
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -32,7 +51,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Serial Number"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Serial #" />
+                        <Form.Control placeholder="Serial #" value={equipmentContext?.equipmentReq.serialNumber} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, serialNumber: e.target.value})}/>
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -41,7 +60,13 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Class"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Class" />
+                        <Form.Select aria-label="Default select example" onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, classId: e.target.value})}>
+                            {
+                                equipmentContext?.equipmentClasses.map((eq: EquipmentClass)=>{
+                                    return <option value={eq.name}>{eq.name}</option>
+                                })
+                            }
+                        </Form.Select>
                     </FloatingLabel>
                 </Col>
             </Row>
@@ -68,7 +93,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Equipment make"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Name" />
+                        <Form.Control placeholder="Make" value={equipmentContext?.equipmentReq.make} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, make: e.target.value})}/>
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -77,7 +102,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Equipment model"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Name" />
+                        <Form.Control placeholder="Model" value={equipmentContext?.equipmentReq.model} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, model: e.target.value})}/>
                     </FloatingLabel>
                 </Col>
             </Row>
@@ -88,7 +113,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="ECRI Number"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="ECRI #" />
+                        <Form.Control placeholder="ECRI #" value={equipmentContext?.equipmentReq.ecriNumber} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, ecriNumber: e.target.value})}/>
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -97,7 +122,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Equipment manufacturer"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Manufacturer" />
+                        <Form.Control placeholder="Manufacturer" value={equipmentContext?.equipmentReq.manufacturer} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, manufacturer: e.target.value})}/>
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -106,7 +131,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Equipment supplier"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Supplier" />
+                        <Form.Control placeholder="Serial #" value={equipmentContext?.equipmentReq.supplier} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, supplier: e.target.value})}/>
                     </FloatingLabel>
                 </Col>
             </Row>
@@ -117,7 +142,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="System"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="System" />
+                        <Form.Control placeholder="Serial #" value={equipmentContext?.equipmentReq.system} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, system: e.target.value})}/>
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -127,7 +152,11 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                             className="mb-3"
                         >
                         <Form.Select aria-label="Default select example">
-                            <option value="PPM">PPM</option>
+                            {
+                                equipmentContext?.deviceInclusions.map((dv: DeviceInclusion)=>{
+                                    return <option value={dv.id}>{dv.name}</option>
+                                })
+                            }
                             {/* <option value="NONE_LIFE_SUPPORTING">Non Life Supporting</option>
                             <option value="HIGH_RISK">High Risk</option> */}
                         </Form.Select>
@@ -139,7 +168,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                             label="Device Inclusion type"
                             className="mb-3"
                         >
-                        <Form.Select aria-label="Default select example">
+                        <Form.Select aria-label="">
                             <option value="MONTHLY">Monthly</option>
                             <option value="QUARTERLY">Quarterly</option>
                             <option value="HALF_A_YEAR">Half a year</option>
@@ -155,7 +184,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="ECRI Revision"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="ECRI Revision" />
+                        <Form.Control placeholder="ECRI Revision" value={equipmentContext?.equipmentReq.ecriRevisionNumber} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, ecriRevisionNumber: e.target.value})}/>
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -164,7 +193,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Purchase date"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Purchase date" />
+                        <Form.Control placeholder="Purchase date" value={equipmentContext?.equipmentReq.purchaseDate} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, purchaseDate: e.target.value})} />
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -173,7 +202,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Warranty expiry date"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Warranty expiry date" />
+                        <Form.Control placeholder="Warranty expiry date" value={equipmentContext?.equipmentReq.warrantyExpiryDate} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, warrantyExpiryDate: e.target.value})} />
                     </FloatingLabel>
                 </Col>
             </Row>
@@ -184,7 +213,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Service start date"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Service start date" />
+                        <Form.Control placeholder="Service start date" value={equipmentContext?.equipmentReq.serviceStartDate} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, serviceStartDate: e.target.value})} />
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -193,7 +222,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Service expirty date"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Service expiry date" />
+                        <Form.Control placeholder="Service expiry date" value={equipmentContext?.equipmentReq.serviceExpiryDate} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, serviceExpiryDate: e.target.value})} />
                     </FloatingLabel>
                 </Col>
             </Row>
@@ -204,7 +233,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Cost"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Cost" />
+                        <Form.Control placeholder="Cost" value={equipmentContext?.equipmentReq.cost} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, cost: parseFloat(e.target.value) || 0})} />
                     </FloatingLabel>
                 </Col>
                 <Col>
@@ -213,7 +242,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                         label="Device Life expectancy"
                         className="mb-3"
                     >
-                        <Form.Control placeholder="Life expectancy" />
+                        <Form.Control placeholder="Life expectancy" value={equipmentContext?.equipmentReq.lifeExpectancy} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, lifeExpectancy: e.target.value})} />
                     </FloatingLabel>
                 </Col>
             </Row>
@@ -224,7 +253,9 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                             label="Country"
                             className="mb-3"
                         >
-                        <Form.Select aria-label="Default select example">
+                        <Form.Select aria-label="Default select example" 
+                        onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, country: e.target.value})}
+                        >
                             <option value="GHANA">Ghana</option>
                         </Form.Select>
                     </FloatingLabel>
@@ -235,7 +266,9 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                             label="Region"
                             className="mb-3"
                         >
-                        <Form.Select aria-label="Default select example">
+                        <Form.Select aria-label="Default select example"
+                        onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, region: e.target.value})}
+                        >
                             <option value="GREATER_ACCRA">Greater Accra</option>
                             <option value="ASHANTI">Ashanti</option>
                         </Form.Select>
@@ -247,7 +280,9 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                             label="District"
                             className="mb-3"
                         >
-                        <Form.Select aria-label="Default select example">
+                        <Form.Select aria-label="Default select example"
+                        value={equipmentContext?.equipmentReq.district} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, district: e.target.value})}
+                        >
                             <option value="ADENTAN">Adenta</option>
                             <option value="KOKOMLEMLE">Kokomlemle</option>
                         </Form.Select>
@@ -259,7 +294,9 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                             label="Sub District"
                             className="mb-3"
                         >
-                        <Form.Select aria-label="Default select example">
+                        <Form.Select aria-label="Default select example"
+                        value={equipmentContext?.equipmentReq.subDistrict} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, subDistrict: e.target.value})}
+                        >
                             <option value="ADENTAN">Adenta</option>
                             <option value="KOKOMLEMLE">Kokomlemle</option>
                         </Form.Select>
@@ -273,7 +310,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                             label="Facility"
                             className="mb-3"
                         >
-                        <Form.Select aria-label="Default select example">
+                        <Form.Select aria-label="Default select example" >
                             {
                                 facilities.map((fc: Facility)=>{
                                     return <option value={fc.FacilityId}>{fc.FacilityName}</option>
@@ -303,7 +340,9 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
                             label="Location"
                             className="mb-3"
                         >
-                        <Form.Select aria-label="Default select example">
+                        <Form.Select aria-label="Default select example"
+                        value={equipmentContext?.equipmentReq.location} onChange={(e)=>equipmentContext?.setEquipmentReq({...equipmentContext.equipmentReq, location: e.target.value})}
+                        >
                             {
                                 locations.map((lc: FLocation)=>{
                                     return <option value={lc.Location}>{lc.Location}</option>
@@ -333,7 +372,7 @@ const AddEquipment: React.FC<Props> = ({show, handleClose})=>{
     
             <Row className="mt-4">
                 <Col>
-                    <Button className="primary-button" onClick={handleClose}>Add Equipment</Button>
+                    <Button className="primary-button" type="submit">Add Equipment</Button>
                 </Col>
             </Row>
         </Form>
